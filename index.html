@@ -1,0 +1,1473 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>KPop Demon Hunters Mobile — Desarrollo visual</title>
+<meta name="description" content="Desarrollo visual del rhythm game mobile de KPop Demon Hunters: sistema de color Honmoon, estados de tap y propuestas de interfaz." />
+<style>
+/* ──────────────────────────────────────────────────────────
+   KPOP DEMON HUNTERS · MOBILE RHYTHM GAME
+   Desarrollo visual — presentación interna
+   Tema único: escenario nocturno
+   ────────────────────────────────────────────────────────── */
+
+:root{
+  color-scheme: dark;
+
+  --stage-000:#04050c;
+  --stage-100:#080a15;
+  --stage-200:#0d1122;
+  --hairline:rgba(140,170,230,.16);
+  --hairline-soft:rgba(140,170,230,.08);
+
+  --ink:#eef4ff;
+  --ink-dim:#a9b8d8;
+  --ink-mute:#7387ab;
+
+  /* #00C8FF queda reservado a interfaz: HUD, carriles, foco. */
+  --blue:#00c8ff;
+  --blue-deep:#0079ba;
+  --blue-soft:#9fe8ff;
+  /* cian de juicio: mismo tono, saturacion baja, para que GOOD no compita con el HUD */
+  --good:#59a9c0;
+  --good-deep:#2e6c81;
+  --pink:#ff00ef;
+  --pink-deep:#cf008d;
+  --pink-soft:#ff8ef1;
+  --gold:#ffc23c;
+  --gold-deep:#ba8400;
+  --gold-soft:#ffe9b0;
+  --iris:#5b75d2;
+  --demon:#ff2e55;
+
+  --rainbow:linear-gradient(90deg,#ff2e55,#ffc23c,#5bffc0,#00c8ff,#5b75d2,#ff00ef);
+
+  --display:"Bahnschrift","DIN Alternate","Avenir Next Condensed","Oswald","Arial Narrow",system-ui,sans-serif;
+  --body:"Segoe UI Variable Text","Segoe UI",-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;
+  --mono:"Cascadia Mono",Consolas,"SF Mono","Roboto Mono",ui-monospace,monospace;
+
+  --s1:.75rem; --s2:.875rem; --s3:1rem; --s4:1.25rem;
+
+  --gutter:clamp(1.25rem,5vw,4.5rem);
+}
+
+*,*::before,*::after{box-sizing:border-box;}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto;}}
+
+body{
+  margin:0;
+  background:var(--stage-000);
+  color:var(--ink);
+  font-family:var(--body);
+  font-size:clamp(15px,.55vw + 13px,17px);
+  line-height:1.6;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+img,video{max-width:100%;display:block;}
+::selection{background:var(--blue);color:#04050c;}
+:focus-visible{outline:2px solid var(--blue);outline-offset:3px;}
+
+h1,h2,h3,h4{font-family:var(--display);font-weight:700;text-wrap:balance;margin:0;line-height:1.02;}
+p{margin:0;}
+
+.eyebrow{
+  font-family:var(--mono);font-size:var(--s1);
+  letter-spacing:.34em;text-transform:uppercase;
+  color:var(--ink-mute);margin:0;
+}
+.caption{
+  font-family:var(--mono);font-size:var(--s1);
+  letter-spacing:.2em;text-transform:uppercase;
+  color:var(--ink-dim);
+}
+
+/* ── HERO ──────────────────────────────────────────────── */
+.hero{
+  position:relative;min-height:100svh;
+  display:grid;align-content:end;
+  padding:var(--gutter);
+  padding-bottom:clamp(2rem,6vh,4.5rem);
+  isolation:isolate;overflow:hidden;
+}
+.hero__video{
+  position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover;z-index:-3;
+  filter:saturate(1.05) contrast(1.02) brightness(1.16);
+  transform:scale(.93);
+  transform-origin:center 44%;
+  -webkit-mask-image:radial-gradient(60% 66% at 50% 44%, #000 68%, rgba(0,0,0,.4) 88%, transparent 100%);
+  mask-image:radial-gradient(60% 66% at 50% 44%, #000 68%, rgba(0,0,0,.4) 88%, transparent 100%);
+}
+.hero__scrim{
+  position:absolute;inset:0;z-index:-2;
+  background:
+    radial-gradient(130% 98% at 50% 12%, rgba(4,5,12,0) 30%, rgba(4,5,12,.3) 68%, rgba(4,5,12,.78) 100%),
+    linear-gradient(180deg, rgba(4,5,12,.5) 0%, rgba(4,5,12,.06) 28%, rgba(4,5,12,.22) 64%, rgba(4,5,12,.66) 88%, rgba(4,5,12,.97) 100%);
+}
+.hero__weave{
+  position:absolute;inset:0;z-index:-1;
+  background-image:repeating-linear-gradient(180deg,rgba(160,220,255,.055) 0 1px,transparent 1px 4px);
+  mix-blend-mode:screen;pointer-events:none;
+}
+.hud{
+  position:absolute;top:var(--gutter);left:var(--gutter);right:var(--gutter);
+  display:flex;justify-content:space-between;gap:1rem;
+  font-family:var(--mono);font-size:var(--s1);
+  letter-spacing:.24em;text-transform:uppercase;color:rgba(238,244,255,.72);
+}
+.hud span{display:inline-flex;align-items:center;gap:.6rem;}
+.hud .dot{
+  width:6px;height:6px;border-radius:50%;background:var(--blue);
+  box-shadow:0 0 10px var(--blue),0 0 22px rgba(0,200,255,.7);
+}
+@media (prefers-reduced-motion:no-preference){
+  .hud .dot{animation:beat 1.6s ease-in-out infinite;}
+}
+@keyframes beat{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.35;transform:scale(.72);}}
+@media (max-width:620px){
+  .hud{letter-spacing:.16em;font-size:.68rem;}
+  .hud span:last-child{display:none;}
+}
+
+.hero .eyebrow{
+  color:rgba(226,236,255,.86);
+  font-size:clamp(.82rem,1.15vw,1.05rem);
+  letter-spacing:.3em;
+  text-shadow:0 1px 16px rgba(4,5,12,.95),0 0 40px rgba(4,5,12,.8);
+  margin-bottom:1.1rem;
+}
+.hero__title{
+  font-size:clamp(2.6rem,8.6vw,7.4rem);
+  text-transform:uppercase;line-height:.92;
+}
+.hero__title .glow{
+  display:block;color:#fff;
+  text-shadow:0 0 28px rgba(0,200,255,.45),0 0 76px rgba(0,120,255,.28);
+}
+.hero__title .thin{
+  display:block;font-weight:300;color:var(--blue-soft);
+  letter-spacing:.06em;font-size:.42em;margin-top:.5rem;
+}
+
+/* ── Compilado de apertura ─────────────────────────────── */
+.reel{border-top:1px solid var(--hairline-soft);background:var(--stage-000);}
+.reel__inner{max-width:1500px;margin:0 auto;padding:clamp(2.5rem,7vh,4.5rem) var(--gutter) clamp(3rem,8vh,5rem);}
+.reel__head{display:flex;flex-wrap:wrap;align-items:baseline;gap:.6rem 1.6rem;margin-bottom:clamp(1.4rem,3vh,2.2rem);}
+.reel__head h2{font-size:clamp(1.9rem,4.4vw,3.4rem);text-transform:uppercase;letter-spacing:.01em;}
+.reel__head .eyebrow{flex-basis:100%;}
+.reel__frame{position:relative;border:1px solid var(--hairline);background:#000;overflow:hidden;line-height:0;}
+.reel__frame video{width:100%;display:block;}
+.reel__cap{
+  display:flex;flex-wrap:wrap;gap:.4rem 2.2rem;margin-top:.9rem;
+  font-family:var(--mono);font-size:var(--s1);
+  letter-spacing:.16em;text-transform:uppercase;color:var(--ink-mute);
+}
+
+/* ── Zoom al hover en las piezas de bloque ─────────────── */
+.tipo,.matrix__cell,.prop__fig,.block,.mec figure{position:relative;}
+/* las piezas de bloque crecen al pasar el mouse y se levantan sobre las vecinas */
+.tipo,.matrix__cell{
+  transition:transform .3s cubic-bezier(.2,.7,.3,1), box-shadow .3s ease;
+  will-change:transform;
+}
+.tipo:hover,.matrix__cell:hover,
+.tipo:focus-visible,.matrix__cell:focus-visible{
+  transform:scale(1.15);
+  z-index:20;
+  box-shadow:0 18px 50px rgba(0,0,0,.7);
+}
+/* en los mockups grandes, un acercamiento leve dentro del marco */
+.prop__fig img,.block video,.mec img,.mec video{
+  transition:transform .4s cubic-bezier(.2,.7,.3,1);
+}
+.prop__fig:hover img,.block:hover video,.mec figure:hover img{
+  transform:scale(1.06);
+}
+/* cinematica jugable: crece la tarjeta entera y pisa a las vecinas */
+.mec--big{overflow:visible;}
+.mec--big figure{
+  transition:transform .3s cubic-bezier(.2,.7,.3,1), box-shadow .3s ease;
+  will-change:transform;
+}
+.mec--big figure:hover,.mec--big figure:focus-visible{
+  transform:scale(1.35);
+  z-index:30;
+  box-shadow:0 26px 80px rgba(0,0,0,.8);
+}
+.mec--big figure:hover img{transform:none;}
+/* estados: la tarjeta crece 40% */
+.states,.state__row{overflow:visible;}
+.state__fig{
+  transition:transform .3s cubic-bezier(.2,.7,.3,1), box-shadow .3s ease;
+  will-change:transform;
+}
+.state__fig:hover,.state__fig:focus-visible{
+  transform:scale(1.4);
+  z-index:25;
+  box-shadow:0 26px 70px rgba(0,0,0,.8);
+}
+/* escenarios: la tarjeta crece y se levanta */
+.variants{overflow:visible;}
+.variant{
+  transition:transform .3s cubic-bezier(.2,.7,.3,1), box-shadow .3s ease;
+  will-change:transform;
+}
+.variant:hover,.variant:focus-visible{
+  transform:scale(1.32);
+  z-index:20;
+  box-shadow:0 22px 60px rgba(0,0,0,.78);
+}
+/* look en device: la toma crece 40% para comparar de cerca */
+.device{overflow:visible;}
+.device__fig{
+  transition:transform .3s cubic-bezier(.2,.7,.3,1), box-shadow .3s ease;
+  will-change:transform;
+}
+.device__fig:hover,.device__fig:focus-visible{
+  transform:scale(1.4);
+  z-index:25;
+  box-shadow:0 26px 70px rgba(0,0,0,.8);
+}
+/* con animaciones reducidas el zoom sigue existiendo, pero sin transicion */
+@media (prefers-reduced-motion:reduce){
+  .tipo,.matrix__cell,.prop__fig img,.block video,.mec img,.mec video,.mec--big figure,.variant,.state__fig,.combo figure,.device__fig{transition:none;}
+}
+
+/* ── Estructura ────────────────────────────────────────── */
+main{position:relative;z-index:1;background:var(--stage-000);}
+
+.band{
+  padding:clamp(3.5rem,10vh,7rem) var(--gutter);
+  border-top:1px solid var(--hairline-soft);
+}
+.band--flush{padding-left:0;padding-right:0;padding-bottom:0;}
+.band--flush > .band__head{padding-inline:var(--gutter);}
+
+.band__head{
+  display:flex;flex-wrap:wrap;align-items:baseline;gap:.6rem 1.6rem;
+  max-width:1500px;margin:0 auto clamp(2rem,4vh,3rem);
+}
+.band__head h2{
+  font-size:clamp(1.9rem,4.4vw,3.4rem);
+  text-transform:uppercase;letter-spacing:.01em;
+}
+.band__head .eyebrow{flex-basis:100%;}
+.band__head .caption{color:var(--ink-mute);}
+.band__inner{max-width:1500px;margin:0 auto;}
+
+/* ── Codigo de color: mas angosto que el resto ─────────── */
+.band--honmoon .band__head{max-width:1180px;}
+.honmoon{max-width:1180px;margin-inline:auto;}
+.band--honmoon .band__inner{max-width:1180px;}
+
+/* ── Sistema de color ──────────────────────────────────── */
+.honmoon{--hgap:clamp(.6rem,1vw,.9rem);display:grid;gap:var(--hgap);}
+@media (min-width:1100px){
+  .honmoon{grid-template-columns:repeat(2,minmax(0,1fr));}
+}
+.energy{
+  position:relative;overflow:hidden;
+  border-top:1px solid var(--hairline);
+  border-bottom:1px solid var(--hairline);
+}
+.energy__img{
+  position:absolute;inset:0;
+  width:100%;height:100%;
+  object-fit:cover;
+}
+.energy__overlay{
+  position:relative;
+  min-height:clamp(165px,16vw,235px);
+  display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;
+  gap:.9rem 1rem;
+  padding:clamp(.9rem,1.8vw,1.5rem) clamp(1rem,2.2vw,1.8rem);
+  background:linear-gradient(90deg,rgba(4,5,12,.9) 0%,rgba(4,5,12,.52) 30%,rgba(4,5,12,.12) 50%,rgba(4,5,12,.6) 76%,rgba(4,5,12,.88) 100%);
+}
+.energy__name{
+  font-family:var(--display);
+  font-size:clamp(1.8rem,3.4vw,3.1rem);
+  text-transform:uppercase;letter-spacing:.08em;line-height:1;margin:0;
+}
+.energy__role{
+  font-family:var(--mono);font-size:var(--s1);
+  letter-spacing:.24em;text-transform:uppercase;
+  color:var(--ink-dim);margin:.45rem 0 0;
+  text-shadow:0 1px 14px rgba(4,5,12,.95);
+}
+.energy__right{display:grid;gap:.5rem;justify-items:end;text-align:right;}
+.energy__state{display:grid;gap:.15rem;justify-items:end;}
+.energy__state .k{
+  font-family:var(--mono);font-size:.64rem;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--ink-mute);
+  text-shadow:0 1px 12px rgba(4,5,12,.95);
+}
+.energy__state strong{
+  font-family:var(--display);font-weight:700;
+  font-size:clamp(1.15rem,2.1vw,1.7rem);
+  text-transform:uppercase;letter-spacing:.06em;line-height:1;
+}
+.energy--blue .energy__state strong{color:var(--good);}
+.energy--pink .energy__state strong{color:var(--demon);}
+.energy--gold .energy__state strong{color:var(--gold);}
+.energy--rainbow .energy__state strong{background:var(--rainbow);-webkit-background-clip:text;background-clip:text;color:transparent;}
+.chips{display:flex;flex-wrap:wrap;gap:.4rem;}
+.chip{
+  display:inline-flex;align-items:center;gap:.45rem;
+  font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;
+  padding:.32rem .58rem;
+  border:1px solid var(--hairline);
+  background:rgba(4,5,12,.62);
+  backdrop-filter:blur(6px);
+  color:var(--ink-dim);
+}
+.chip i{width:11px;height:11px;display:block;border-radius:1px;}
+
+.energy--blue .energy__name{color:var(--blue);text-shadow:0 0 30px rgba(0,200,255,.55);}
+.energy--pink .energy__name{color:var(--pink-soft);text-shadow:0 0 30px rgba(255,0,239,.5);}
+.energy--gold .energy__name{color:var(--gold);text-shadow:0 0 30px rgba(255,194,60,.45);}
+.energy--rainbow .energy__name{
+  background:var(--rainbow);-webkit-background-clip:text;background-clip:text;color:transparent;
+}
+
+/* ── Estados de tap ────────────────────────────────────── */
+.judgments{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(215px,1fr));
+  gap:clamp(.75rem,1.4vw,1.2rem);
+}
+.judge{
+  position:relative;overflow:hidden;
+  border:1px solid var(--hairline);
+  background:var(--stage-100);
+}
+.judge__media{position:relative;aspect-ratio:3/4;overflow:hidden;background:var(--stage-200);}
+.judge__media img{width:100%;height:100%;object-fit:cover;}
+.judge__media::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(4,5,12,0) 34%,rgba(4,5,12,.72) 68%,rgba(4,5,12,.97) 100%);
+}
+.judge__tag{
+  position:absolute;left:1rem;bottom:1.9rem;z-index:2;
+  font-family:var(--display);
+  font-size:clamp(1.5rem,2.9vw,2.4rem);
+  text-transform:uppercase;letter-spacing:.09em;line-height:1;
+}
+.j-exc .judge__tag{filter:drop-shadow(0 1px 10px rgba(4,5,12,.95)) drop-shadow(0 0 26px rgba(4,5,12,.7));}
+.judge__sub{
+  position:absolute;left:1rem;bottom:1rem;z-index:2;
+  font-family:var(--mono);font-size:.68rem;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--ink-dim);
+}
+.judge__strip{height:3px;width:100%;}
+
+.j-miss .judge__tag{color:var(--demon);text-shadow:0 0 22px rgba(255,46,85,.65);}
+.j-miss .judge__strip{background:linear-gradient(90deg,var(--demon),var(--pink-deep));}
+.j-good .judge__tag{color:var(--good);text-shadow:0 0 18px rgba(89,169,192,.45);}
+.j-good .judge__strip{background:linear-gradient(90deg,var(--good-deep),var(--good));}
+.j-great .judge__tag{color:var(--gold);text-shadow:0 0 22px rgba(255,194,60,.6);}
+.j-great .judge__strip{background:linear-gradient(90deg,var(--gold-deep),var(--gold));}
+.j-exc .judge__tag{background:var(--rainbow);-webkit-background-clip:text;background-clip:text;color:transparent;}
+.j-exc .judge__strip{background:var(--rainbow);}
+
+
+/* ── Referencia en juego ───────────────────────────────── */
+.fxgrid{
+  display:grid;
+  gap:clamp(1rem,2vw,1.6rem);
+  grid-template-columns:repeat(auto-fit,minmax(255px,1fr));
+}
+@media (min-width:900px){ .fxgrid{grid-template-columns:repeat(3,minmax(0,1fr));} }
+.fxclip,.fxshot{
+  margin:0;overflow:hidden;
+  border:1px solid var(--hairline);
+  background:var(--stage-100);
+  display:flex;flex-direction:column;
+}
+/* mismo encuadre en los tres para que los pies de foto queden a la misma altura */
+.fxclip__frame{position:relative;width:100%;aspect-ratio:16/10;background:#000;line-height:0;overflow:hidden;}
+.fxclip__frame video{width:100%;height:100%;display:block;object-fit:cover;}
+.fxshot img{width:100%;display:block;aspect-ratio:16/10;object-fit:cover;}
+.fxcap{margin-top:auto;}
+.fxshot--cyan{border-color:rgba(89,169,192,.4);}
+.fxshot--gold{border-color:rgba(255,194,60,.4);}
+.fxcap{
+  padding:.7rem .9rem;
+  border-top:1px solid var(--hairline-soft);
+  font-family:var(--mono);font-size:.68rem;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--ink-mute);
+}
+.fxcap b{font-weight:400;}
+.fxshot--cyan .fxcap b{color:var(--good);}
+.fxshot--gold .fxcap b{color:var(--gold);}
+
+/* ── Interfaz ──────────────────────────────────────────── */
+.proposals{display:grid;gap:clamp(2rem,5vh,3.5rem);}
+.proposal{display:grid;gap:1rem;}
+.proposal__label{
+  display:flex;align-items:baseline;gap:.8rem 1.4rem;flex-wrap:wrap;
+  padding-bottom:.7rem;border-bottom:1px solid var(--hairline);
+}
+.proposal__label h3{
+  font-size:clamp(1.4rem,3vw,2.2rem);
+  text-transform:uppercase;letter-spacing:.04em;
+}
+.tagline{
+  font-family:var(--mono);font-size:var(--s1);letter-spacing:.22em;
+  text-transform:uppercase;color:var(--blue);
+}
+.proposal__shot{
+  border:1px solid var(--hairline);background:var(--stage-100);overflow:hidden;
+  width:63%;margin-inline:auto;
+}
+@media (max-width:760px){ .proposal__shot{width:100%;} }
+.proposal__shot img,.proposal__shot video{width:100%;display:block;}
+.proposal__meta{
+  display:flex;flex-wrap:wrap;gap:.5rem 2.4rem;
+  font-family:var(--mono);font-size:var(--s1);
+  letter-spacing:.16em;text-transform:uppercase;color:var(--ink-mute);
+}
+.proposal__meta b{color:var(--ink-dim);font-weight:400;}
+
+/* clip de camara dinamica */
+.camvid{width:78%;margin-inline:auto;border:1px solid var(--hairline);overflow:hidden;background:var(--stage-100);}
+.camvid video{width:100%;display:block;}
+@media (max-width:760px){ .camvid{width:100%;} }
+
+/* Look aproximado en device */
+.device{display:grid;gap:clamp(.75rem,1.4vw,1.2rem);grid-template-columns:minmax(0,1fr);overflow:visible;}
+@media (min-width:900px){ .device{grid-template-columns:repeat(2,minmax(0,1fr));} }
+.device__fig{position:relative;margin:0;overflow:hidden;border:1px solid var(--hairline);background:var(--stage-100);}
+.device__fig img{width:100%;display:block;}
+.device__fig figcaption{
+  position:absolute;left:0;right:0;bottom:0;padding:.85rem 1rem;
+  background:linear-gradient(180deg,rgba(4,5,12,0),rgba(4,5,12,.94));
+  font-family:var(--mono);font-size:.7rem;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--ink-dim);
+}
+.device__fig figcaption .k{display:block;color:var(--blue);margin-bottom:.2rem;}
+
+.variants{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:clamp(.75rem,1.4vw,1.2rem);}
+.variant{position:relative;overflow:hidden;border:1px solid var(--hairline);margin:0;}
+.variant img{width:100%;}
+.variant figcaption{
+  position:absolute;left:0;right:0;bottom:0;padding:.8rem 1rem;
+  background:linear-gradient(180deg,rgba(4,5,12,0),rgba(4,5,12,.92));
+  font-family:var(--mono);font-size:.68rem;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--ink-dim);
+}
+
+/* ── Referencia de bloques ─────────────────────────────── */
+.blocks{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(265px,1fr));
+  gap:clamp(.75rem,1.4vw,1.2rem);
+}
+@media (min-width:880px){ .blocks{grid-template-columns:repeat(2,minmax(0,1fr));} }
+@media (min-width:1250px){ .blocks{grid-template-columns:repeat(4,minmax(0,1fr));} }
+.block{margin:0;overflow:hidden;border:1px solid var(--hairline);background:var(--stage-100);}
+.block img,.block video{width:100%;display:block;aspect-ratio:16/9;object-fit:cover;background:#05060c;}
+.block figcaption{padding:.9rem 1rem 1.1rem;display:grid;gap:.3rem;}
+.block h4{font-size:var(--s3);text-transform:uppercase;letter-spacing:.05em;color:var(--ink);}
+.block .k{
+  font-family:var(--mono);font-size:.66rem;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--blue);
+}
+.block p{font-size:var(--s2);color:var(--ink-mute);}
+
+/* ── Propuestas de bloque ──────────────────────────────── */
+.props{display:grid;gap:clamp(2rem,5vh,3.2rem);}
+.prop{display:grid;gap:1rem;}
+.prop__label{
+  display:flex;align-items:baseline;gap:.8rem 1.4rem;flex-wrap:wrap;
+  padding-bottom:.7rem;border-bottom:1px solid var(--hairline);
+}
+.prop__label h3{font-size:clamp(1.3rem,2.7vw,2rem);text-transform:uppercase;letter-spacing:.04em;}
+.prop__label .tag{
+  font-family:var(--mono);font-size:var(--s1);letter-spacing:.22em;
+  text-transform:uppercase;color:var(--blue);
+}
+.prop__pair{display:grid;gap:clamp(.6rem,1.2vw,1rem);grid-template-columns:minmax(0,1fr);}
+@media (min-width:1000px){ .prop__pair{grid-template-columns:repeat(2,minmax(0,1fr));} }
+@media (min-width:1000px){ .prop__pair--tres{grid-template-columns:minmax(0,.55fr) minmax(0,1fr) minmax(0,1fr);align-items:start;} }
+.prop__pair--tres .prop__fig:first-child img{aspect-ratio:1.1;object-fit:cover;}
+.prop__fig{margin:0;border:1px solid var(--hairline);background:var(--stage-100);overflow:hidden;}
+.prop__fig img{width:100%;display:block;}
+.prop__fig figcaption{
+  padding:.6rem .9rem;border-top:1px solid var(--hairline-soft);
+  font-family:var(--mono);font-size:.66rem;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--ink-mute);
+}
+
+.prop__body{display:block;}
+
+/* ── Estados del bloque de energia ─────────────────────── */
+.states{display:grid;gap:clamp(2rem,5vh,3rem);}
+@media (min-width:1050px){ .states{grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(1.6rem,3vw,2.6rem);} }
+.state{display:grid;gap:1rem;}
+.state__head{display:flex;align-items:baseline;gap:.7rem 1.3rem;flex-wrap:wrap;
+  padding-bottom:.7rem;border-bottom:1px solid var(--hairline);}
+.state__head h3{font-size:clamp(1.3rem,2.7vw,2rem);text-transform:uppercase;letter-spacing:.05em;}
+.state__head .tag{font-family:var(--mono);font-size:var(--s1);letter-spacing:.2em;text-transform:uppercase;}
+.state--great .tag{color:var(--gold);}
+.state--good  .tag{color:var(--good);}
+.state--exc   .tag{background:var(--rainbow);-webkit-background-clip:text;background-clip:text;color:transparent;}
+.state--miss  .tag{color:var(--demon);}
+.state--hold  .tag{color:var(--blue);}
+.state p{font-size:var(--s2);color:var(--ink-mute);max-width:78ch;}
+
+.state__row{display:grid;gap:clamp(.6rem,1.2vw,1rem);grid-template-columns:minmax(0,1fr);}
+.state__fig{margin:0;overflow:hidden;border:1px solid var(--hairline);background:var(--stage-100);}
+.state__fig img,.state__fig video{width:100%;display:block;}
+/* la referencia se recorta a la altura de los mockups para que la fila quede pareja */
+.state__fig figcaption{
+  padding:.6rem .9rem;border-top:1px solid var(--hairline-soft);
+  font-family:var(--mono);font-size:.66rem;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--ink-mute);
+}
+
+/* ── Mecanicas con el centro libre ─────────────────────── */
+.mec{display:grid;gap:clamp(.7rem,1.4vw,1.2rem);grid-template-columns:minmax(0,1fr);}
+@media (min-width:900px){ .mec{grid-template-columns:repeat(3,minmax(0,1fr));} }
+@media (min-width:900px){
+  .mec--big{grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(1rem,2vw,1.6rem);}
+}
+.mec figure{margin:0;overflow:hidden;border:1px solid var(--hairline);background:var(--stage-100);display:flex;flex-direction:column;}
+.mec img,.mec video{width:100%;display:block;aspect-ratio:16/9;object-fit:cover;background:#05060c;}
+.mec figcaption{padding:.8rem 1rem 1rem;display:grid;gap:.3rem;border-top:1px solid var(--hairline-soft);margin-top:auto;}
+.mec .k{font-family:var(--mono);font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;color:var(--blue);}
+.mec h4{font-size:var(--s3);text-transform:uppercase;letter-spacing:.05em;color:var(--ink);}
+.mec p{font-size:var(--s2);color:var(--ink-mute);}
+
+/* ── Estelas del personaje ─────────────────────────────── */
+.trails{display:grid;gap:clamp(.7rem,1.4vw,1.2rem);grid-template-columns:minmax(0,1fr);}
+@media (min-width:760px){ .trails{grid-template-columns:repeat(2,minmax(0,1fr));} }
+.trails figure{margin:0;overflow:hidden;border:1px solid var(--hairline);background:var(--stage-100);}
+.trails img{width:100%;display:block;}
+.trails figcaption{padding:.8rem 1rem 1rem;display:grid;gap:.3rem;border-top:1px solid var(--hairline-soft);}
+.trails .k{font-family:var(--mono);font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-mute);}
+.trails h4{font-size:var(--s3);text-transform:uppercase;letter-spacing:.05em;color:var(--ink);}
+.trails p{font-size:var(--s2);color:var(--ink-mute);}
+.trails .t4 h4{background:var(--rainbow);-webkit-background-clip:text;background-clip:text;color:transparent;}
+
+/* ── Acumulacion del combo ─────────────────────────────── */
+/* referencia de peli a lo ancho */
+
+.refpeli{margin:0 0 clamp(1.2rem,2.6vw,2rem);border:1px solid var(--hairline);overflow:hidden;background:var(--stage-100);width:60%;margin-inline:auto;}
+@media (max-width:760px){ .refpeli{width:100%;} }
+.refpeli img{width:100%;display:block;}
+.refpeli figcaption{
+  padding:.85rem 1.1rem 1rem;border-top:1px solid var(--hairline-soft);
+  font-size:var(--s2);color:var(--ink-mute);max-width:88ch;
+}
+.refpeli figcaption .k{
+  display:block;font-family:var(--mono);font-size:.66rem;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--blue);margin-bottom:.35rem;
+}
+
+.combo{display:grid;gap:clamp(.7rem,1.4vw,1.2rem);grid-template-columns:minmax(0,1fr);}
+@media (min-width:900px){ .combo{grid-template-columns:repeat(3,minmax(0,1fr));} }
+@media (min-width:1150px){ .combo{margin-inline:-60px;} }
+@media (min-width:1500px){ .combo{margin-inline:-130px;} }
+@media (min-width:1800px){ .combo{margin-inline:-200px;} }
+.combo{overflow:visible;}
+.combo figure{transition:transform .3s cubic-bezier(.2,.7,.3,1), box-shadow .3s ease;}
+.combo figure:hover,.combo figure:focus-visible{
+  transform:scale(1.25);z-index:20;box-shadow:0 22px 60px rgba(0,0,0,.78);
+}
+.combo figure{margin:0;overflow:hidden;border:1px solid var(--hairline);background:var(--stage-100);}
+.combo img{width:100%;display:block;}
+.combo figcaption{padding:.8rem 1rem 1rem;display:grid;gap:.3rem;border-top:1px solid var(--hairline-soft);}
+.combo .k{font-family:var(--mono);font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-mute);}
+.combo h4{font-size:var(--s3);text-transform:uppercase;letter-spacing:.05em;color:var(--ink);}
+.combo p{font-size:var(--s2);color:var(--ink-mute);}
+.combo .c3 h4{background:var(--rainbow);-webkit-background-clip:text;background-clip:text;color:transparent;}
+
+/* ── Forma y color ─────────────────────────────────────── */
+.rule2{display:grid;gap:clamp(2rem,5vh,3.2rem);}
+.rule2__head{display:flex;align-items:baseline;gap:.8rem 1.4rem;flex-wrap:wrap;
+  padding-bottom:.7rem;border-bottom:1px solid var(--hairline);}
+.rule2__head h3{font-size:clamp(1.2rem,2.5vw,1.8rem);text-transform:uppercase;letter-spacing:.04em;}
+.rule2__head .tag{font-family:var(--mono);font-size:var(--s1);letter-spacing:.22em;
+  text-transform:uppercase;color:var(--blue);}
+.rule2 p{font-size:var(--s2);color:var(--ink-mute);max-width:78ch;}
+
+.tipos{display:grid;gap:clamp(.6rem,1.2vw,1rem);grid-template-columns:repeat(3,minmax(0,1fr));}
+.tipo{margin:0;overflow:hidden;border:1px solid var(--hairline);background:#05060c;}
+.tipo img{width:100%;display:block;aspect-ratio:1/1;object-fit:cover;}
+.tipo figcaption{padding:.7rem .9rem;border-top:1px solid var(--hairline-soft);
+  font-family:var(--mono);font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-dim);}
+
+.flow{display:grid;gap:1px;background:var(--hairline-soft);border:1px solid var(--hairline-soft);
+  grid-template-columns:repeat(auto-fit,minmax(150px,1fr));}
+.flow div{background:var(--stage-100);padding:1.1rem 1rem;display:grid;gap:.35rem;align-content:start;}
+.flow .k{font-family:var(--mono);font-size:.64rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-mute);}
+.flow strong{font-family:var(--display);font-size:var(--s4);text-transform:uppercase;letter-spacing:.05em;font-weight:700;}
+.flow small{font-family:var(--mono);font-size:.64rem;letter-spacing:.14em;color:var(--ink-mute);text-transform:uppercase;}
+.flow .c-wait{color:var(--blue-soft);}
+.flow .c-good{color:var(--good);}
+.flow .c-great{color:var(--gold);}
+.flow .c-exc{background:var(--rainbow);-webkit-background-clip:text;background-clip:text;color:transparent;}
+.flow .c-miss{color:var(--demon);}
+
+/* ── Matriz de bloques ─────────────────────────────────── */
+.matrix{
+  overflow:visible;
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:clamp(.5rem,1vw,.9rem);
+}
+@media (min-width:820px){
+  .matrix{grid-template-columns:auto repeat(4,minmax(0,1fr));align-items:center;}
+}
+.matrix__corner{display:none;}
+@media (min-width:820px){ .matrix__corner{display:block;} }
+.matrix__col{
+  font-family:var(--mono);font-size:var(--s1);
+  letter-spacing:.2em;text-transform:uppercase;
+  text-align:center;padding-bottom:.3rem;
+}
+.matrix__col--miss{color:var(--demon);}
+.matrix__col--good{color:var(--good);}
+.matrix__col--great{color:var(--gold);}
+.matrix__col--exc{background:var(--rainbow);-webkit-background-clip:text;background-clip:text;color:transparent;}
+.matrix__row{
+  display:none;
+  font-family:var(--mono);font-size:var(--s1);
+  letter-spacing:.2em;text-transform:uppercase;color:var(--ink-dim);
+  padding-right:1rem;white-space:nowrap;
+}
+@media (min-width:820px){ .matrix__row{display:block;} }
+.matrix__cell{margin:0;border:1px solid var(--hairline);background:#05060c;overflow:hidden;}
+.matrix__cell img{width:100%;display:block;aspect-ratio:384/341;object-fit:cover;}
+.matrix__mobrow{
+  grid-column:1 / -1;margin-top:.6rem;
+  font-family:var(--mono);font-size:var(--s1);
+  letter-spacing:.2em;text-transform:uppercase;color:var(--ink-dim);
+}
+@media (min-width:820px){ .matrix__mobrow{display:none;} }
+
+/* ── Agenda ────────────────────────────────────────────── */
+.agenda{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+  gap:1px;background:var(--hairline-soft);
+  border:1px solid var(--hairline-soft);
+}
+@media (min-width:880px){ .agenda{grid-template-columns:repeat(3,minmax(0,1fr));} }
+.agenda div{background:var(--stage-100);padding:1.3rem 1.2rem;display:grid;gap:.4rem;align-content:start;}
+.agenda h4{font-size:var(--s3);text-transform:uppercase;letter-spacing:.05em;color:var(--ink);}
+.agenda p{font-size:var(--s2);color:var(--ink-mute);}
+.agenda .k{font-family:var(--mono);font-size:.66rem;letter-spacing:.2em;color:var(--blue);text-transform:uppercase;}
+
+/* ── Movimiento de camara ──────────────────────────────── */
+.cam{display:grid;gap:clamp(.7rem,1.4vw,1.1rem);grid-template-columns:minmax(0,1fr);overflow:visible;}
+@media (min-width:820px){ .cam{grid-template-columns:repeat(2,minmax(0,1fr));} }
+.cam figure{
+  margin:0;overflow:hidden;border:1px solid var(--hairline);background:var(--stage-100);
+  display:flex;flex-direction:column;
+  transition:transform .3s cubic-bezier(.2,.7,.3,1), box-shadow .3s ease;
+}
+.cam figure:hover,.cam figure:focus-visible{
+  transform:scale(1.28);z-index:25;box-shadow:0 24px 70px rgba(0,0,0,.8);
+}
+.cam img{width:100%;display:block;aspect-ratio:16/9;object-fit:cover;}
+.cam figcaption{padding:.8rem 1rem 1rem;display:grid;gap:.3rem;border-top:1px solid var(--hairline-soft);margin-top:auto;}
+.cam .k{font-family:var(--mono);font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;color:var(--blue);}
+.cam h4{font-size:var(--s3);text-transform:uppercase;letter-spacing:.05em;color:var(--ink);}
+.cam p{font-size:var(--s2);color:var(--ink-mute);}
+
+/* ── Cierre ────────────────────────────────────────────── */
+.band--cierre{padding-bottom:clamp(2rem,5vh,3.5rem);}
+.cierre__t{
+  font-size:clamp(1.95rem,5.85vw,4.55rem);
+  text-transform:uppercase;letter-spacing:.02em;
+  margin-bottom:clamp(1.4rem,3vh,2.4rem);
+}
+.cierre__img{margin:0;overflow:hidden;border:1px solid var(--hairline);background:var(--stage-100);}
+.cierre__img img{width:100%;display:block;}
+.cierre__k{margin:clamp(2rem,5vh,3.2rem) 0 .9rem;color:var(--blue);}
+
+/* ── Footer ────────────────────────────────────────────── */
+footer{padding:clamp(2.5rem,7vh,4rem) var(--gutter);border-top:1px solid var(--hairline);background:var(--stage-100);}
+.footer__inner{
+  max-width:1500px;margin:0 auto;
+  display:flex;flex-wrap:wrap;gap:1rem 3rem;justify-content:space-between;align-items:end;
+  font-family:var(--mono);font-size:var(--s1);
+  letter-spacing:.2em;text-transform:uppercase;color:var(--ink-mute);
+}
+.footer__mark{font-family:var(--display);font-size:1.75rem;letter-spacing:.08em;color:var(--ink);text-transform:uppercase;line-height:1;}
+
+/* ── Reveal ────────────────────────────────────────────── */
+@media (prefers-reduced-motion:no-preference){
+  .reveal{opacity:0;transform:translateY(16px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.3,1);}
+  .reveal.is-in{opacity:1;transform:none;}
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <video class="hero__video" src="assets/compilado-hero.webm" poster="assets/st-h-excellent.jpg"
+         autoplay muted loop playsinline preload="auto" aria-hidden="true"></video>
+  <div class="hero__scrim"></div>
+  <div class="hero__weave"></div>
+
+  <div class="hud">
+    <span><i class="dot"></i>Desarrollo visual · v1</span>
+    <span>Rhythm game · Mobile</span>
+  </div>
+
+  <div>
+    <p class="eyebrow">Interna — desarrollo visual</p>
+    <h1 class="hero__title">
+      <span class="glow">KPop Demon<br />Hunters</span>
+      <span class="thin">Mobile Rhythm Game</span>
+    </h1>
+  </div>
+</header>
+
+<main>
+
+  <!-- SISTEMA DE COLOR -->
+  <section class="band band--honmoon">
+    <div class="band__head reveal">
+      <p class="eyebrow">Código de color</p>
+      <h2>Honmoon</h2>
+      <span class="caption">Cada energía de la película es un estado de tap</span>
+    </div>
+
+    <div class="honmoon">
+
+      <article class="energy energy--blue reveal">
+        <img class="energy__img" src="assets/palette-blue.jpg" alt="Campo Honmoon azul" />
+        <div class="energy__overlay">
+          <div>
+            <h3 class="energy__name">Blue</h3>
+            <p class="energy__role">Base · acierto correcto</p>
+          </div>
+            <div class="energy__right"><div class="energy__state"><span class="k">Estado de tap</span><strong>Good</strong></div><div class="chips">
+            <span class="chip"><i style="background:#00c8ff"></i>#00C8FF</span>
+            <span class="chip"><i style="background:#0079ba"></i>#0079BA</span>
+            <span class="chip"><i style="background:#9fe8ff"></i>#9FE8FF</span>
+          </div></div>
+        </div>
+      </article>
+
+      <article class="energy energy--pink reveal">
+        <img class="energy__img" src="assets/palette-pink.jpg" alt="Campo Honmoon rosa, energía Huntrix" />
+        <div class="energy__overlay">
+          <div>
+            <h3 class="energy__name">Pink</h3>
+            <p class="energy__role">Demonio · el error</p>
+          </div>
+            <div class="energy__right"><div class="energy__state"><span class="k">Estado de tap</span><strong>Miss</strong></div><div class="chips">
+            <span class="chip"><i style="background:#ff00ef"></i>#FF00EF</span>
+            <span class="chip"><i style="background:#cf008d"></i>#CF008D</span>
+            <span class="chip"><i style="background:#ff8ef1"></i>#FF8EF1</span>
+          </div></div>
+        </div>
+      </article>
+
+      <article class="energy energy--gold reveal">
+        <img class="energy__img" src="assets/palette-golden.jpg" alt="Campo Honmoon dorado" />
+        <div class="energy__overlay">
+          <div>
+            <h3 class="energy__name">Golden</h3>
+            <p class="energy__role">Clímax · el acierto alto</p>
+          </div>
+            <div class="energy__right"><div class="energy__state"><span class="k">Estado de tap</span><strong>Great</strong></div><div class="chips">
+            <span class="chip"><i style="background:#ffc23c"></i>#FFC23C</span>
+            <span class="chip"><i style="background:#ba8400"></i>#BA8400</span>
+            <span class="chip"><i style="background:#ffe9b0"></i>#FFE9B0</span>
+          </div></div>
+        </div>
+      </article>
+
+      <article class="energy energy--rainbow reveal">
+        <img class="energy__img" src="assets/palette-rainbow.jpg" alt="Honmoon completo, espectro completo" />
+        <div class="energy__overlay">
+          <div>
+            <h3 class="energy__name">Rainbow</h3>
+            <p class="energy__role">Honmoon completo · el objetivo</p>
+          </div>
+            <div class="energy__right"><div class="energy__state"><span class="k">Estado de tap</span><strong>Excellent</strong></div><div class="chips">
+            <span class="chip"><i style="background:#ff2e55"></i>#FF2E55</span>
+            <span class="chip"><i style="background:#ffc23c"></i>#FFC23C</span>
+            <span class="chip"><i style="background:#00c8ff"></i>#00C8FF</span>
+            <span class="chip"><i style="background:#5b75d2"></i>#5B75D2</span>
+            <span class="chip"><i style="background:#ff00ef"></i>#FF00EF</span>
+          </div></div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- INTERFAZ -->
+  <section class="band">
+    <div class="band__head reveal">
+      <h2>Interfaz</h2>
+      <span class="caption">Centro libre · todo lo jugable en el pulgar</span>
+    </div>
+
+    <div class="band__inner">
+      <div class="proposals">
+
+        <article class="proposal reveal">
+          <div class="proposal__label">
+            <h3>Propuesta vertical</h3>
+            <span class="tagline">Bloques laterales</span>
+          </div>
+          <div class="proposal__shot">
+            <video src="assets/vertical-loop.webm" autoplay muted loop playsinline preload="metadata" aria-label="Gameplay de la propuesta vertical"></video>
+          </div>
+          <div class="proposal__meta">
+            <span>3 bloques por lado</span>
+            <span>Prueba <b>en movimiento</b></span>
+            <span>Escenario <b>libre</b></span>
+            <span>Profundidad <b>nula</b></span>
+          </div>
+        </article>
+
+        <article class="proposal reveal">
+          <div class="proposal__label">
+            <h3>Propuesta horizontal</h3>
+            <span class="tagline">Carriles en piso · eje Z</span>
+          </div>
+          <div class="proposal__shot">
+            <video src="assets/horizontal-loop.webm" autoplay muted loop playsinline preload="metadata" aria-label="Gameplay de la propuesta horizontal"></video>
+          </div>
+          <div class="proposal__meta">
+            <span>3 carriles por lado</span>
+            <span>Prueba <b>en movimiento</b></span>
+            <span>Anticipación <b>alta</b></span>
+            <span>Compite con el <b>fondo</b></span>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- VARIANTES -->
+  <section class="band">
+    <div class="band__head reveal">
+      <h2>Escenarios</h2>
+      <span class="caption">Tres mundos · la misma interfaz en sus dos formatos</span>
+    </div>
+
+    <div class="band__inner">
+      <p class="eyebrow" style="margin:0 0 .9rem;color:var(--blue);">Interfaz horizontal · carriles en piso</p>
+      <div class="variants">
+        <figure class="variant reveal">
+          <img src="assets/conv-1-ciudad.jpg" alt="Escenario ciudad neón con las tres protagonistas" />
+          <figcaption>01 · Ciudad neón — tres personajes</figcaption>
+        </figure>
+        <figure class="variant reveal">
+          <img src="assets/conv-2-cielo.jpg" alt="Escenario de cielo diurno" />
+          <figcaption>02 · Cielo diurno — el caso difícil</figcaption>
+        </figure>
+        <figure class="variant reveal">
+          <img src="assets/conv-3-demonio.jpg" alt="Escenario del mundo demonio" />
+          <figcaption>03 · Mundo demonio — el carril, lo único frío</figcaption>
+        </figure>
+      </div>
+
+      <p class="eyebrow" style="margin:clamp(2rem,5vh,3rem) 0 .9rem;color:var(--blue);">Interfaz vertical · rieles laterales, centro libre</p>
+      <div class="variants">
+        <figure class="variant reveal">
+          <img src="assets/conv-v1-ciudad.jpg" alt="Interfaz vertical sobre el escenario de ciudad neón" />
+          <figcaption>01 · Ciudad neón — rieles a los costados</figcaption>
+        </figure>
+        <figure class="variant reveal">
+          <img src="assets/conv-v2-cielo.jpg" alt="Interfaz vertical sobre el escenario de cielo diurno" />
+          <figcaption>02 · Cielo diurno — legibilidad sobre fondo claro</figcaption>
+        </figure>
+        <figure class="variant reveal">
+          <img src="assets/conv-v3-demonio.jpg" alt="Interfaz vertical sobre el escenario del mundo demonio" />
+          <figcaption>03 · Mundo demonio — el riel, lo único frío</figcaption>
+        </figure>
+      </div>
+
+      <p class="note">El mismo mundo sostiene los dos formatos sin retocarse. Lo que cambia es dónde vive el tablero: en el piso, ganando eje Z, o en los bordes, dejando el centro entero para el personaje y la cámara.</p>
+    </div>
+  </section>
+
+
+  <!-- BLOQUES · REFERENCIA -->
+  <section class="band">
+    <div class="band__head reveal">
+      <h2>Referencias rhythm games</h2>
+      <span class="caption">Cuatro maneras de resolver la pieza · y cómo se ve el acierto</span>
+    </div>
+
+    <div class="band__inner">
+      <div class="blocks">
+        <figure class="block reveal">
+          <video src="assets/blk-arcaea.webm" autoplay muted loop playsinline preload="metadata" aria-label="Gameplay de Arcaea"></video>
+          <figcaption>
+            <span class="k">Teja de vidrio</span>
+            <h4>Arcaea</h4>
+            <p>Plana y translúcida sobre carril en perspectiva. Se lee por contraste, no por masa.</p>
+          </figcaption>
+        </figure>
+        <figure class="block reveal">
+          <video src="assets/blk-sekai.webm" autoplay muted loop playsinline preload="metadata" aria-label="Gameplay de Project Sekai"></video>
+          <figcaption>
+            <span class="k">Barra plana</span>
+            <h4>Project Sekai</h4>
+            <p>La más legible del set y la menos memorable. Cero personalidad, cero error de lectura.</p>
+          </figcaption>
+        </figure>
+        <figure class="block reveal">
+          <video src="assets/blk-phigros.webm" autoplay muted loop playsinline preload="metadata" aria-label="Gameplay de Phigros"></video>
+          <figcaption>
+            <span class="k">Barra mínima</span>
+            <h4>Phigros</h4>
+            <p>Casi tipográfica. El bloque casi desaparece y el protagonismo se lo lleva el fondo.</p>
+          </figcaption>
+        </figure>
+        <figure class="block reveal">
+          <video src="assets/blk-rotaeno.webm" autoplay muted loop playsinline preload="metadata" aria-label="Gameplay de Rotaeno"></video>
+          <figcaption>
+            <span class="k">Anillo rotativo</span>
+            <h4>Rotaeno</h4>
+            <p>El bloque no se mueve: gira el aparato. La cámara es el input y el carril rodea al jugador.</p>
+          </figcaption>
+        </figure>
+      </div>
+
+      <div class="band__head reveal" style="margin-top:clamp(2.5rem,6vh,4rem);">
+        <p class="eyebrow">Referencia — feedback</p>
+        <h2 style="font-size:clamp(1.4rem,3vw,2.2rem);">Tap effect</h2>
+        <span class="caption">Cian para el impacto normal · dorado para el perfecto</span>
+      </div>
+      <div class="fxgrid">
+        <figure class="fxclip reveal">
+          <div class="fxclip__frame">
+            <video src="assets/tap-ref.webm" autoplay muted loop playsinline preload="metadata" aria-label="Gameplay de referencia"></video>
+          </div>
+          <figcaption class="fxcap">Carril en movimiento · captura de referencia</figcaption>
+        </figure>
+
+        <figure class="fxshot fxshot--cyan reveal">
+          <img src="assets/fx-normal.png" alt="Impacto normal en cian" />
+          <figcaption class="fxcap"><b>Impacto normal</b> · halo corto, sin texto</figcaption>
+        </figure>
+
+        <figure class="fxshot fxshot--gold reveal">
+          <img src="assets/fx-perfect.png" alt="Perfect con estallido dorado" />
+          <figcaption class="fxcap"><b>Perfect</b> · estallido dorado a pantalla completa</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROPUESTAS DE BLOQUE -->
+  <section class="band">
+    <div class="band__head reveal">
+      <h2>Propuestas bloques</h2>
+      <span class="caption">Mismo plano y misma luz · cambia sólo el bloque · en las dos interfaces</span>
+    </div>
+
+    <div class="band__inner">
+      <div class="props">
+        <article class="prop reveal">
+          <div class="prop__label">
+            <h3>A · Vidrio</h3>
+            <span class="tag">Translúcido</span>
+          </div>
+          <div class="prop__body">
+          <div class="prop__pair">
+            <figure class="prop__fig">
+              <img src="assets/prop-a-vidrio.jpg" alt="Bloque A · Vidrio en carriles horizontales" />
+              <figcaption>Carriles en piso · eje Z</figcaption>
+            </figure>
+            <figure class="prop__fig">
+              <img src="assets/vert-a-vidrio.jpg" alt="Bloque A · Vidrio en casilleros verticales" />
+              <figcaption>Casilleros verticales · laterales</figcaption>
+            </figure>
+          </div>
+          </div>
+        </article>
+        <article class="prop reveal">
+          <div class="prop__label">
+            <h3>B · Sólido</h3>
+            <span class="tag">Opaco con volumen</span>
+          </div>
+          <div class="prop__body">
+          <div class="prop__pair prop__pair--tres">
+            <figure class="prop__fig">
+              <img src="assets/ref-estela.jpg" alt="Estela Honmoon de la película" />
+              <figcaption>Referencia · estela Honmoon</figcaption>
+            </figure>
+            <figure class="prop__fig">
+              <img src="assets/prop-b-solido.jpg" alt="Bloque B · Sólido en carriles horizontales" />
+              <figcaption>Carriles en piso · eje Z</figcaption>
+            </figure>
+            <figure class="prop__fig">
+              <img src="assets/vert-b-solido.jpg" alt="Bloque B · Sólido en casilleros verticales" />
+              <figcaption>Casilleros verticales · laterales</figcaption>
+            </figure>
+          </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="band__head reveal" style="margin-top:clamp(2.5rem,6vh,4rem);">
+        <p class="eyebrow">Lámina</p>
+        <h2 style="font-size:clamp(1.4rem,3vw,2.2rem);">Los dos materiales en los cuatro estados</h2>
+        <span class="caption">Mismo tamaño, mismo ángulo, misma luz</span>
+      </div>
+      <div class="matrix">
+        <div class="matrix__corner"></div>
+        <div class="matrix__col matrix__col--miss">Miss</div>
+        <div class="matrix__col matrix__col--good">Good</div>
+        <div class="matrix__col matrix__col--great">Great</div>
+        <div class="matrix__col matrix__col--exc">Excellent</div>
+        <div class="matrix__mobrow">Vidrio</div>
+        <div class="matrix__row">Vidrio</div>
+        <figure class="matrix__cell"><img src="assets/blk-vidrio-miss.jpg" alt="Bloque Vidrio en estado Miss" /></figure>
+        <figure class="matrix__cell"><img src="assets/blk-vidrio-good.jpg" alt="Bloque Vidrio en estado Good" /></figure>
+        <figure class="matrix__cell"><img src="assets/blk-vidrio-great.jpg" alt="Bloque Vidrio en estado Great" /></figure>
+        <figure class="matrix__cell"><img src="assets/blk-vidrio-exc.jpg" alt="Bloque Vidrio en estado Excellent" /></figure>
+        <div class="matrix__mobrow">Sólido</div>
+        <div class="matrix__row">Sólido</div>
+        <figure class="matrix__cell"><img src="assets/blk-solido-miss.jpg" alt="Bloque Sólido en estado Miss" /></figure>
+        <figure class="matrix__cell"><img src="assets/blk-solido-good.jpg" alt="Bloque Sólido en estado Good" /></figure>
+        <figure class="matrix__cell"><img src="assets/blk-solido-great.jpg" alt="Bloque Sólido en estado Great" /></figure>
+        <figure class="matrix__cell"><img src="assets/blk-solido-exc.jpg" alt="Bloque Sólido en estado Excellent" /></figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- FORMA Y COLOR -->
+  <section class="band">
+    <div class="band__head reveal">
+      <p class="eyebrow">Sistema</p>
+      <h2>Bloques con acción</h2>
+      <span class="caption">Dos canales que no se pisan</span>
+    </div>
+
+    <div class="band__inner">
+      <div class="rule2">
+
+        <article class="reveal" style="display:grid;gap:1rem;">
+          <div class="rule2__head">
+            <h3>Mientras viaja · la forma</h3>
+            <span class="tag">Un solo color</span>
+          </div>
+          <div class="tipos">
+            <figure class="tipo">
+              <img src="assets/tipo-tap.jpg" alt="Bloque de tap simple" />
+              <figcaption>Tap · pieza simple</figcaption>
+            </figure>
+            <figure class="tipo">
+              <img src="assets/tipo-hold.jpg" alt="Bloque de hold estirado" />
+              <figcaption>Hold · cinta larga</figcaption>
+            </figure>
+            <figure class="tipo">
+              <img src="assets/tipo-dir.jpg" alt="Bloque direccional con flecha" />
+              <figcaption>Direccional · flecha</figcaption>
+            </figure>
+          </div>
+          <p>Las tres son sólido y el mismo cian. Lo único que cambia es la silueta. La pieza que se acerca no puede anticipar el resultado, porque el resultado todavía no existe.</p>
+        </article>
+
+        <article class="reveal" style="display:grid;gap:1rem;">
+          <div class="rule2__head">
+            <h3>Direccional en juego</h3>
+            <span class="tag">Swipe</span>
+          </div>
+          <div class="prop__fig" style="border:1px solid var(--hairline);background:var(--stage-100);overflow:hidden;">
+            <img src="assets/st-h-direccional.jpg" alt="Notas direccionales con flecha en el carril" style="width:100%;display:block;" />
+          </div>
+          <p>Carril izquierdo con flechas y estela de swipe, carril derecho con taps simples. La diferencia se lee sin mirar dos veces, y sin cambiar el color.</p>
+        </article>
+
+        <article class="reveal" style="display:grid;gap:1rem;">
+          <div class="rule2__head">
+            <h3>En el impacto · el color</h3>
+            <span class="tag">Cinco momentos</span>
+          </div>
+          <div class="flow">
+            <div><span class="k">Se acerca</span><strong class="c-wait">Neutro</strong><small>#9FE8FF</small></div>
+            <div><span class="k">Good</span><strong class="c-good">Cian bajo</strong><small>#59A9C0 · con partículas</small></div>
+            <div><span class="k">Great</span><strong class="c-great">Dorado</strong><small>#FFC23C</small></div>
+            <div><span class="k">Excellent</span><strong class="c-exc">Espectro</strong><small>full range</small></div>
+            <div><span class="k">Miss</span><strong class="c-miss">Magenta</strong><small>#FF2E55 · carril apagado</small></div>
+          </div>
+          <p>El color sólo aparece cuando hay veredicto. Por eso la pieza viaja en un cian neutro y bajo: para que cualquiera de los cuatro resultados se lea como un cambio, incluso el Good.</p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ESTADOS DEL BLOQUE DE ENERGIA -->
+  <section class="band">
+    <div class="band__head reveal">
+      <p class="eyebrow">Desarrollo — estados</p>
+      <h2>Tap action</h2>
+      <span class="caption">Cada estado, en el carril</span>
+    </div>
+
+    <div class="band__inner">
+      <div class="states">
+        <article class="state state--good reveal">
+          <div class="state__head">
+            <h3>Good</h3>
+            <span class="tag">Cian bajo</span>
+          </div>
+          <div class="state__row">
+            <figure class="state__fig">
+              <img src="assets/st-h-good.jpg" alt="Good en carriles horizontales" />
+              <figcaption>En juego · carriles en piso</figcaption>
+            </figure>
+          </div>
+          <p>El halo aparece pero se queda: llega a un tercio del carril, fino y en cian apagado. Confirma el acierto sin premiarlo.</p>
+        </article>
+        <article class="state state--great reveal">
+          <div class="state__head">
+            <h3>Great</h3>
+            <span class="tag">Halo dorado</span>
+          </div>
+          <div class="state__row">
+            <figure class="state__fig">
+              <img src="assets/st-h-great.jpg" alt="Great en carriles horizontales" />
+              <figcaption>En juego · carriles en piso</figcaption>
+            </figure>
+          </div>
+          <p>El halo nace en la línea de juicio e inunda el carril, tejido con los filamentos del Honmoon en vez de un resplandor plano.</p>
+        </article>
+        <article class="state state--exc reveal">
+          <div class="state__head">
+            <h3>Excellent</h3>
+            <span class="tag">Espectro completo</span>
+          </div>
+          <div class="state__row">
+            <figure class="state__fig">
+              <video src="assets/excellent-loop.webm" autoplay muted loop playsinline preload="metadata" aria-label="Excellent en movimiento"></video>
+              <figcaption>Horizontal · en movimiento</figcaption>
+            </figure>
+          </div>
+          <p>El techo del sistema y el objetivo del juego: no tiene tope, se puede encadenar en todos los bloques. El espectro entero recorre el carril hasta el horizonte, con núcleo blanco y luz derramada sobre el escenario.</p>
+        </article>
+        <article class="state state--miss reveal">
+          <div class="state__head">
+            <h3>Miss</h3>
+            <span class="tag">Campo roto</span>
+          </div>
+          <div class="state__row">
+            <figure class="state__fig">
+              <img src="assets/st-h-miss.jpg" alt="Miss en carriles horizontales" />
+              <figcaption>En juego · carriles en piso</figcaption>
+            </figure>
+          </div>
+          <p>Las hebras se cortan y se abren en magenta. Lo que marca el error no es el color: es que el carril se apaga y el halo no aparece.</p>
+        </article>
+        <article class="state state--hold reveal">
+          <div class="state__head">
+            <h3>Hold largo</h3>
+            <span class="tag">Cinta sostenida</span>
+          </div>
+          <div class="state__row">
+            <figure class="state__fig">
+              <img src="assets/st-h-hold.jpg" alt="Hold largo en carriles horizontales" />
+              <figcaption>En juego · carriles en piso</figcaption>
+            </figure>
+          </div>
+          <p>El bloque se estira en una cinta trenzada que recorre el carril entero, con el halo sostenido y pulsando mientras dure la nota.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- MECANICAS -->
+  <section class="band">
+    <div class="band__head reveal">
+      <h2>Referencia mecánicas</h2>
+      <span class="caption">Tres juegos que mueven la cámara sin perder el tablero</span>
+    </div>
+
+    <div class="band__inner">
+      <div class="mec">
+        <figure class="reveal">
+          <video src="assets/mec-sayonara.webm" autoplay muted loop playsinline preload="metadata" aria-label="Sayonara Wild Hearts"></video>
+          <figcaption>
+            <span class="k">Cámara en vuelo</span>
+            <h4>Sayonara Wild Hearts</h4>
+            <p>El personaje atraviesa escenarios que cambian y la cámara lo persigue. El tablero no existe: el mundo es el carril.</p>
+          </figcaption>
+        </figure>
+        <figure class="reveal">
+          <video src="assets/mec-hifirush.webm" autoplay muted loop playsinline preload="metadata" aria-label="Hi-Fi Rush"></video>
+          <figcaption>
+            <span class="k">Combate al ritmo</span>
+            <h4>Hi-Fi Rush</h4>
+            <p>Cada golpe cae en el beat y el contador de combo es el marcador. Pelear y tapear son la misma acción.</p>
+          </figcaption>
+        </figure>
+        <figure class="reveal">
+          <video src="assets/mec-thumper.webm" autoplay muted loop playsinline preload="metadata" aria-label="Thumper"></video>
+          <figcaption>
+            <span class="k">Riel en eje Z</span>
+            <h4>Thumper</h4>
+            <p>El escenario viene hacia vos sobre un riel. La profundidad es la mecánica, no la decoración.</p>
+          </figcaption>
+        </figure>
+      </div>
+
+      <div class="band__head reveal" style="margin-top:clamp(2.5rem,6vh,4rem);">
+        <h2 style="font-size:clamp(1.4rem,3vw,2.2rem);">Propuesta cámara dinámica</h2>
+        <span class="caption">Acciones con tap, direccional y holds</span>
+      </div>
+
+      <div class="mec mec--big">
+        <figure class="reveal">
+          <img src="assets/mec-1-demonios.jpg" alt="Los demonios invaden el escenario" />
+          <figcaption>
+            <span class="k">01 · Llegan</span>
+            <h4>Los demonios entran</h4>
+            <p>Terraza sobre Seúl a plena luz. La marea demoníaca entra en magenta y las dos desenvainan. Los carriles siguen en cian: cada bloque es un ataque que parar.</p>
+          </figcaption>
+        </figure>
+        <figure class="reveal">
+          <img src="assets/mec-2-golpe.jpg" alt="El tap se convierte en un golpe" />
+          <figcaption>
+            <span class="k">02 · El tap</span>
+            <h4>El tap es el golpe</h4>
+            <p>El arco dorado del acierto y el corte de la espada son el mismo evento. El feedback del tablero y la acción de combate ocurren juntos.</p>
+          </figcaption>
+        </figure>
+        <figure class="reveal">
+          <img src="assets/mec-3-camara.jpg" alt="La cámara se mueve y el tablero queda anclado" />
+          <figcaption>
+            <span class="k">03 · La cámara</span>
+            <h4>La cámara vuela, el tablero no</h4>
+            <p>Contrapicado en pleno combo de Excellent: el mundo entero vira a iridiscente. Los carriles y el HUD quedan clavados en el mismo lugar.</p>
+          </figcaption>
+        </figure>
+      </div>
+
+      <p class="eyebrow" style="margin:clamp(2rem,5vh,3rem) 0 .9rem;color:var(--blue);">Un mismo travelling &middot; el jugador nunca deja de tapear</p>
+      <div class="camvid">
+        <video src="assets/camara-dinamica.webm" poster="assets/camara-dinamica-poster.jpg"
+               autoplay muted loop playsinline preload="metadata"
+               aria-label="Movimiento de cámara dinámico con el tablero anclado"></video>
+      </div>
+      <p class="note" style="margin-top:1.6rem;max-width:78ch;">Un solo plano-secuencia. La cámara viaja, se inclina y cambia de eje, pero <b style="color:var(--ink-dim);font-weight:400;">los carriles, los bloques y el HUD no se mueven ni un píxel</b>. Por eso el jugador puede seguir tapeando mientras la narrativa avanza: el tablero es su punto fijo y todo lo demás es la película.</p>
+
+
+    </div>
+  </section>
+
+  <!-- ESTELAS -->
+  <section class="band">
+    <div class="band__head reveal">
+      <p class="eyebrow">Personaje</p>
+      <h2>Estelas</h2>
+      <span class="caption">La coreografía dibujada en luz</span>
+    </div>
+
+    <div class="band__inner">
+      <div class="trails">
+        <figure class="reveal">
+          <img src="assets/est-1-reposo.jpg" alt="Personaje en reposo, sin estela" />
+          <figcaption>
+            <span class="k">Reposo</span>
+            <h4>Sin estela</h4>
+            <p>Quieta no deja rastro. Apenas un aliento de Honmoon pegado a la silueta. La línea de base tiene que ser callada.</p>
+          </figcaption>
+        </figure>
+        <figure class="reveal">
+          <img src="assets/est-2-lento.jpg" alt="Personaje en movimiento lento con estela corta" />
+          <figcaption>
+            <span class="k">Movimiento lento</span>
+            <h4>Estela corta</h4>
+            <p>El brazo y la trenza dejan un arco breve de hebras peinadas que se apaga enseguida. Legible, pero modesto.</p>
+          </figcaption>
+        </figure>
+        <figure class="reveal">
+          <img src="assets/est-3-coreo.jpg" alt="Personaje en coreografía con estelas completas" />
+          <figcaption>
+            <span class="k">Coreografía</span>
+            <h4>Estela plena</h4>
+            <p>Manos, trenza y bota dejan arcos que se cruzan en el aire. El rastro traza el recorrido que acaban de hacer los miembros.</p>
+          </figcaption>
+        </figure>
+        <figure class="reveal t4">
+          <img src="assets/est-4-excellent.jpg" alt="Estelas iridiscentes con Excellent encadenado" />
+          <figcaption>
+            <span class="k">Excellent encadenado</span>
+            <h4>Estela iridiscente</h4>
+            <p>La cadena enciende el rastro: las hebras pasan de cian a iridiscente y se alargan. El personaje también acumula.</p>
+          </figcaption>
+        </figure>
+      </div>
+      <p class="note" style="margin-top:1.6rem;max-width:74ch;">La estela usa el mismo material que los bloques — hebras paralelas peinadas — y se mantiene en cian mientras el tablero está en juego, para no competir con el dorado del acierto. Sólo cambia de color cuando cambia el estado del jugador, igual que todo lo demás en el sistema.</p>
+    </div>
+  </section>
+
+  <!-- ACUMULACION -->
+  <section class="band">
+    <div class="band__head reveal">
+      <h2>Se acumula con cada Excellent</h2>
+      <span class="caption">Cuanto más encadenás, más pantalla se enciende</span>
+    </div>
+
+    <div class="band__inner">
+      <figure class="refpeli reveal">
+        <img src="assets/ref-arcoiris.jpg" alt="Referencia de la película: espectro iridiscente del Honmoon" />
+        <figcaption><span class="k">Referencia · la película</span>El espectro del Excellent no es un arcoíris saturado: son pasteles de alta luminancia y baja saturación, mezclados en franjas que se derraman sobre los personajes.</figcaption>
+      </figure>
+
+      <div class="combo reveal">
+        <figure>
+          <img src="assets/combo-1-bajo.jpg" alt="Excellent con combo bajo" />
+          <figcaption>
+            <span class="k">Combo bajo</span>
+            <h4>Contenido</h4>
+            <p>Un Excellent suelto es chico. Se distingue del dorado por color, no por tamaño. La arena sigue oscura.</p>
+          </figcaption>
+        </figure>
+        <figure>
+          <img src="assets/combo-2-medio.jpg" alt="Excellent con combo medio" />
+          <figcaption>
+            <span class="k">Combo medio</span>
+            <h4>Se filtra</h4>
+            <p>La luz empieza a salirse del carril: toca los hombros del personaje, el piso y las primeras filas del público.</p>
+          </figcaption>
+        </figure>
+        <figure class="c3">
+          <img src="assets/combo-3-alto.jpg" alt="Excellent con combo alto" />
+          <figcaption>
+            <span class="k">Combo alto</span>
+            <h4>Honmoon encendido</h4>
+            <p>El estadio entero se vuelve iridiscente. Ya no es una arena oscura con un carril de color: es otro mundo.</p>
+          </figcaption>
+        </figure>
+      </div>
+      <p class="note" style="margin-top:1.6rem;max-width:74ch;">Excellent no tiene tope: se puede encadenar en todos los bloques, y ese es el objetivo. El efecto es acumulativo — cada golpe excelente suma luz al escenario, y la cadena sostenida es la que enciende el Honmoon completo.</p>
+    </div>
+  </section>
+
+  <!-- LOOK APROXIMADO EN DEVICE -->
+  <section class="band">
+    <div class="band__head reveal">
+      <p class="eyebrow">Alcance</p>
+      <h2>Look aproximado en device</h2>
+      <span class="caption">Lo que se ve arriba es objetivo de arte, no captura de juego</span>
+    </div>
+
+    <div class="band__inner">
+      <div class="device">
+        <figure class="device__fig reveal">
+          <img src="assets/prop-b-solido.jpg" alt="Render cinematográfico usado como objetivo de arte" />
+          <figcaption><span class="k">Objetivo de arte</span>Render cinematográfico</figcaption>
+        </figure>
+        <figure class="device__fig reveal">
+          <img src="assets/mobile-aprox.jpg" alt="Aproximación de cómo se vería corriendo en un celular" />
+          <figcaption><span class="k">Aproximación en device</span>Real time en celular</figcaption>
+        </figure>
+      </div>
+
+      <p class="note" style="margin-top:1.6rem;max-width:80ch;">Todas las imágenes de este deck son <b style="color:var(--ink-dim);font-weight:400;">objetivo de arte</b>: definen el código visual, no la fidelidad de render. Esta es la misma toma traducida a lo que sostiene un celular en tiempo real — iluminación horneada en vez de reflejos calculados, público simplificado, menos partículas y VFX de billboard en lugar de volumétricos.</p>
+
+      <p class="note" style="margin-top:.9rem;max-width:80ch;">Lo importante es que <b style="color:var(--ink-dim);font-weight:400;">el sistema sobrevive la bajada</b>. La forma sigue diciendo qué es la nota, el color sigue diciendo cómo salió, y el tablero sigue siendo el plano fijo. Lo que se pierde es densidad de render, no legibilidad.</p>
+    </div>
+  </section>
+
+  <!-- CIERRE -->
+  <section class="band band--cierre">
+    <div class="band__inner reveal">
+      <h2 class="cierre__t">Thanks</h2>
+      <figure class="cierre__img">
+        <img src="assets/cierre-trio.jpg" alt="Huntrix sobre la ciudad" />
+      </figure>
+
+      <p class="eyebrow cierre__k">Next steps</p>
+      <div class="agenda">
+        <div>
+          <span class="k">Bloques</span>
+          <h4>Transparencia</h4>
+          <p>Forma de la nota sobre los tres escenarios.</p>
+        </div>
+        <div>
+          <span class="k">Modo</span>
+          <h4>Cinemática vs. tap</h4>
+          <p>Qué manda: la coreografía o el tablero.</p>
+        </div>
+        <div>
+          <span class="k">Ritmo</span>
+          <h4>Velocidad de tapeo</h4>
+          <p>Tempo contra avance del carril.</p>
+        </div>
+        <div>
+          <span class="k">VFX</span>
+          <h4>Partículas y halos</h4>
+          <p>Cuánta energía deja el personaje atrás.</p>
+        </div>
+        <div>
+          <span class="k">Fondo</span>
+          <h4>Fijo o animado</h4>
+          <p>Cuánto movimiento tolera sin tapar la nota.</p>
+        </div>
+        <div>
+          <span class="k">Contraste</span>
+          <h4>Convivencia</h4>
+          <p>Mínimos entre carril, nota, personaje y fondo.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="footer__inner">
+    <div>
+      <div class="footer__mark">KPop Demon Hunters</div>
+      <p style="margin-top:.5rem;">Mobile rhythm game · Desarrollo visual v1</p>
+    </div>
+    <p>Interna — material de referencia</p>
+  </div>
+</footer>
+
+<script>
+// el gameplay de referencia va a media velocidad: a ritmo real el efecto no se lee
+(function(){
+  var clip = document.querySelector('.fxclip__frame video');
+  var exc = document.querySelector('.state--exc video');
+  if(exc){ var fast=function(){ exc.playbackRate = 1.25; }; fast(); exc.addEventListener('play', fast); }
+  // el mismo clip en el hero va mas lento, para que respire
+  var hero = document.querySelector('.hero__video');
+  if(hero){ var slowHero=function(){ hero.playbackRate = 0.8; }; slowHero(); hero.addEventListener('play', slowHero); }
+  if(clip){
+    var slow = function(){ clip.playbackRate = 0.5; };
+    slow();
+    clip.addEventListener('loadedmetadata', slow);
+    clip.addEventListener('play', slow);
+  }
+})();
+
+(function(){
+  var items = document.querySelectorAll('.reveal');
+  if(!('IntersectionObserver' in window) || window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    items.forEach(function(el){ el.classList.add('is-in'); });
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('is-in'); io.unobserve(e.target); }
+    });
+  },{rootMargin:'0px 0px -12% 0px', threshold:0.08});
+  items.forEach(function(el){ io.observe(el); });
+})();
+</script>
+
+</body>
+</html>
