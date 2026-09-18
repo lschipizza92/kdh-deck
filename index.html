@@ -78,6 +78,11 @@ p{margin:0;}
   letter-spacing:.34em;text-transform:uppercase;
   color:var(--ink-mute);margin:0;
 }
+.caption{
+  font-family:var(--mono);font-size:var(--s1);
+  letter-spacing:.2em;text-transform:uppercase;
+  color:var(--ink-dim);
+}
 
 /* ── HERO ──────────────────────────────────────────────── */
 .hero{
@@ -250,6 +255,7 @@ main{position:relative;z-index:1;background:var(--stage-000);}
   text-transform:uppercase;letter-spacing:.01em;
 }
 .band__head .eyebrow{flex-basis:100%;}
+.band__head .caption{color:var(--ink-mute);}
 .band__inner{max-width:1500px;margin:0 auto;}
 
 /* ── Codigo de color: mas angosto que el resto ─────────── */
@@ -418,6 +424,12 @@ main{position:relative;z-index:1;background:var(--stage-000);}
 }
 @media (max-width:760px){ .proposal__shot{width:100%;} }
 .proposal__shot img,.proposal__shot video{width:100%;display:block;}
+.proposal__meta{
+  display:flex;flex-wrap:wrap;gap:.5rem 2.4rem;
+  font-family:var(--mono);font-size:var(--s1);
+  letter-spacing:.16em;text-transform:uppercase;color:var(--ink-mute);
+}
+.proposal__meta b{color:var(--ink-dim);font-weight:400;}
 
 /* clip de camara dinamica */
 .camvid{width:78%;margin-inline:auto;border:1px solid var(--hairline);overflow:hidden;background:var(--stage-100);}
@@ -723,6 +735,7 @@ footer{padding:clamp(2.5rem,7vh,4rem) var(--gutter);border-top:1px solid var(--h
     <div class="band__head reveal">
       <p class="eyebrow">Código de color</p>
       <h2>Honmoon</h2>
+      <span class="caption">Cada energía de la película es un estado de tap</span>
     </div>
 
     <div class="honmoon">
@@ -796,6 +809,7 @@ footer{padding:clamp(2.5rem,7vh,4rem) var(--gutter);border-top:1px solid var(--h
   <section class="band">
     <div class="band__head reveal">
       <h2>Interfaz</h2>
+      <span class="caption">Centro libre · todo lo jugable en el pulgar</span>
     </div>
 
     <div class="band__inner">
@@ -809,6 +823,12 @@ footer{padding:clamp(2.5rem,7vh,4rem) var(--gutter);border-top:1px solid var(--h
           <div class="proposal__shot">
             <video src="assets/vertical-loop.webm" autoplay muted loop playsinline preload="metadata" aria-label="Gameplay de la propuesta vertical"></video>
           </div>
+          <div class="proposal__meta">
+            <span>3 bloques por lado</span>
+            <span>Prueba <b>en movimiento</b></span>
+            <span>Escenario <b>libre</b></span>
+            <span>Profundidad <b>nula</b></span>
+          </div>
         </article>
 
         <article class="proposal reveal">
@@ -818,6 +838,12 @@ footer{padding:clamp(2.5rem,7vh,4rem) var(--gutter);border-top:1px solid var(--h
           </div>
           <div class="proposal__shot">
             <video src="assets/horizontal-loop.webm" autoplay muted loop playsinline preload="metadata" aria-label="Gameplay de la propuesta horizontal"></video>
+          </div>
+          <div class="proposal__meta">
+            <span>3 carriles por lado</span>
+            <span>Prueba <b>en movimiento</b></span>
+            <span>Anticipación <b>alta</b></span>
+            <span>Compite con el <b>fondo</b></span>
           </div>
         </article>
 
@@ -829,6 +855,7 @@ footer{padding:clamp(2.5rem,7vh,4rem) var(--gutter);border-top:1px solid var(--h
   <section class="band">
     <div class="band__head reveal">
       <h2>Escenarios</h2>
+      <span class="caption">Tres mundos · la misma interfaz en sus dos formatos</span>
     </div>
 
     <div class="band__inner">
@@ -873,6 +900,7 @@ footer{padding:clamp(2.5rem,7vh,4rem) var(--gutter);border-top:1px solid var(--h
   <section class="band">
     <div class="band__head reveal">
       <h2>Referencias rhythm games</h2>
+      <span class="caption">Cuatro maneras de resolver la pieza · y cómo se ve el acierto</span>
     </div>
 
     <div class="band__inner">
@@ -914,6 +942,7 @@ footer{padding:clamp(2.5rem,7vh,4rem) var(--gutter);border-top:1px solid var(--h
       <div class="band__head reveal" style="margin-top:clamp(2.5rem,6vh,4rem);">
         <p class="eyebrow">Referencia — feedback</p>
         <h2 style="font-size:clamp(1.4rem,3vw,2.2rem);">Tap effect</h2>
+        <span class="caption">Cian para el impacto normal · dorado para el perfecto</span>
       </div>
       <div class="fxgrid">
         <figure class="fxclip reveal">
@@ -940,6 +969,7 @@ footer{padding:clamp(2.5rem,7vh,4rem) var(--gutter);border-top:1px solid var(--h
   <section class="band">
     <div class="band__head reveal">
       <h2>Propuestas bloques</h2>
+      <span class="caption">Mismo plano y misma luz · cambia sólo el bloque · en las dos interfaces</span>
     </div>
 
     <div class="band__inner">
@@ -989,6 +1019,7 @@ footer{padding:clamp(2.5rem,7vh,4rem) var(--gutter);border-top:1px solid var(--h
       <div class="band__head reveal" style="margin-top:clamp(2.5rem,6vh,4rem);">
         <p class="eyebrow">Lámina</p>
         <h2 style="font-size:clamp(1.4rem,3vw,2.2rem);">Los dos materiales en los cuatro estados</h2>
+        <span class="caption">Mismo tamaño, mismo ángulo, misma luz</span>
       </div>
       <div class="matrix">
         <div class="matrix__corner"></div>
@@ -1017,6 +1048,7 @@ footer{padding:clamp(2.5rem,7vh,4rem) var(--gutter);border-top:1px solid var(--h
     <div class="band__head reveal">
       <p class="eyebrow">Sistema</p>
       <h2>Bloques con acción</h2>
+      <span class="caption">Dos canales que no se pisan</span>
     </div>
 
     <div class="band__inner">
@@ -1080,6 +1112,7 @@ footer{padding:clamp(2.5rem,7vh,4rem) var(--gutter);border-top:1px solid var(--h
     <div class="band__head reveal">
       <p class="eyebrow">Desarrollo — estados</p>
       <h2>Tap action</h2>
+      <span class="caption">Cada estado, en el carril</span>
     </div>
 
     <div class="band__inner">
@@ -1157,6 +1190,7 @@ footer{padding:clamp(2.5rem,7vh,4rem) var(--gutter);border-top:1px solid var(--h
   <section class="band">
     <div class="band__head reveal">
       <h2>Referencia mecánicas</h2>
+      <span class="caption">Tres juegos que mueven la cámara sin perder el tablero</span>
     </div>
 
     <div class="band__inner">
@@ -1189,6 +1223,7 @@ footer{padding:clamp(2.5rem,7vh,4rem) var(--gutter);border-top:1px solid var(--h
 
       <div class="band__head reveal" style="margin-top:clamp(2.5rem,6vh,4rem);">
         <h2 style="font-size:clamp(1.4rem,3vw,2.2rem);">Propuesta cámara dinámica</h2>
+        <span class="caption">Acciones con tap, direccional y holds</span>
       </div>
 
       <div class="mec mec--big">
@@ -1235,6 +1270,7 @@ footer{padding:clamp(2.5rem,7vh,4rem) var(--gutter);border-top:1px solid var(--h
     <div class="band__head reveal">
       <p class="eyebrow">Personaje</p>
       <h2>Estelas</h2>
+      <span class="caption">La coreografía dibujada en luz</span>
     </div>
 
     <div class="band__inner">
@@ -1280,6 +1316,7 @@ footer{padding:clamp(2.5rem,7vh,4rem) var(--gutter);border-top:1px solid var(--h
   <section class="band">
     <div class="band__head reveal">
       <h2>Se acumula con cada Excellent</h2>
+      <span class="caption">Cuanto más encadenás, más pantalla se enciende</span>
     </div>
 
     <div class="band__inner">
@@ -1323,6 +1360,7 @@ footer{padding:clamp(2.5rem,7vh,4rem) var(--gutter);border-top:1px solid var(--h
     <div class="band__head reveal">
       <p class="eyebrow">Alcance</p>
       <h2>Look aproximado en device</h2>
+      <span class="caption">Lo que se ve arriba es objetivo de arte, no captura de juego</span>
     </div>
 
     <div class="band__inner">
