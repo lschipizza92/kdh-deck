@@ -450,6 +450,10 @@ main{position:relative;z-index:1;background:var(--stage-000);}
 .device__fig figcaption .k{display:block;color:var(--blue);margin-bottom:.2rem;}
 
 .variants{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:clamp(.75rem,1.4vw,1.2rem);}
+/* mundos: dos por fila, mas grandes */
+.variants--duo{grid-template-columns:minmax(0,1fr);}
+@media (min-width:900px){ .variants--duo{grid-template-columns:repeat(2,minmax(0,1fr));} }
+.variants--duo figcaption{font-size:.72rem;padding:1rem 1.2rem;}
 .variant{position:relative;overflow:hidden;border:1px solid var(--hairline);margin:0;}
 .variant img{width:100%;}
 .variant figcaption{
@@ -966,7 +970,7 @@ footer{padding:clamp(2.5rem,7vh,4rem) var(--gutter);border-top:1px solid var(--h
       <p class="note" style="margin-top:1.6rem;">El pedido puntual fue <b>fondos claros y contraste de color</b>. Es el caso que rompe el sistema: sobre un cielo diurno el carril cian pierde separaci&oacute;n y el halo deja de leerse. Si la pieza sobrevive ah&iacute;, sobrevive en cualquier lado.</p>
 
       <p class="eyebrow" style="margin:clamp(2rem,5vh,3rem) 0 .9rem;color:var(--blue);">La Versi&oacute;n Z en mundos de la pel&iacute;cula</p>
-      <div class="variants">
+      <div class="variants variants--duo">
         <figure class="variant reveal">
           <img src="assets/vert-bosque.jpg" alt="Version Z en un bosque a plena luz" />
           <figcaption>04 &middot; Bosque diurno &mdash; el fondo m&aacute;s claro</figcaption>
