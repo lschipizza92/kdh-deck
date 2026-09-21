@@ -754,6 +754,18 @@ footer{padding:clamp(2.5rem,7vh,4rem) var(--gutter);border-top:1px solid var(--h
 .shot img,.shot video{width:100%;display:block;}
 @media (max-width:760px){ .shot{width:100%;} }
 
+/* propuestas de excellent */
+.excprop{display:grid;gap:clamp(.7rem,1.4vw,1.1rem);grid-template-columns:repeat(auto-fit,minmax(230px,1fr));overflow:visible;}
+.excprop__fig{margin:0;border:1px solid var(--hairline);background:var(--stage-100);overflow:hidden;
+  transition:transform .3s cubic-bezier(.2,.7,.3,1), box-shadow .3s ease;will-change:transform;}
+.excprop__fig:hover,.excprop__fig:focus-visible{transform:scale(1.22);z-index:20;box-shadow:0 22px 60px rgba(0,0,0,.8);}
+.excprop__fig img{width:100%;display:block;}
+.excprop__fig figcaption{padding:.8rem 1rem 1.1rem;display:grid;gap:.3rem;border-top:1px solid var(--hairline-soft);}
+.excprop__fig .k{font-family:var(--mono);font-size:.64rem;letter-spacing:.2em;text-transform:uppercase;color:var(--blue);}
+.excprop__fig h4{font-size:var(--s3);text-transform:uppercase;letter-spacing:.04em;color:var(--ink);}
+.excprop__fig p{font-size:var(--s2);color:var(--ink-mute);}
+@media (prefers-reduced-motion:reduce){ .excprop__fig{transition:none;} }
+
 /* ── Historial plegable ────────────────────────────────── */
 .history{
   border-top:1px solid var(--hairline);
@@ -939,6 +951,48 @@ footer{padding:clamp(2.5rem,7vh,4rem) var(--gutter);border-top:1px solid var(--h
 
       <p class="note">El problema no es el color sino c&oacute;mo aparece: el Excellent actual se lee como un evento puntual y aislado, casi se&ntilde;alado. Tiene que integrarse al mundo en lugar de marcarse sobre &eacute;l.</p>
       <p class="note" style="margin-top:.9rem;">Adem&aacute;s pidi&oacute; <b>aplicar los cuatro estados en distintos escenarios</b>, no solo sobre el fondo oscuro donde todo funciona f&aacute;cil.</p>
+
+      <p class="eyebrow" style="margin:clamp(2rem,5vh,3rem) 0 .9rem;color:var(--blue);">Cuatro caminos para el Excellent &middot; el mismo objeto, no uno nuevo</p>
+
+      <div class="excprop">
+        <figure class="excprop__fig reveal">
+          <img src="assets/exc-a-nucleo.jpg" alt="Propuesta A, nucleo blanco" />
+          <figcaption>
+            <span class="k">Opci&oacute;n A</span>
+            <h4>N&uacute;cleo blanco</h4>
+            <p>La escalera se resuelve por luminancia, no por color. El iridiscente queda como un borde fin&iacute;simo donde la luz se quiebra.</p>
+          </figcaption>
+        </figure>
+        <figure class="excprop__fig reveal">
+          <img src="assets/exc-b-oro.jpg" alt="Propuesta B, oro sobrecargado" />
+          <figcaption>
+            <span class="k">Opci&oacute;n B</span>
+            <h4>Oro sobrecargado</h4>
+            <p>El mismo dorado del Great pero quemado. M&aacute;xima continuidad con lo aprobado, aunque se acerca al estado de abajo.</p>
+          </figcaption>
+        </figure>
+        <figure class="excprop__fig reveal">
+          <img src="assets/exc-c-nacar.jpg" alt="Propuesta C, nacar" />
+          <figcaption>
+            <span class="k">Opci&oacute;n C</span>
+            <h4>N&aacute;car</h4>
+            <p>El espectro deja de ser el color del bloque y pasa a ser una propiedad de la superficie, como el interior de una caracola.</p>
+          </figcaption>
+        </figure>
+        <figure class="excprop__fig reveal">
+          <img src="assets/exc-d-honmoon.jpg" alt="Propuesta D, honmoon" />
+          <figcaption>
+            <span class="k">Opci&oacute;n D</span>
+            <h4>Honmoon</h4>
+            <p>El bloque se vuelve transparente y refracta la energ&iacute;a del escenario. El color no es suyo: lo toma del mundo.</p>
+          </figcaption>
+        </figure>
+      </div>
+
+      <p class="note" style="margin-top:1.6rem;">El diagn&oacute;stico: los tres aprobados son <b>de un solo tono</b>. El Excellent era el &uacute;nico multicolor, y por eso no se le&iacute;a como el escal&oacute;n m&aacute;s alto de la misma escalera sino como otro objeto. Las cuatro opciones atacan eso desde &aacute;ngulos distintos.</p>
+
+      <p class="note" style="margin-top:.9rem;">Mi recomendaci&oacute;n es <b>C o D</b>. Las dos conservan el iridiscente de la pel&iacute;cula pero se lo sacan de encima como identidad: en C es un reflejo, en D es luz prestada del escenario. Las dos integran en vez de anunciar, que es el criterio con el que eligi&oacute; la Versi&oacute;n Z.</p>
+
     </div>
   </section>
 
