@@ -704,6 +704,95 @@ footer{padding:clamp(2.5rem,7vh,4rem) var(--gutter);border-top:1px solid var(--h
   .reveal{opacity:0;transform:translateY(16px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.3,1);}
   .reveal.is-in{opacity:1;transform:none;}
 }
+/* ── v2: agregados sobre el sistema base ──────────────── */
+.note{font-size:var(--s2);color:var(--ink-mute);max-width:80ch;}
+.note b{color:var(--ink-dim);font-weight:400;}
+
+/* tarjetas de correccion */
+.fix{display:grid;gap:clamp(.7rem,1.4vw,1.1rem);grid-template-columns:minmax(0,1fr);}
+@media (min-width:860px){ .fix{grid-template-columns:repeat(2,minmax(0,1fr));} }
+@media (min-width:1300px){ .fix{grid-template-columns:repeat(4,minmax(0,1fr));} }
+.fix__card{
+  border:1px solid var(--hairline);background:var(--stage-100);
+  padding:1.1rem 1.2rem 1.3rem;display:grid;gap:.5rem;align-content:start;
+}
+.fix__n{font-family:var(--mono);font-size:.66rem;letter-spacing:.28em;color:var(--blue);}
+.fix__card h4{font-size:var(--s3);text-transform:uppercase;letter-spacing:.04em;color:var(--ink);}
+.fix__card p{font-size:var(--s2);color:var(--ink-mute);}
+
+/* veredicto: aprobado / a rehacer */
+.verdict{display:grid;gap:clamp(.7rem,1.4vw,1.1rem);grid-template-columns:repeat(auto-fit,minmax(200px,1fr));overflow:visible;}
+.verdict figure{margin:0;border:1px solid var(--hairline);background:var(--stage-100);overflow:hidden;position:relative;
+  transition:transform .3s cubic-bezier(.2,.7,.3,1), box-shadow .3s ease;will-change:transform;}
+.verdict figure:hover,.verdict figure:focus-visible{transform:scale(1.18);z-index:20;box-shadow:0 22px 60px rgba(0,0,0,.78);}
+.verdict img{width:100%;display:block;}
+.verdict figcaption{padding:.75rem 1rem 1rem;display:grid;gap:.25rem;border-top:1px solid var(--hairline-soft);}
+.verdict .k{font-family:var(--mono);font-size:.64rem;letter-spacing:.2em;text-transform:uppercase;}
+.verdict h4{font-size:var(--s3);text-transform:uppercase;letter-spacing:.04em;color:var(--ink);}
+.verdict .ok .k{color:var(--good);}
+.verdict .redo .k{color:var(--demon);}
+.verdict .redo{border-color:rgba(255,46,85,.45);}
+.verdict small{font-family:var(--mono);font-size:.64rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-mute);}
+@media (prefers-reduced-motion:reduce){ .verdict figure{transition:none;} }
+
+/* cita del director */
+.quote{
+  border-left:2px solid var(--blue);padding:.2rem 0 .2rem 1.2rem;
+  margin:clamp(1.2rem,2.4vw,1.8rem) 0;max-width:72ch;
+}
+.quote p{font-size:clamp(1rem,1.6vw,1.25rem);color:var(--ink);line-height:1.5;}
+.quote span{display:block;margin-top:.5rem;font-family:var(--mono);font-size:.66rem;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--ink-mute);}
+
+/* pendiente */
+.todo{border:1px dashed rgba(159,232,255,.35);background:rgba(0,200,255,.04);
+  padding:1.2rem 1.3rem;display:grid;gap:.5rem;max-width:80ch;}
+.todo .k{font-family:var(--mono);font-size:.66rem;letter-spacing:.24em;text-transform:uppercase;color:var(--blue);}
+.todo p{font-size:var(--s2);color:var(--ink-mute);}
+
+.shot{width:70%;margin-inline:auto;border:1px solid var(--hairline);overflow:hidden;background:var(--stage-100);}
+.shot img,.shot video{width:100%;display:block;}
+@media (max-width:760px){ .shot{width:100%;} }
+
+/* ── Historial plegable ────────────────────────────────── */
+.history{
+  border-top:1px solid var(--hairline);
+  border-bottom:1px solid var(--hairline);
+  margin:clamp(2rem,6vh,4rem) 0 0;
+}
+.history > summary{
+  list-style:none;cursor:pointer;
+  padding:clamp(1.6rem,4vh,2.6rem) var(--gutter);
+  display:flex;align-items:baseline;gap:1rem 1.4rem;flex-wrap:wrap;
+  transition:background .25s ease;
+}
+.history > summary::-webkit-details-marker{display:none;}
+.history > summary:hover{background:rgba(255,255,255,.03);}
+.history__t{
+  font-family:var(--display);
+  font-size:clamp(1.6rem,3.6vw,2.8rem);
+  text-transform:uppercase;letter-spacing:.03em;color:var(--ink);line-height:1;
+}
+.history__k{
+  font-family:var(--mono);font-size:var(--s1);
+  letter-spacing:.2em;text-transform:uppercase;color:var(--ink-mute);
+}
+.history__chev{
+  margin-left:auto;font-family:var(--mono);font-size:.7rem;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--blue);
+  display:inline-flex;align-items:center;gap:.5rem;
+}
+.history__chev::after{content:"\25BC";font-size:.6rem;transition:transform .25s ease;}
+.history[open] > summary .history__chev::after{transform:rotate(180deg);}
+.history[open] > summary .history__chev .lbl--open{display:inline;}
+.history[open] > summary .history__chev .lbl--closed{display:none;}
+.history > summary .history__chev .lbl--open{display:none;}
+.history > summary .history__chev .lbl--closed{display:inline;}
+.history__body{border-top:1px solid var(--hairline-soft);}
+@media (prefers-reduced-motion:reduce){
+  .history > summary,.history__chev::after{transition:none;}
+}
+
 </style>
 </head>
 <body>
@@ -729,6 +818,173 @@ footer{padding:clamp(2.5rem,7vh,4rem) var(--gutter);border-top:1px solid var(--h
 </header>
 
 <main>
+
+  <!-- ===== RONDA 02 · SOBRE EL FEEDBACK DEL DIRECTOR ===== -->
+
+
+  <section class="band">
+    <div class="band__head reveal">
+      <p class="eyebrow">Punto de partida</p>
+      <h2>Qu&eacute; qued&oacute; elegido</h2>
+      <span class="caption">Versi&oacute;n Z &middot; funciona mejor por la integraci&oacute;n</span>
+    </div>
+
+    <div class="band__inner">
+      <div class="shot reveal">
+        <img src="assets/vert-b-solido.jpg" alt="Version Z, la propuesta elegida por el director" />
+      </div>
+
+      <blockquote class="quote reveal">
+        <p>&ldquo;Versi&oacute;n Z. Funciona mejor por la integraci&oacute;n.&rdquo;</p>
+        <span>Feedback del director</span>
+      </blockquote>
+
+      <p class="note">La interfaz deja de competir con el escenario y pasa a vivir dentro de &eacute;l. Sobre esa base, el director dej&oacute; cuatro correcciones para esta vuelta.</p>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="band__head reveal">
+      <p class="eyebrow">Sistema</p>
+      <h2>Las cuatro correcciones</h2>
+      <span class="caption">Lo que cambia respecto de la ronda anterior</span>
+    </div>
+
+    <div class="band__inner">
+      <div class="fix">
+        <article class="fix__card reveal">
+          <span class="fix__n">01</span>
+          <h4>Avance en Z</h4>
+          <p>Los bloques dejan de derivar hacia los costados y avanzan sobre el eje Z. La profundidad pasa a ser la mec&aacute;nica, no el decorado.</p>
+        </article>
+        <article class="fix__card reveal">
+          <span class="fix__n">02</span>
+          <h4>C&aacute;mara hacia atr&aacute;s</h4>
+          <p>El avance de los bloques convive con una c&aacute;mara que retrocede. Dos vectores opuestos sosteni&eacute;ndose en el mismo plano.</p>
+        </article>
+        <article class="fix__card reveal">
+          <span class="fix__n">03</span>
+          <h4>Movimiento journey</h4>
+          <p>Ella avanza y el mundo la acompa&ntilde;a. El plano deja de ser una toma fija de escenario y se vuelve un recorrido.</p>
+        </article>
+        <article class="fix__card reveal">
+          <span class="fix__n">04</span>
+          <h4>Punto de fuga disciplinado</h4>
+          <p>Los bloques comparten una fuga clara y constante. Hoy cada pieza fuga por su cuenta y eso rompe la lectura de profundidad.</p>
+        </article>
+      </div>
+
+      <p class="note" style="margin-top:1.6rem;">Las cuatro empujan en la misma direcci&oacute;n: <b>pasar de una composici&oacute;n a un espacio</b>. El tablero sigue siendo el plano fijo, pero lo que hay detr&aacute;s deja de ser fondo y se vuelve recorrido.</p>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="band__head reveal">
+      <p class="eyebrow">Prueba</p>
+      <h2>Escenarios</h2>
+      <span class="caption">Probar c&oacute;mo funciona fuera del caso c&oacute;modo</span>
+    </div>
+
+    <div class="band__inner">
+      <div class="variants">
+        <figure class="variant reveal">
+          <img src="assets/conv-v1-ciudad.jpg" alt="Version Z sobre ciudad neon" />
+          <figcaption>01 &middot; Ciudad ne&oacute;n &mdash; el caso c&oacute;modo</figcaption>
+        </figure>
+        <figure class="variant reveal">
+          <img src="assets/conv-v2-cielo.jpg" alt="Version Z sobre cielo diurno, fondo claro" />
+          <figcaption>02 &middot; Fondo claro &mdash; el caso a resolver</figcaption>
+        </figure>
+        <figure class="variant reveal">
+          <img src="assets/conv-v3-demonio.jpg" alt="Version Z sobre mundo demonio" />
+          <figcaption>03 &middot; Mundo demonio &mdash; contraste de color</figcaption>
+        </figure>
+      </div>
+
+      <p class="note" style="margin-top:1.6rem;">El pedido puntual fue <b>fondos claros y contraste de color</b>. Es el caso que rompe el sistema: sobre un cielo diurno el carril cian pierde separaci&oacute;n y el halo deja de leerse. Si la pieza sobrevive ah&iacute;, sobrevive en cualquier lado.</p>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="band__head reveal">
+      <p class="eyebrow">Desarrollo &mdash; estados</p>
+      <h2>Bloques</h2>
+      <span class="caption">Tres aprobados &middot; uno a rehacer</span>
+    </div>
+
+    <div class="band__inner">
+      <div class="verdict">
+        <figure class="ok reveal">
+          <img src="assets/blk-solido-good.jpg" alt="Estado Good, aprobado" />
+          <figcaption><span class="k">Aprobado</span><h4>Good</h4><small>Cian bajo</small></figcaption>
+        </figure>
+        <figure class="ok reveal">
+          <img src="assets/blk-solido-great.jpg" alt="Estado Great, aprobado" />
+          <figcaption><span class="k">Aprobado</span><h4>Great</h4><small>Dorado</small></figcaption>
+        </figure>
+        <figure class="ok reveal">
+          <img src="assets/blk-solido-miss.jpg" alt="Estado Miss, aprobado" />
+          <figcaption><span class="k">Aprobado</span><h4>Miss</h4><small>Magenta &middot; carril apagado</small></figcaption>
+        </figure>
+        <figure class="redo reveal">
+          <img src="assets/blk-solido-exc.jpg" alt="Estado Excellent, a rehacer" />
+          <figcaption><span class="k">A rehacer</span><h4>Excellent</h4><small>Demasiado puntualizada</small></figcaption>
+        </figure>
+      </div>
+
+      <blockquote class="quote reveal">
+        <p>&ldquo;Las primeras 3 ok. La que menos convenci&oacute; fue Excellent, es como demasiado puntualizada.&rdquo;</p>
+        <span>Feedback del director</span>
+      </blockquote>
+
+      <p class="note">El problema no es el color sino c&oacute;mo aparece: el Excellent actual se lee como un evento puntual y aislado, casi se&ntilde;alado. Tiene que integrarse al mundo en lugar de marcarse sobre &eacute;l.</p>
+      <p class="note" style="margin-top:.9rem;">Adem&aacute;s pidi&oacute; <b>aplicar los cuatro estados en distintos escenarios</b>, no solo sobre el fondo oscuro donde todo funciona f&aacute;cil.</p>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="band__head reveal">
+      <p class="eyebrow">Criterio</p>
+      <h2>Halos y VFX</h2>
+      <span class="caption">De recurso constante a recurso escaso</span>
+    </div>
+
+    <div class="band__inner">
+      <blockquote class="quote reveal">
+        <p>&ldquo;Solamente usarlo para reforzar el lenguaje, quiz&aacute;s para usar solamente para celebrar un m&eacute;rito importante en el juego.&rdquo;</p>
+        <span>Feedback del director</span>
+      </blockquote>
+
+      <p class="note">Es el cambio de criterio m&aacute;s grande de esta vuelta. Hasta ahora cada acierto dispara halo, y por eso el halo no significa nada: si todo se celebra, nada se celebra.</p>
+      <p class="note" style="margin-top:.9rem;">El VFX pasa a ser <b>econom&iacute;a, no decoraci&oacute;n</b>. Se reserva para el m&eacute;rito real &mdash; la cadena sostenida, el momento alto de la canci&oacute;n &mdash; y el acierto com&uacute;n se resuelve con una respuesta m&aacute;s seca.</p>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="band__head reveal">
+      <p class="eyebrow">Abierto</p>
+      <h2>Pendiente de sumar</h2>
+    </div>
+
+    <div class="band__inner">
+      <div class="todo reveal">
+        <span class="k">Falta un tramo del feedback</span>
+        <p>En el documento del director hay un bloque entre &laquo;probar otros escenarios&raquo; y &laquo;fondos claros&raquo; que no entr&oacute; en la captura. Cuando llegue, esta secci&oacute;n se reemplaza por el contenido que corresponda.</p>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- ===== HISTORIAL: LA PRESENTACION DEL VIERNES ===== -->
+  <details class="history reveal">
+    <summary>
+      <span class="history__t">Look Research History</span>
+      <span class="history__k">Presentaci&oacute;n del viernes &middot; b&uacute;squeda completa</span>
+      <span class="history__chev"><span class="lbl--closed">Desplegar</span><span class="lbl--open">Plegar</span></span>
+    </summary>
+    <div class="history__body">
+
 
   <!-- SISTEMA DE COLOR -->
   <section class="band band--honmoon">
@@ -1380,6 +1636,9 @@ footer{padding:clamp(2.5rem,7vh,4rem) var(--gutter);border-top:1px solid var(--h
       <p class="note" style="margin-top:.9rem;max-width:80ch;">Lo importante es que <b style="color:var(--ink-dim);font-weight:400;">el sistema sobrevive la bajada</b>. La forma sigue diciendo qué es la nota, el color sigue diciendo cómo salió, y el tablero sigue siendo el plano fijo. Lo que se pierde es densidad de render, no legibilidad.</p>
     </div>
   </section>
+
+    </div>
+  </details>
 
   <!-- CIERRE -->
   <section class="band band--cierre">
