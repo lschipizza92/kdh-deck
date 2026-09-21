@@ -776,10 +776,14 @@ footer{padding:clamp(2.5rem,7vh,4rem) var(--gutter);border-top:1px solid var(--h
   padding:clamp(2.6rem,7vh,4.4rem) var(--gutter) clamp(2.2rem,6vh,3.6rem);
   display:grid;justify-items:center;gap:.9rem;text-align:center;
   position:relative;
-  background:
-    radial-gradient(60% 140% at 50% 0%,rgba(0,200,255,.09),transparent 70%),
-    var(--stage-100);
-  transition:background .3s ease;
+  background-image:
+    radial-gradient(70% 150% at 50% 0%,rgba(0,200,255,.14),transparent 72%),
+    linear-gradient(180deg,rgba(4,5,12,.94) 0%,rgba(4,5,12,.62) 42%,rgba(4,5,12,.72) 68%,rgba(4,5,12,.97) 100%),
+    url("assets/palette-rainbow.jpg");
+  background-size:auto,auto,cover;
+  background-position:center,center,center 42%;
+  background-repeat:no-repeat;
+  transition:background-image .3s ease;
 }
 .history > summary::-webkit-details-marker{display:none;}
 .history > summary::after{
@@ -789,24 +793,26 @@ footer{padding:clamp(2.5rem,7vh,4rem) var(--gutter);border-top:1px solid var(--h
   opacity:.75;
 }
 .history > summary:hover{
-  background:
-    radial-gradient(60% 140% at 50% 0%,rgba(0,200,255,.15),transparent 70%),
-    var(--stage-100);
+  background-image:
+    radial-gradient(70% 150% at 50% 0%,rgba(0,200,255,.2),transparent 72%),
+    linear-gradient(180deg,rgba(4,5,12,.9) 0%,rgba(4,5,12,.48) 42%,rgba(4,5,12,.6) 68%,rgba(4,5,12,.95) 100%),
+    url("assets/palette-rainbow.jpg");
 }
 .history__k{
   font-family:var(--mono);font-size:.68rem;
   letter-spacing:.34em;text-transform:uppercase;color:var(--blue);
+  text-shadow:0 1px 14px rgba(4,5,12,.95);
 }
 .history__t{
   font-family:var(--display);
   font-size:clamp(2rem,5.4vw,4rem);
   text-transform:uppercase;letter-spacing:.04em;color:var(--ink);line-height:1;
-  text-shadow:0 0 44px rgba(0,200,255,.28);
+  text-shadow:0 0 44px rgba(0,200,255,.3), 0 2px 26px rgba(4,5,12,.95);
 }
 .history__d{
   font-family:var(--mono);font-size:var(--s1);
-  letter-spacing:.2em;text-transform:uppercase;color:var(--ink-mute);
-  max-width:46ch;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--ink-dim);
+  max-width:46ch;text-shadow:0 1px 16px rgba(4,5,12,.95);
 }
 .history__chev{
   margin-top:.6rem;
@@ -815,11 +821,11 @@ footer{padding:clamp(2.5rem,7vh,4rem) var(--gutter);border-top:1px solid var(--h
   display:inline-flex;align-items:center;gap:.6rem;
   padding:.62rem 1.4rem;
   border:1px solid rgba(0,200,255,.5);
-  background:rgba(0,200,255,.08);
+  background:rgba(4,5,12,.6);backdrop-filter:blur(6px);
   transition:background .25s ease, border-color .25s ease;
 }
 .history > summary:hover .history__chev{
-  background:rgba(0,200,255,.18);border-color:var(--blue);
+  background:rgba(0,200,255,.22);border-color:var(--blue);
 }
 .history__chev::after{content:"\25BC";font-size:.58rem;transition:transform .3s ease;}
 .history[open] > summary .history__chev::after{transform:rotate(180deg);}
