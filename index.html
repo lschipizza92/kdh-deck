@@ -766,43 +766,70 @@ footer{padding:clamp(2.5rem,7vh,4rem) var(--gutter);border-top:1px solid var(--h
 .excprop__fig p{font-size:var(--s2);color:var(--ink-mute);}
 @media (prefers-reduced-motion:reduce){ .excprop__fig{transition:none;} }
 
-/* ── Historial plegable ────────────────────────────────── */
+/* ── Historial plegable: divisor de capitulo ──────────── */
 .history{
+  margin:clamp(3rem,9vh,6rem) 0 0;
   border-top:1px solid var(--hairline);
-  border-bottom:1px solid var(--hairline);
-  margin:clamp(2rem,6vh,4rem) 0 0;
 }
 .history > summary{
   list-style:none;cursor:pointer;
-  padding:clamp(1.6rem,4vh,2.6rem) var(--gutter);
-  display:flex;align-items:baseline;gap:1rem 1.4rem;flex-wrap:wrap;
-  transition:background .25s ease;
+  padding:clamp(2.6rem,7vh,4.4rem) var(--gutter) clamp(2.2rem,6vh,3.6rem);
+  display:grid;justify-items:center;gap:.9rem;text-align:center;
+  position:relative;
+  background:
+    radial-gradient(60% 140% at 50% 0%,rgba(0,200,255,.09),transparent 70%),
+    var(--stage-100);
+  transition:background .3s ease;
 }
 .history > summary::-webkit-details-marker{display:none;}
-.history > summary:hover{background:rgba(255,255,255,.03);}
-.history__t{
-  font-family:var(--display);
-  font-size:clamp(1.6rem,3.6vw,2.8rem);
-  text-transform:uppercase;letter-spacing:.03em;color:var(--ink);line-height:1;
+.history > summary::after{
+  content:"";position:absolute;left:50%;top:0;transform:translateX(-50%);
+  width:min(340px,60%);height:1px;
+  background:linear-gradient(90deg,transparent,var(--blue),transparent);
+  opacity:.75;
+}
+.history > summary:hover{
+  background:
+    radial-gradient(60% 140% at 50% 0%,rgba(0,200,255,.15),transparent 70%),
+    var(--stage-100);
 }
 .history__k{
+  font-family:var(--mono);font-size:.68rem;
+  letter-spacing:.34em;text-transform:uppercase;color:var(--blue);
+}
+.history__t{
+  font-family:var(--display);
+  font-size:clamp(2rem,5.4vw,4rem);
+  text-transform:uppercase;letter-spacing:.04em;color:var(--ink);line-height:1;
+  text-shadow:0 0 44px rgba(0,200,255,.28);
+}
+.history__d{
   font-family:var(--mono);font-size:var(--s1);
   letter-spacing:.2em;text-transform:uppercase;color:var(--ink-mute);
+  max-width:46ch;
 }
 .history__chev{
-  margin-left:auto;font-family:var(--mono);font-size:.7rem;
-  letter-spacing:.2em;text-transform:uppercase;color:var(--blue);
-  display:inline-flex;align-items:center;gap:.5rem;
+  margin-top:.6rem;
+  font-family:var(--mono);font-size:.7rem;
+  letter-spacing:.24em;text-transform:uppercase;color:var(--ink);
+  display:inline-flex;align-items:center;gap:.6rem;
+  padding:.62rem 1.4rem;
+  border:1px solid rgba(0,200,255,.5);
+  background:rgba(0,200,255,.08);
+  transition:background .25s ease, border-color .25s ease;
 }
-.history__chev::after{content:"\25BC";font-size:.6rem;transition:transform .25s ease;}
+.history > summary:hover .history__chev{
+  background:rgba(0,200,255,.18);border-color:var(--blue);
+}
+.history__chev::after{content:"\25BC";font-size:.58rem;transition:transform .3s ease;}
 .history[open] > summary .history__chev::after{transform:rotate(180deg);}
 .history[open] > summary .history__chev .lbl--open{display:inline;}
 .history[open] > summary .history__chev .lbl--closed{display:none;}
 .history > summary .history__chev .lbl--open{display:none;}
 .history > summary .history__chev .lbl--closed{display:inline;}
-.history__body{border-top:1px solid var(--hairline-soft);}
+.history__body{border-top:1px solid var(--hairline);}
 @media (prefers-reduced-motion:reduce){
-  .history > summary,.history__chev::after{transition:none;}
+  .history > summary,.history__chev,.history__chev::after{transition:none;}
 }
 
 </style>
@@ -887,6 +914,12 @@ footer{padding:clamp(2.5rem,7vh,4rem) var(--gutter);border-top:1px solid var(--h
       </div>
 
       <p class="note" style="margin-top:1.6rem;">Las cuatro empujan en la misma direcci&oacute;n: <b>pasar de una composici&oacute;n a un espacio</b>. El tablero sigue siendo el plano fijo, pero lo que hay detr&aacute;s deja de ser fondo y se vuelve recorrido.</p>
+
+      <p class="eyebrow" style="margin:clamp(2rem,5vh,3rem) 0 .9rem;color:var(--blue);">Primera prueba &middot; el punto de fuga disciplinado</p>
+      <div class="shot reveal" style="width:86%;">
+        <img src="assets/vert-fugas.jpg" alt="Interfaz vertical con lineas de fuga convergiendo detras del personaje" />
+      </div>
+      <p class="note" style="margin-top:1.2rem;">Las gu&iacute;as salen de los dos rieles y convergen en <b>un solo punto detr&aacute;s del personaje</b>. Cada bloque se apoya en esa perspectiva y achica al alejarse, igual que en la versi&oacute;n horizontal pero rotado noventa grados. Deja de ser un grupo de piezas flotando y pasa a ser <b>dos corredores de profundidad</b>.</p>
     </div>
   </section>
 
@@ -964,11 +997,11 @@ footer{padding:clamp(2.5rem,7vh,4rem) var(--gutter);border-top:1px solid var(--h
           </figcaption>
         </figure>
         <figure class="excprop__fig reveal">
-          <img src="assets/exc-b-oro.jpg" alt="Propuesta B, oro sobrecargado" />
+          <img src="assets/exc-e-prisma.jpg" alt="Propuesta B, prisma" />
           <figcaption>
             <span class="k">Opci&oacute;n B</span>
-            <h4>Oro sobrecargado</h4>
-            <p>El mismo dorado del Great pero quemado. M&aacute;xima continuidad con lo aprobado, aunque se acerca al estado de abajo.</p>
+            <h4>Prisma</h4>
+            <p>El bloque queda blanco y neutro; el espectro sucede <b>afuera</b>, en el aire, como luz blanca atravesando un prisma.</p>
           </figcaption>
         </figure>
         <figure class="excprop__fig reveal">
@@ -991,7 +1024,7 @@ footer{padding:clamp(2.5rem,7vh,4rem) var(--gutter);border-top:1px solid var(--h
 
       <p class="note" style="margin-top:1.6rem;">El diagn&oacute;stico: los tres aprobados son <b>de un solo tono</b>. El Excellent era el &uacute;nico multicolor, y por eso no se le&iacute;a como el escal&oacute;n m&aacute;s alto de la misma escalera sino como otro objeto. Las cuatro opciones atacan eso desde &aacute;ngulos distintos.</p>
 
-      <p class="note" style="margin-top:.9rem;">Mi recomendaci&oacute;n es <b>C o D</b>. Las dos conservan el iridiscente de la pel&iacute;cula pero se lo sacan de encima como identidad: en C es un reflejo, en D es luz prestada del escenario. Las dos integran en vez de anunciar, que es el criterio con el que eligi&oacute; la Versi&oacute;n Z.</p>
+      <p class="note" style="margin-top:.9rem;">Mi recomendaci&oacute;n es <b>B, C o D</b>. Las dos conservan el iridiscente de la pel&iacute;cula pero se lo sacan de encima como identidad: en C es un reflejo, en D es luz prestada del escenario. Las dos integran en vez de anunciar, que es el criterio con el que eligi&oacute; la Versi&oacute;n Z.</p>
 
     </div>
   </section>
@@ -1033,8 +1066,9 @@ footer{padding:clamp(2.5rem,7vh,4rem) var(--gutter);border-top:1px solid var(--h
   <!-- ===== HISTORIAL: LA PRESENTACION DEL VIERNES ===== -->
   <details class="history reveal">
     <summary>
+      <span class="history__k">Archivo</span>
       <span class="history__t">Look Research History</span>
-      <span class="history__k">Presentaci&oacute;n del viernes &middot; b&uacute;squeda completa</span>
+      <span class="history__d">La b&uacute;squeda completa presentada el viernes</span>
       <span class="history__chev"><span class="lbl--closed">Desplegar</span><span class="lbl--open">Plegar</span></span>
     </summary>
     <div class="history__body">
