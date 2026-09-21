@@ -754,6 +754,15 @@ footer{padding:clamp(2.5rem,7vh,4rem) var(--gutter);border-top:1px solid var(--h
 .shot img,.shot video{width:100%;display:block;}
 @media (max-width:760px){ .shot{width:100%;} }
 
+/* comparacion de fugas entre formatos */
+.fuga{display:grid;gap:clamp(.7rem,1.4vw,1.1rem);grid-template-columns:minmax(0,1fr);margin-top:clamp(1.4rem,3vw,2.2rem);}
+@media (min-width:900px){ .fuga{grid-template-columns:repeat(2,minmax(0,1fr));} }
+.fuga figure{margin:0;border:1px solid var(--hairline);background:var(--stage-100);overflow:hidden;}
+.fuga img{width:100%;display:block;}
+.fuga figcaption{padding:.75rem 1rem 1rem;display:grid;gap:.25rem;border-top:1px solid var(--hairline-soft);
+  font-size:var(--s2);color:var(--ink-mute);}
+.fuga .k{font-family:var(--mono);font-size:.64rem;letter-spacing:.2em;text-transform:uppercase;color:var(--blue);}
+
 /* propuestas de excellent */
 .excprop{display:grid;gap:clamp(.7rem,1.4vw,1.1rem);grid-template-columns:repeat(auto-fit,minmax(230px,1fr));overflow:visible;}
 .excprop__fig{margin:0;border:1px solid var(--hairline);background:var(--stage-100);overflow:hidden;
@@ -912,10 +921,22 @@ footer{padding:clamp(2.5rem,7vh,4rem) var(--gutter);border-top:1px solid var(--h
       <p class="note" style="margin-top:1.6rem;">Las cuatro empujan en la misma direcci&oacute;n: <b>pasar de una composici&oacute;n a un espacio</b>. El tablero sigue siendo el plano fijo, pero lo que hay detr&aacute;s deja de ser fondo y se vuelve recorrido.</p>
 
       <p class="eyebrow" style="margin:clamp(2rem,5vh,3rem) 0 .9rem;color:var(--blue);">Primera prueba &middot; el punto de fuga disciplinado</p>
-      <div class="shot reveal" style="width:86%;">
-        <img src="assets/vert-fugas.jpg" alt="Interfaz vertical con lineas de fuga convergiendo detras del personaje" />
+      <div class="shot reveal" style="width:88%;">
+        <img src="assets/vert-casilleros.jpg" alt="Interfaz vertical con dos casilleros por lado y lineas de fuga convergiendo detras del personaje" />
       </div>
-      <p class="note" style="margin-top:1.2rem;">Las gu&iacute;as salen de los dos rieles y convergen en <b>un solo punto detr&aacute;s del personaje</b>. Cada bloque se apoya en esa perspectiva y achica al alejarse, igual que en la versi&oacute;n horizontal pero rotado noventa grados. Deja de ser un grupo de piezas flotando y pasa a ser <b>dos corredores de profundidad</b>.</p>
+      <p class="note" style="margin-top:1.2rem;">Un casillero por lado, dibujado con el mismo contorno ne&oacute;n que el pad horizontal. De cada uno sale un abanico de gu&iacute;as que converge en <b>un solo punto detr&aacute;s del personaje</b>: los bloques nacen ah&iacute;, chicos y apretados, y crecen a medida que se acercan al casillero. Deja de ser un grupo de piezas flotando y pasa a ser <b>dos corredores de profundidad</b>.</p>
+
+      <div class="fuga reveal">
+        <figure>
+          <img src="assets/prop-b-solido.jpg" alt="Interfaz horizontal, carriles en piso" />
+          <figcaption><span class="k">Horizontal</span>El pad en el piso, fuga al horizonte</figcaption>
+        </figure>
+        <figure>
+          <img src="assets/vert-casilleros.jpg" alt="Interfaz vertical, casilleros a los lados" />
+          <figcaption><span class="k">Vertical</span>El mismo pad, rotado noventa grados</figcaption>
+        </figure>
+      </div>
+      <p class="note" style="margin-top:1.2rem;">Las dos interfaces comparten ahora el mismo recurso gr&aacute;fico. Antes la horizontal ten&iacute;a casilleros en contorno y la vertical barras macizas: eran dos sistemas conviviendo en el mismo juego.</p>
     </div>
   </section>
 
