@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>KPop Demon Hunters Mobile — Desarrollo visual</title>
-<meta name="description" content="Desarrollo visual del rhythm game mobile de KPop Demon Hunters: sistema de color Honmoon, estados de tap y propuestas de interfaz." />
+<title>KPop Demon Hunters Mobile — Visual Development</title>
+<meta name="description" content="Visual development for the KPop Demon Hunters mobile rhythm game: Honmoon colour system, tap states and interface proposals." />
 <style>
 /* ──────────────────────────────────────────────────────────
    KPOP DEMON HUNTERS · MOBILE RHYTHM GAME
-   Desarrollo visual — presentación interna
+   Visual development — internal presentation
    Tema único: escenario nocturno
    ────────────────────────────────────────────────────────── */
 
@@ -867,12 +867,12 @@ footer{padding:clamp(2.5rem,7vh,4rem) var(--gutter);border-top:1px solid var(--h
   <div class="hero__weave"></div>
 
   <div class="hud">
-    <span><i class="dot"></i>Desarrollo visual</span>
+    <span><i class="dot"></i>Visual development</span>
     <span>Rhythm game · Mobile</span>
   </div>
 
   <div>
-    <p class="eyebrow">Desarrollo visual — propuesta</p>
+    <p class="eyebrow">Visual development — proposal</p>
     <h1 class="hero__title">
       <span class="glow">KPop Demon<br />Hunters</span>
       <span class="thin">Mobile Rhythm Game</span>
@@ -887,50 +887,47 @@ footer{padding:clamp(2.5rem,7vh,4rem) var(--gutter);border-top:1px solid var(--h
 
   <section class="band">
     <div class="band__head reveal">
-      <p class="eyebrow">Propuesta</p>
-      <h2>Interfaz vertical</h2>
-      <span class="caption">El tablero vive dentro del mundo</span>
+      <p class="eyebrow">Proposal</p>
+      <h2>Vertical interface</h2>
+      <span class="caption">The board lives inside the world</span>
     </div>
 
     <div class="band__inner">
       <div class="shot reveal" style="width:88%;">
-        <img src="assets/vert-casilleros.jpg" alt="Interfaz vertical con casilleros laterales y profundidad en eje Z" />
+        <img src="assets/vert-casilleros.jpg" alt="Vertical interface with side gates and Z axis depth" />
       </div>
 
-      <p class="note" style="margin-top:1.4rem;">Un casillero por lado, dibujado con contorno ne&oacute;n, y <b>una sola hilera de bloques</b> por corredor. De cada casillero sale un abanico de gu&iacute;as que converge en <b>un solo punto detr&aacute;s del personaje</b>: las piezas nacen ah&iacute;, diminutas, y crecen una tras otra hasta llegar a tama&ntilde;o completo.</p>
-      <p class="note" style="margin-top:.9rem;">La interfaz deja de competir con el escenario y pasa a vivir dentro de &eacute;l. El centro queda libre para el personaje y para la c&aacute;mara.</p>
 
       <div class="shot reveal" style="width:88%;">
-        <img src="assets/vert-variado.jpg" alt="Interfaz vertical con piezas variadas: tap, direccionales y hold" />
+        <img src="assets/vert-variado.jpg" alt="Vertical interface with mixed pieces: taps, directionals and holds" />
       </div>
-      <p class="note" style="margin-top:1.2rem;">La misma hilera con <b>los tres tipos mezclados</b>: taps simples, direccionales con flecha y una cinta de hold estirada a lo largo de la gu&iacute;a. Se distinguen de un vistazo por silueta, sin necesidad de cambiar el color.</p>
 
       <p class="eyebrow" style="margin:clamp(2.6rem,6vh,4rem) 0 .9rem;color:var(--blue);">Camera movement and cinematic value</p>
       <div class="camvid">
         <video src="assets/cinematica-loop.webm" poster="assets/cinematica-poster.jpg"
                autoplay muted loop playsinline preload="metadata"
-               aria-label="Movimiento de camara y cinematica en dos escenarios"></video>
+               aria-label="Camera movement and cinematic value in two worlds"></video>
       </div>
 
-      <p class="note" style="margin-top:1.4rem;">Dos escenarios, el mismo sistema. En el <b>bosque</b> la c&aacute;mara retrocede mientras ellas avanzan corriendo y saltando; en el <b>tren</b> acompa&ntilde;a de costado en travelling paralelo mientras pelean sobre los vagones.</p>
+      <p class="note" style="margin-top:1.4rem;">Two worlds, one system. In the <b>forest</b> the camera pulls back as they run and leap forward; on the <b>train</b> it tracks sideways in a parallel travelling while they fight across the carriages.</p>
 
-      <p class="note" style="margin-top:.9rem;">Lo que demuestra el clip: <b>el tablero es un plano fijo sobre la imagen</b>. Los casilleros, las gu&iacute;as y los bloques no se mueven ni un p&iacute;xel aunque la c&aacute;mara vuele y el mundo cambie por completo. Y el tap es <b>musical</b>, corre por su cuenta: no depende de lo que hacen los personajes.</p>
+      <p class="note" style="margin-top:.9rem;">What the clip proves: <b>the board is a fixed plane over the image</b>. The gates, the guide lines and the tiles never move a single pixel, even as the camera flies and the world changes completely. And the tap is <b>musical</b> &mdash; it runs on its own, independent of what the characters do.</p>
 
-      <p class="eyebrow" style="margin:clamp(2rem,5vh,3rem) 0 .9rem;color:var(--blue);">Dos lecturas del mismo tablero</p>
+      <p class="eyebrow" style="margin:clamp(2rem,5vh,3rem) 0 .9rem;color:var(--blue);">Two readings of the same board</p>
       <div class="fuga">
         <figure>
-          <img src="assets/vert-casilleros-a.jpg" alt="Opcion A, casillero plano con varias filas de bloques" />
-          <figcaption><span class="k">Opci&oacute;n A &middot; Plano</span>El casillero es un marco de contorno y varias filas de bloques viajan hacia &eacute;l</figcaption>
+          <img src="assets/vert-casilleros-a.jpg" alt="Option A, flat gate with several rows of tiles" />
+          <figcaption><span class="k">Option A &middot; Flat</span>The gate is an outlined frame and several rows of tiles travel toward it</figcaption>
         </figure>
         <figure>
-          <img src="assets/vert-plano.jpg" alt="Opcion C, marco plano con una sola fila de bloques verticales" />
-          <figcaption><span class="k">Opci&oacute;n B &middot; Fila &uacute;nica</span>El mismo marco, con una sola fila de losas verticales entrando en &eacute;l</figcaption>
+          <img src="assets/vert-plano.jpg" alt="Option B, flat frame with a single row of tall tiles" />
+          <figcaption><span class="k">Option B &middot; Single row</span>The same frame, with one single row of tall tiles entering it</figcaption>
         </figure>
       </div>
 
-      <p class="note" style="margin-top:1.2rem;">La diferencia es la <b>densidad de notas</b>. En la A varias filas viajan a la vez por cada corredor; en la B queda una sola hilera de losas verticales, que se lee mucho m&aacute;s limpia y deja ver la progresi&oacute;n de profundidad pieza por pieza.</p>
+      <p class="note" style="margin-top:1.2rem;">The difference is <b>note density</b>. In A several rows travel down each corridor at once; in B a single row of tall tiles remains, which reads far cleaner and lets you follow the depth progression piece by piece.</p>
 
-      <p class="note" style="margin-top:.9rem;">A cambio, una sola fila por lado <b>baja la densidad de notas</b>. Es una decisi&oacute;n de dise&ntilde;o de juego antes que visual: menos inputs por comp&aacute;s, pero una lectura mucho m&aacute;s limpia del eje Z.</p>
+      <p class="note" style="margin-top:.9rem;">The trade-off: one row per side <b>lowers note density</b>. That is a game design decision before a visual one &mdash; fewer inputs per bar, but a much cleaner read of the Z axis.</p>
 
     </div>
   </section>
@@ -938,211 +935,211 @@ footer{padding:clamp(2.5rem,7vh,4rem) var(--gutter);border-top:1px solid var(--h
 
   <section class="band">
     <div class="band__head reveal">
-      <p class="eyebrow">Mundos</p>
-      <h2>Escenarios</h2>
-      <span class="caption">El mismo sistema, en escenarios de la pel&iacute;cula</span>
+      <p class="eyebrow">Exploration</p>
+      <h2>Worlds</h2>
+      <span class="caption">The same system, in locations from the film</span>
     </div>
 
     <div class="band__inner">
       <div class="variants">
         <figure class="variant reveal">
-          <img src="assets/conv-v1-ciudad.jpg" alt="Version Z sobre ciudad neon" />
-          <figcaption>01 &middot; Ciudad ne&oacute;n &mdash; el caso c&oacute;modo</figcaption>
+          <img src="assets/conv-v1-ciudad.jpg" alt="Z version over the neon city" />
+          <figcaption>01 &middot; Neon city &mdash; the easy case</figcaption>
         </figure>
         <figure class="variant reveal">
-          <img src="assets/conv-v2-cielo.jpg" alt="Version Z sobre cielo diurno, fondo claro" />
-          <figcaption>02 &middot; Fondo claro &mdash; el caso a resolver</figcaption>
+          <img src="assets/conv-v2-cielo.jpg" alt="Z version over a daylight sky, bright background" />
+          <figcaption>02 &middot; Bright background &mdash; the case to solve</figcaption>
         </figure>
         <figure class="variant reveal">
-          <img src="assets/conv-v3-demonio.jpg" alt="Version Z sobre mundo demonio" />
-          <figcaption>03 &middot; Mundo demonio &mdash; contraste de color</figcaption>
+          <img src="assets/conv-v3-demonio.jpg" alt="Z version over the demon world" />
+          <figcaption>03 &middot; Demon world &mdash; colour contrast</figcaption>
         </figure>
       </div>
 
-      <p class="note" style="margin-top:1.6rem;">El caso exigente es el <b>fondo claro</b>: sobre un cielo diurno el carril cian pierde separaci&oacute;n y el halo deja de leerse. Si la pieza sobrevive ah&iacute;, sobrevive en cualquier lado.</p>
+      <p class="note" style="margin-top:1.6rem;">The demanding case is the <b>bright background</b>: against a daylight sky the cyan corridor loses separation and the halo stops reading. If the piece survives there, it survives anywhere.</p>
 
-      <p class="note" style="margin-top:.9rem;">El hallazgo del bosque: los rayos de sol entre los &aacute;rboles <b>compiten con las l&iacute;neas de fuga</b>. En la arena nocturna las gu&iacute;as eran lo &uacute;nico lineal en cuadro; en exteriores hay que defender esa lectura.</p>
+      <p class="note" style="margin-top:.9rem;">The forest finding: sunbeams between the trees <b>compete with the perspective lines</b>. In the night arena the guides were the only linear element on screen; outdoors that read has to be defended.</p>
 
-      <p class="note" style="margin-top:.9rem;">El centro es <b>el tr&iacute;o completo en acci&oacute;n</b>, con poses de combate tomadas de la pel&iacute;cula. Confirma que el espacio libre del formato vertical alcanza para tres personajes peleando sin tapar ni los corredores ni los casilleros: deja de ser una idol bailando y pasa a ser <b>cinem&aacute;tica jugable</b>.</p>
+      <p class="note" style="margin-top:.9rem;">The centre now holds <b>the full trio in action</b>, in combat poses taken from the film. It confirms that the open space of the vertical format fits three characters fighting without covering the corridors or the gates: it stops being one idol dancing and becomes <b>playable cinematic</b>.</p>
 
-      <p class="note" style="margin-top:.9rem;">El caso del tren es el m&aacute;s exigente: es un mundo <b>pastel y de bajo contraste</b>, casi monocromo lavanda, donde no hay negro que sostenga el ne&oacute;n. Es tambi&eacute;n el &uacute;nico que trae la <b>marea demon&iacute;aca dentro del cuadro</b>, y por lo tanto el que m&aacute;s se acerca a la idea de pelear mientras se tapea.</p>
+      <p class="note" style="margin-top:.9rem;">The train is the most demanding case: a <b>pastel, low contrast</b> world, almost monochrome lavender, with no black to hold the neon. It is also the only one that brings the <b>demon wave into frame</b>, and therefore the closest to the idea of fighting while you tap.</p>
 
 
-      <p class="eyebrow" style="margin:clamp(2.6rem,6vh,4rem) 0 .9rem;color:var(--blue);">Cuatro mundos</p>
+      <p class="eyebrow" style="margin:clamp(2.6rem,6vh,4rem) 0 .9rem;color:var(--blue);">Four worlds</p>
       <div class="variants variants--duo">
         <figure class="variant reveal">
-          <img src="assets/vert-p-bosque.jpg" alt="Marco plano sobre bosque diurno" />
-          <figcaption>04 &middot; Bosque diurno</figcaption>
+          <img src="assets/vert-p-bosque.jpg" alt="Flat frame over the daylight forest" />
+          <figcaption>04 &middot; Daylight forest</figcaption>
         </figure>
         <figure class="variant reveal">
-          <img src="assets/vert-p-hanok.jpg" alt="Marco plano sobre aldea hanok" />
-          <figcaption>05 &middot; Aldea hanok</figcaption>
+          <img src="assets/vert-p-hanok.jpg" alt="Flat frame over the hanok village" />
+          <figcaption>05 &middot; Hanok village</figcaption>
         </figure>
         <figure class="variant reveal">
-          <img src="assets/vert-p-rio.jpg" alt="Marco plano sobre el rio Han al atardecer" />
-          <figcaption>06 &middot; R&iacute;o Han</figcaption>
+          <img src="assets/vert-p-rio.jpg" alt="Flat frame over the Han River at dusk" />
+          <figcaption>06 &middot; Han River</figcaption>
         </figure>
         <figure class="variant reveal">
-          <img src="assets/vert-p-tren.jpg" alt="Marco plano sobre el techo del tren" />
-          <figcaption>07 &middot; El tren</figcaption>
+          <img src="assets/vert-p-tren.jpg" alt="Flat frame over the roof of the train" />
+          <figcaption>07 &middot; The train</figcaption>
         </figure>
       </div>
 
-      <p class="note" style="margin-top:1.6rem;">Los cuatro mundos con la <b>opci&oacute;n B</b>. Se aprovech&oacute; la vuelta para <b>simplificar los fondos</b> &mdash; masas grandes y limpias en vez de detalle disperso, siluetas en lugar de textura, luz pareja. El escenario deja de competir con la interfaz y pasa a sostenerla.</p>
+      <p class="note" style="margin-top:1.6rem;">The four worlds with <b>option B</b>. The pass was also used to <b>simplify the backgrounds</b> &mdash; large clean masses instead of scattered detail, silhouettes instead of texture, even light. The world stops competing with the interface and starts supporting it.</p>
     </div>
   </section>
 
   <section class="band">
     <div class="band__head reveal">
-      <p class="eyebrow">Desarrollo &mdash; estados</p>
-      <h2>Bloques</h2>
-      <span class="caption">La forma dice qu&eacute; es &middot; el color dice c&oacute;mo sali&oacute;</span>
+      <p class="eyebrow">Development &mdash; states</p>
+      <h2>Tiles</h2>
+      <span class="caption">Shape says what it is &middot; colour says how it went</span>
     </div>
 
     <div class="band__inner">
       <div class="verdict">
         <figure class="ok reveal">
           <img src="assets/blk-solido-good.jpg" alt="Estado Good, aprobado" />
-          <figcaption><span class="k">Definido</span><h4>Good</h4><small>Cian bajo</small></figcaption>
+          <figcaption><span class="k">Defined</span><h4>Good</h4><small>Low cyan</small></figcaption>
         </figure>
         <figure class="ok reveal">
           <img src="assets/blk-solido-great.jpg" alt="Estado Great, aprobado" />
-          <figcaption><span class="k">Definido</span><h4>Great</h4><small>Dorado</small></figcaption>
+          <figcaption><span class="k">Defined</span><h4>Great</h4><small>Gold</small></figcaption>
         </figure>
         <figure class="ok reveal">
           <img src="assets/blk-solido-miss.jpg" alt="Estado Miss, aprobado" />
-          <figcaption><span class="k">Definido</span><h4>Miss</h4><small>Magenta &middot; carril apagado</small></figcaption>
+          <figcaption><span class="k">Defined</span><h4>Miss</h4><small>Magenta &middot; broken field</small></figcaption>
         </figure>
         <figure class="redo reveal">
           <img src="assets/blk-solido-exc.jpg" alt="Estado Excellent, a rehacer" />
-          <figcaption><span class="k">En exploraci&oacute;n</span><h4>Excellent</h4><small>Espectro iridiscente</small></figcaption>
+          <figcaption><span class="k">In exploration</span><h4>Excellent</h4><small>Iridescent spectrum</small></figcaption>
         </figure>
       </div>
 
 
-      <p class="note">Good, Great y Miss est&aacute;n resueltos: un solo tono cada uno, legibles de inmediato. El <b>Excellent</b> sigue abierto, porque es el &uacute;nico que no puede resolverse con un color plano.</p>
-      <p class="note" style="margin-top:.9rem;">El pr&oacute;ximo paso es <b>aplicar los cuatro estados en cada escenario</b>, no solo sobre fondo oscuro, donde todo funciona f&aacute;cil.</p>
+      <p class="note">Good, Great and Miss are resolved: a single hue each, readable at a glance. <b>Excellent</b> is still open, because it is the only one that cannot be solved with a flat colour.</p>
+      <p class="note" style="margin-top:.9rem;">The next step is to <b>apply the four states in every world</b>, not only over a dark background where everything works easily.</p>
 
-      <p class="eyebrow" style="margin:clamp(2rem,5vh,3rem) 0 .9rem;color:var(--blue);">Cuatro caminos para el Excellent</p>
+      <p class="eyebrow" style="margin:clamp(2rem,5vh,3rem) 0 .9rem;color:var(--blue);">Four directions for Excellent</p>
 
       <div class="excprop">
         <figure class="excprop__fig reveal">
           <img src="assets/exc-a-nucleo.jpg" alt="Propuesta A, nucleo blanco" />
           <figcaption>
-            <span class="k">Opci&oacute;n A</span>
-            <h4>N&uacute;cleo blanco</h4>
-            <p>La escalera se resuelve por luminancia, no por color. El iridiscente queda como un borde fin&iacute;simo donde la luz se quiebra.</p>
+            <span class="k">Option A</span>
+            <h4>White core</h4>
+            <p>The ladder resolves through luminance, not colour. The iridescence survives only as a hairline fringe where the light bends.</p>
           </figcaption>
         </figure>
         <figure class="excprop__fig reveal">
           <img src="assets/exc-e-prisma.jpg" alt="Propuesta B, prisma" />
           <figcaption>
-            <span class="k">Opci&oacute;n B</span>
-            <h4>Prisma</h4>
-            <p>El bloque queda blanco y neutro; el espectro sucede <b>afuera</b>, en el aire, como luz blanca atravesando un prisma.</p>
+            <span class="k">Option B</span>
+            <h4>Prism</h4>
+            <p>The tile stays white and neutral; the spectrum happens <b>outside</b>, in the air, like white light through a prism.</p>
           </figcaption>
         </figure>
         <figure class="excprop__fig reveal">
           <img src="assets/exc-c-nacar.jpg" alt="Propuesta C, nacar" />
           <figcaption>
-            <span class="k">Opci&oacute;n C</span>
-            <h4>N&aacute;car</h4>
-            <p>El espectro deja de ser el color del bloque y pasa a ser una propiedad de la superficie, como el interior de una caracola.</p>
+            <span class="k">Option C</span>
+            <h4>Pearl</h4>
+            <p>The spectrum stops being the tile's colour and becomes a property of its surface, like the inside of a seashell.</p>
           </figcaption>
         </figure>
         <figure class="excprop__fig reveal">
           <img src="assets/exc-d-honmoon.jpg" alt="Propuesta D, honmoon" />
           <figcaption>
-            <span class="k">Opci&oacute;n D</span>
+            <span class="k">Option D</span>
             <h4>Honmoon</h4>
-            <p>El bloque se vuelve transparente y refracta la energ&iacute;a del escenario. El color no es suyo: lo toma del mundo.</p>
+            <p>The tile turns clear and refracts the energy of the world. The colour is not its own: it borrows it.</p>
           </figcaption>
         </figure>
       </div>
 
-      <p class="note" style="margin-top:1.6rem;">Los otros tres estados son <b>de un solo tono</b>. Si el Excellent es el &uacute;nico multicolor, deja de leerse como el escal&oacute;n m&aacute;s alto de la misma escalera y pasa a leerse como otro objeto. Las cuatro opciones resuelven eso por mecanismos &oacute;pticos distintos.</p>
+      <p class="note" style="margin-top:1.6rem;">The other three states are <b>single hue</b>. If Excellent is the only multicoloured one, it stops reading as the top step of the same ladder and starts reading as a different object. The four options solve that through different optical mechanisms.</p>
 
-      <p class="note" style="margin-top:.9rem;">Las m&aacute;s prometedoras son <b>B, C y D</b>: conservan el iridiscente de la pel&iacute;cula pero sin convertirlo en la identidad del bloque: en B el color sucede en el aire, en C es un reflejo de superficie, en D es luz prestada del escenario. Las tres integran en vez de anunciar.</p>
+      <p class="note" style="margin-top:.9rem;">The most promising are <b>B, C and D</b>: they keep the film's iridescence without making it the tile's identity &mdash; in B the colour happens in the air, in C it is a surface reflection, in D it is light borrowed from the world. All three integrate instead of announcing.</p>
 
-      <p class="eyebrow" style="margin:clamp(2.6rem,6vh,4rem) 0 .9rem;color:var(--blue);">Mientras viaja &middot; la forma</p>
+      <p class="eyebrow" style="margin:clamp(2.6rem,6vh,4rem) 0 .9rem;color:var(--blue);">While it travels &middot; the shape</p>
       <div class="tipos">
         <figure class="tipo">
-          <img src="assets/tipo-tap.jpg" alt="Bloque de tap simple" />
-          <figcaption>Tap &middot; pieza simple</figcaption>
+          <img src="assets/tipo-tap.jpg" alt="Simple tap tile" />
+          <figcaption>Tap &middot; simple piece</figcaption>
         </figure>
         <figure class="tipo">
-          <img src="assets/tipo-hold.jpg" alt="Bloque de hold estirado" />
-          <figcaption>Hold &middot; cinta larga</figcaption>
+          <img src="assets/tipo-hold.jpg" alt="Stretched hold tile" />
+          <figcaption>Hold &middot; long ribbon</figcaption>
         </figure>
         <figure class="tipo">
-          <img src="assets/tipo-dir.jpg" alt="Bloque direccional con flecha" />
-          <figcaption>Direccional &middot; flecha</figcaption>
+          <img src="assets/tipo-dir.jpg" alt="Directional tile with arrow" />
+          <figcaption>Directional &middot; arrow</figcaption>
         </figure>
       </div>
 
-      <p class="note" style="margin-top:1.6rem;">Las tres son s&oacute;lido y el mismo cian. Lo &uacute;nico que cambia es la <b>silueta</b>. La pieza que se acerca no puede anticipar el resultado, porque el resultado todav&iacute;a no existe: <b>la forma dice qu&eacute; es, el color dice c&oacute;mo sali&oacute;</b>.</p>
+      <p class="note" style="margin-top:1.6rem;">All three are solid and the same cyan. The only thing that changes is the <b>silhouette</b>. An approaching piece cannot anticipate the outcome, because the outcome does not exist yet: <b>shape says what it is, colour says how it went</b>.</p>
 
     </div>
   </section>
 
   <section class="band">
     <div class="band__head reveal">
-      <p class="eyebrow">Criterio</p>
-      <h2>Halos y VFX</h2>
-      <span class="caption">De recurso constante a recurso escaso</span>
+      <p class="eyebrow">Criterion</p>
+      <h2>Halos and VFX</h2>
+      <span class="caption">From constant resource to scarce one</span>
     </div>
 
     <div class="band__inner">
 
-      <p class="note">Si cada acierto dispara halo, el halo no significa nada: cuando todo se celebra, nada se celebra.</p>
-      <p class="note" style="margin-top:.9rem;">El VFX pasa a ser <b>econom&iacute;a, no decoraci&oacute;n</b>. Se reserva para el m&eacute;rito real &mdash; la cadena sostenida, el momento alto de la canci&oacute;n &mdash; y el acierto com&uacute;n se resuelve con una respuesta m&aacute;s seca.</p>
+      <p class="note">If every hit fires a halo, the halo means nothing: when everything is celebrated, nothing is.</p>
+      <p class="note" style="margin-top:.9rem;">VFX becomes <b>economy, not decoration</b>. It is reserved for real merit &mdash; the sustained chain, the high point of the song &mdash; and the ordinary hit is answered more drily.</p>
 
-      <p class="eyebrow" style="margin:clamp(2.6rem,6vh,4rem) 0 .9rem;color:var(--blue);">Los tres estados en tres mundos</p>
+      <p class="eyebrow" style="margin:clamp(2.6rem,6vh,4rem) 0 .9rem;color:var(--blue);">The three states across three worlds</p>
 
       <div class="fxgrid">
         <figure class="fxcard reveal">
-          <img src="assets/fx-bosque-great.jpg" alt="Efecto Great sobre bosque diurno" />
-          <figcaption><span class="k k--great">Great</span>Bosque diurno</figcaption>
+          <img src="assets/fx-bosque-great.jpg" alt="Great effect over the daylight forest" />
+          <figcaption><span class="k k--great">Great</span>Daylight forest</figcaption>
         </figure>
         <figure class="fxcard reveal">
-          <img src="assets/fx-bosque-miss.jpg" alt="Efecto Miss sobre bosque diurno" />
-          <figcaption><span class="k k--miss">Miss</span>Bosque diurno</figcaption>
+          <img src="assets/fx-bosque-miss.jpg" alt="Miss effect over the daylight forest" />
+          <figcaption><span class="k k--miss">Miss</span>Daylight forest</figcaption>
         </figure>
         <figure class="fxcard reveal">
-          <img src="assets/fx-bosque-exc.jpg" alt="Efecto Excellent sobre bosque diurno" />
-          <figcaption><span class="k k--exc">Excellent</span>Bosque diurno</figcaption>
+          <img src="assets/fx-bosque-exc.jpg" alt="Excellent effect over the daylight forest" />
+          <figcaption><span class="k k--exc">Excellent</span>Daylight forest</figcaption>
         </figure>
         <figure class="fxcard reveal">
-          <img src="assets/fx-tren-great.jpg" alt="Efecto Great sobre el tren al amanecer" />
-          <figcaption><span class="k k--great">Great</span>El tren, amanecer</figcaption>
+          <img src="assets/fx-tren-great.jpg" alt="Great effect over the train at dawn" />
+          <figcaption><span class="k k--great">Great</span>The train, dawn</figcaption>
         </figure>
         <figure class="fxcard reveal">
-          <img src="assets/fx-tren-miss.jpg" alt="Efecto Miss sobre el tren al amanecer" />
-          <figcaption><span class="k k--miss">Miss</span>El tren, amanecer</figcaption>
+          <img src="assets/fx-tren-miss.jpg" alt="Miss effect over the train at dawn" />
+          <figcaption><span class="k k--miss">Miss</span>The train, dawn</figcaption>
         </figure>
         <figure class="fxcard reveal">
-          <img src="assets/fx-tren-exc.jpg" alt="Efecto Excellent sobre el tren al amanecer" />
-          <figcaption><span class="k k--exc">Excellent</span>El tren, amanecer</figcaption>
+          <img src="assets/fx-tren-exc.jpg" alt="Excellent effect over the train at dawn" />
+          <figcaption><span class="k k--exc">Excellent</span>The train, dawn</figcaption>
         </figure>
         <figure class="fxcard reveal">
-          <img src="assets/fx-hanok-great.jpg" alt="Efecto Great sobre la aldea hanok" />
-          <figcaption><span class="k k--great">Great</span>Aldea hanok</figcaption>
+          <img src="assets/fx-hanok-great.jpg" alt="Great effect over the hanok village" />
+          <figcaption><span class="k k--great">Great</span>Hanok village</figcaption>
         </figure>
         <figure class="fxcard reveal">
-          <img src="assets/fx-hanok-miss.jpg" alt="Efecto Miss sobre la aldea hanok" />
-          <figcaption><span class="k k--miss">Miss</span>Aldea hanok</figcaption>
+          <img src="assets/fx-hanok-miss.jpg" alt="Miss effect over the hanok village" />
+          <figcaption><span class="k k--miss">Miss</span>Hanok village</figcaption>
         </figure>
         <figure class="fxcard reveal">
-          <img src="assets/fx-hanok-exc.jpg" alt="Efecto Excellent sobre la aldea hanok" />
-          <figcaption><span class="k k--exc">Excellent</span>Aldea hanok</figcaption>
+          <img src="assets/fx-hanok-exc.jpg" alt="Excellent effect over the hanok village" />
+          <figcaption><span class="k k--exc">Excellent</span>Hanok village</figcaption>
         </figure>
       </div>
 
-      <p class="note" style="margin-top:1.6rem;">Los tres estados no se distinguen solo por color sino por <b>mecanismo</b>: el Great es un halo dorado que inunda el casillero, el Miss es un <b>campo roto</b> de grietas magenta y fragmentos, el Excellent es un halo iridiscente con n&uacute;cleo blanco. Aunque el mundo cambie, cada uno se reconoce por c&oacute;mo se comporta.</p>
+      <p class="note" style="margin-top:1.6rem;">The three states differ not only by colour but by <b>mechanism</b>: Great is a golden halo flooding the gate, Miss is a <b>broken field</b> of magenta cracks and shards, Excellent is an iridescent halo with a white core. However the world changes, each one is recognised by how it behaves.</p>
 
-      <p class="note" style="margin-top:.9rem;">La regla que los hace convivir con cualquier escenario: <b>el efecto vive sobre el casillero</b>, que est&aacute; en el borde. Puede ser grande y llamativo sin invadir el centro, donde ocurre la pel&iacute;cula.</p>
+      <p class="note" style="margin-top:.9rem;">The rule that lets them coexist with any world: <b>the effect lives on the gate</b>, which sits at the screen edge. It can be large and loud without invading the centre, where the film happens.</p>
 
-      <p class="note" style="margin-top:.9rem;">El hallazgo de la prueba: en los mundos claros &mdash; el tren pastel y el hanok a plena luz &mdash; el estado fr&aacute;gil no es el Miss sino el <b>Excellent</b>. Sus pasteles compiten con la luz ambiente y lo que lo salva no es el color sino el valor. De ah&iacute; una restricci&oacute;n concreta: <b>el Excellent necesita n&uacute;cleo blanco en cualquier escenario claro</b>. El Miss, en cambio, es el m&aacute;s robusto de los tres: el campo roto funciona igual en los tres mundos.</p>
+      <p class="note" style="margin-top:.9rem;">The finding: in the bright worlds &mdash; the pastel train and the sunlit hanok &mdash; the fragile state is not Miss but <b>Excellent</b>. Its pastels compete with the ambient light, and what saves it is not colour but value. Hence a concrete constraint: <b>Excellent needs a white core in any bright world</b>. Miss, by contrast, is the most robust of the three: the broken field works identically in all three worlds.</p>
     </div>
   </section>
 
@@ -1153,7 +1150,7 @@ footer{padding:clamp(2.5rem,7vh,4rem) var(--gutter);border-top:1px solid var(--h
   <details class="history reveal">
     <summary>
       <span class="history__t">Look Research History</span>
-      <span class="history__chev"><span class="lbl--closed">Desplegar</span><span class="lbl--open">Plegar</span></span>
+      <span class="history__chev"><span class="lbl--closed">Expand</span><span class="lbl--open">Collapse</span></span>
     </summary>
     <div class="history__body">
 
@@ -1161,21 +1158,21 @@ footer{padding:clamp(2.5rem,7vh,4rem) var(--gutter);border-top:1px solid var(--h
   <!-- SISTEMA DE COLOR -->
   <section class="band band--honmoon">
     <div class="band__head reveal">
-      <p class="eyebrow">Código de color</p>
+      <p class="eyebrow">Colour code</p>
       <h2>Honmoon</h2>
-      <span class="caption">Cada energía de la película es un estado de tap</span>
+      <span class="caption">Every energy in the film is a tap state</span>
     </div>
 
     <div class="honmoon">
 
       <article class="energy energy--blue reveal">
-        <img class="energy__img" src="assets/palette-blue.jpg" alt="Campo Honmoon azul" />
+        <img class="energy__img" src="assets/palette-blue.jpg" alt="Blue Honmoon field" />
         <div class="energy__overlay">
           <div>
             <h3 class="energy__name">Blue</h3>
-            <p class="energy__role">Base · acierto correcto</p>
+            <p class="energy__role">Base · a correct hit</p>
           </div>
-            <div class="energy__right"><div class="energy__state"><span class="k">Estado de tap</span><strong>Good</strong></div><div class="chips">
+            <div class="energy__right"><div class="energy__state"><span class="k">Tap state</span><strong>Good</strong></div><div class="chips">
             <span class="chip"><i style="background:#00c8ff"></i>#00C8FF</span>
             <span class="chip"><i style="background:#0079ba"></i>#0079BA</span>
             <span class="chip"><i style="background:#9fe8ff"></i>#9FE8FF</span>
@@ -1184,13 +1181,13 @@ footer{padding:clamp(2.5rem,7vh,4rem) var(--gutter);border-top:1px solid var(--h
       </article>
 
       <article class="energy energy--pink reveal">
-        <img class="energy__img" src="assets/palette-pink.jpg" alt="Campo Honmoon rosa, energía Huntrix" />
+        <img class="energy__img" src="assets/palette-pink.jpg" alt="Pink Honmoon field, Huntrix energy" />
         <div class="energy__overlay">
           <div>
             <h3 class="energy__name">Pink</h3>
-            <p class="energy__role">Demonio · el error</p>
+            <p class="energy__role">Demon · the mistake</p>
           </div>
-            <div class="energy__right"><div class="energy__state"><span class="k">Estado de tap</span><strong>Miss</strong></div><div class="chips">
+            <div class="energy__right"><div class="energy__state"><span class="k">Tap state</span><strong>Miss</strong></div><div class="chips">
             <span class="chip"><i style="background:#ff00ef"></i>#FF00EF</span>
             <span class="chip"><i style="background:#cf008d"></i>#CF008D</span>
             <span class="chip"><i style="background:#ff8ef1"></i>#FF8EF1</span>
@@ -1199,13 +1196,13 @@ footer{padding:clamp(2.5rem,7vh,4rem) var(--gutter);border-top:1px solid var(--h
       </article>
 
       <article class="energy energy--gold reveal">
-        <img class="energy__img" src="assets/palette-golden.jpg" alt="Campo Honmoon dorado" />
+        <img class="energy__img" src="assets/palette-golden.jpg" alt="Golden Honmoon field" />
         <div class="energy__overlay">
           <div>
             <h3 class="energy__name">Golden</h3>
-            <p class="energy__role">Clímax · el acierto alto</p>
+            <p class="energy__role">Climax · the high hit</p>
           </div>
-            <div class="energy__right"><div class="energy__state"><span class="k">Estado de tap</span><strong>Great</strong></div><div class="chips">
+            <div class="energy__right"><div class="energy__state"><span class="k">Tap state</span><strong>Great</strong></div><div class="chips">
             <span class="chip"><i style="background:#ffc23c"></i>#FFC23C</span>
             <span class="chip"><i style="background:#ba8400"></i>#BA8400</span>
             <span class="chip"><i style="background:#ffe9b0"></i>#FFE9B0</span>
@@ -1214,13 +1211,13 @@ footer{padding:clamp(2.5rem,7vh,4rem) var(--gutter);border-top:1px solid var(--h
       </article>
 
       <article class="energy energy--rainbow reveal">
-        <img class="energy__img" src="assets/palette-rainbow.jpg" alt="Honmoon completo, espectro completo" />
+        <img class="energy__img" src="assets/palette-rainbow.jpg" alt="Full Honmoon, full spectrum" />
         <div class="energy__overlay">
           <div>
             <h3 class="energy__name">Rainbow</h3>
-            <p class="energy__role">Honmoon completo · el objetivo</p>
+            <p class="energy__role">Full Honmoon · the goal</p>
           </div>
-            <div class="energy__right"><div class="energy__state"><span class="k">Estado de tap</span><strong>Excellent</strong></div><div class="chips">
+            <div class="energy__right"><div class="energy__state"><span class="k">Tap state</span><strong>Excellent</strong></div><div class="chips">
             <span class="chip"><i style="background:#ff2e55"></i>#FF2E55</span>
             <span class="chip"><i style="background:#ffc23c"></i>#FFC23C</span>
             <span class="chip"><i style="background:#00c8ff"></i>#00C8FF</span>
@@ -1236,8 +1233,8 @@ footer{padding:clamp(2.5rem,7vh,4rem) var(--gutter);border-top:1px solid var(--h
   <!-- INTERFAZ -->
   <section class="band">
     <div class="band__head reveal">
-      <h2>Interfaz</h2>
-      <span class="caption">Centro libre · todo lo jugable en el pulgar</span>
+      <h2>Interface</h2>
+      <span class="caption">Open centre · everything playable under the thumb</span>
     </div>
 
     <div class="band__inner">
@@ -1245,33 +1242,33 @@ footer{padding:clamp(2.5rem,7vh,4rem) var(--gutter);border-top:1px solid var(--h
 
         <article class="proposal reveal">
           <div class="proposal__label">
-            <h3>Propuesta vertical</h3>
-            <span class="tagline">Bloques laterales</span>
+            <h3>Vertical proposal</h3>
+            <span class="tagline">Side tiles</span>
           </div>
           <div class="proposal__shot">
-            <video src="assets/vertical-loop.webm" autoplay muted loop playsinline preload="metadata" aria-label="Gameplay de la propuesta vertical"></video>
+            <video src="assets/vertical-loop.webm" autoplay muted loop playsinline preload="metadata" aria-label="Vertical proposal gameplay"></video>
           </div>
           <div class="proposal__meta">
-            <span>3 bloques por lado</span>
-            <span>Prueba <b>en movimiento</b></span>
-            <span>Escenario <b>libre</b></span>
-            <span>Profundidad <b>nula</b></span>
+            <span>3 tiles per side</span>
+            <span>Test <b>in motion</b></span>
+            <span>World <b>unobstructed</b></span>
+            <span>Depth <b>none</b></span>
           </div>
         </article>
 
         <article class="proposal reveal">
           <div class="proposal__label">
-            <h3>Propuesta horizontal</h3>
-            <span class="tagline">Carriles en piso · eje Z</span>
+            <h3>Horizontal proposal</h3>
+            <span class="tagline">Floor corridors · Z axis</span>
           </div>
           <div class="proposal__shot">
-            <video src="assets/horizontal-loop.webm" autoplay muted loop playsinline preload="metadata" aria-label="Gameplay de la propuesta horizontal"></video>
+            <video src="assets/horizontal-loop.webm" autoplay muted loop playsinline preload="metadata" aria-label="Horizontal proposal gameplay"></video>
           </div>
           <div class="proposal__meta">
-            <span>3 carriles por lado</span>
-            <span>Prueba <b>en movimiento</b></span>
-            <span>Anticipación <b>alta</b></span>
-            <span>Compite con el <b>fondo</b></span>
+            <span>3 corridors per side</span>
+            <span>Test <b>in motion</b></span>
+            <span>Anticipation <b>high</b></span>
+            <span>Competes with the <b>background</b></span>
           </div>
         </article>
 
@@ -1282,44 +1279,44 @@ footer{padding:clamp(2.5rem,7vh,4rem) var(--gutter);border-top:1px solid var(--h
   <!-- VARIANTES -->
   <section class="band">
     <div class="band__head reveal">
-      <h2>Escenarios</h2>
-      <span class="caption">Tres mundos · la misma interfaz en sus dos formatos</span>
+      <h2>Worlds</h2>
+      <span class="caption">Three worlds · the same interface in both formats</span>
     </div>
 
     <div class="band__inner">
-      <p class="eyebrow" style="margin:0 0 .9rem;color:var(--blue);">Interfaz horizontal · carriles en piso</p>
+      <p class="eyebrow" style="margin:0 0 .9rem;color:var(--blue);">Horizontal interface · floor corridors</p>
       <div class="variants">
         <figure class="variant reveal">
-          <img src="assets/conv-1-ciudad.jpg" alt="Escenario ciudad neón con las tres protagonistas" />
-          <figcaption>01 · Ciudad neón — tres personajes</figcaption>
+          <img src="assets/conv-1-ciudad.jpg" alt="Neon city world with the three leads" />
+          <figcaption>01 · Neon city — three characters</figcaption>
         </figure>
         <figure class="variant reveal">
-          <img src="assets/conv-2-cielo.jpg" alt="Escenario de cielo diurno" />
-          <figcaption>02 · Cielo diurno — el caso difícil</figcaption>
+          <img src="assets/conv-2-cielo.jpg" alt="Daylight sky world" />
+          <figcaption>02 · Daylight sky — the hard case</figcaption>
         </figure>
         <figure class="variant reveal">
-          <img src="assets/conv-3-demonio.jpg" alt="Escenario del mundo demonio" />
-          <figcaption>03 · Mundo demonio — el carril, lo único frío</figcaption>
+          <img src="assets/conv-3-demonio.jpg" alt="Demon world" />
+          <figcaption>03 · Demon world — the corridor, the only cool element</figcaption>
         </figure>
       </div>
 
-      <p class="eyebrow" style="margin:clamp(2rem,5vh,3rem) 0 .9rem;color:var(--blue);">Interfaz vertical · rieles laterales, centro libre</p>
+      <p class="eyebrow" style="margin:clamp(2rem,5vh,3rem) 0 .9rem;color:var(--blue);">Vertical interface · side rails, open centre</p>
       <div class="variants">
         <figure class="variant reveal">
-          <img src="assets/conv-v1-ciudad.jpg" alt="Interfaz vertical sobre el escenario de ciudad neón" />
-          <figcaption>01 · Ciudad neón — rieles a los costados</figcaption>
+          <img src="assets/conv-v1-ciudad.jpg" alt="Vertical interface over the neon city world" />
+          <figcaption>01 · Neon city — rails at the sides</figcaption>
         </figure>
         <figure class="variant reveal">
-          <img src="assets/conv-v2-cielo.jpg" alt="Interfaz vertical sobre el escenario de cielo diurno" />
-          <figcaption>02 · Cielo diurno — legibilidad sobre fondo claro</figcaption>
+          <img src="assets/conv-v2-cielo.jpg" alt="Vertical interface over the daylight sky world" />
+          <figcaption>02 · Daylight sky — legibility over a bright background</figcaption>
         </figure>
         <figure class="variant reveal">
-          <img src="assets/conv-v3-demonio.jpg" alt="Interfaz vertical sobre el escenario del mundo demonio" />
-          <figcaption>03 · Mundo demonio — el riel, lo único frío</figcaption>
+          <img src="assets/conv-v3-demonio.jpg" alt="Vertical interface over the demon world" />
+          <figcaption>03 · Demon world — the rail, the only cool element</figcaption>
         </figure>
       </div>
 
-      <p class="note">El mismo mundo sostiene los dos formatos sin retocarse. Lo que cambia es dónde vive el tablero: en el piso, ganando eje Z, o en los bordes, dejando el centro entero para el personaje y la cámara.</p>
+      <p class="note">The same world holds both formats without a single retouch. What changes is where the board lives: on the floor, gaining a Z axis, or at the edges, leaving the whole centre to the character and the camera.</p>
     </div>
   </section>
 
@@ -1327,67 +1324,67 @@ footer{padding:clamp(2.5rem,7vh,4rem) var(--gutter);border-top:1px solid var(--h
   <!-- BLOQUES · REFERENCIA -->
   <section class="band">
     <div class="band__head reveal">
-      <h2>Referencias rhythm games</h2>
-      <span class="caption">Cuatro maneras de resolver la pieza · y cómo se ve el acierto</span>
+      <h2>Rhythm game references</h2>
+      <span class="caption">Four ways to solve the tile · and what a hit looks like</span>
     </div>
 
     <div class="band__inner">
       <div class="blocks">
         <figure class="block reveal">
-          <video src="assets/blk-arcaea.webm" autoplay muted loop playsinline preload="metadata" aria-label="Gameplay de Arcaea"></video>
+          <video src="assets/blk-arcaea.webm" autoplay muted loop playsinline preload="metadata" aria-label="Arcaea gameplay"></video>
           <figcaption>
-            <span class="k">Teja de vidrio</span>
+            <span class="k">Glass tile</span>
             <h4>Arcaea</h4>
-            <p>Plana y translúcida sobre carril en perspectiva. Se lee por contraste, no por masa.</p>
+            <p>Flat and translucent over a corridor in perspective. It reads by contrast, not by mass.</p>
           </figcaption>
         </figure>
         <figure class="block reveal">
-          <video src="assets/blk-sekai.webm" autoplay muted loop playsinline preload="metadata" aria-label="Gameplay de Project Sekai"></video>
+          <video src="assets/blk-sekai.webm" autoplay muted loop playsinline preload="metadata" aria-label="Project Sekai gameplay"></video>
           <figcaption>
-            <span class="k">Barra plana</span>
+            <span class="k">Flat bar</span>
             <h4>Project Sekai</h4>
-            <p>La más legible del set y la menos memorable. Cero personalidad, cero error de lectura.</p>
+            <p>The most legible of the set and the least memorable. Zero personality, zero misreads.</p>
           </figcaption>
         </figure>
         <figure class="block reveal">
-          <video src="assets/blk-phigros.webm" autoplay muted loop playsinline preload="metadata" aria-label="Gameplay de Phigros"></video>
+          <video src="assets/blk-phigros.webm" autoplay muted loop playsinline preload="metadata" aria-label="Phigros gameplay"></video>
           <figcaption>
-            <span class="k">Barra mínima</span>
+            <span class="k">Minimal bar</span>
             <h4>Phigros</h4>
-            <p>Casi tipográfica. El bloque casi desaparece y el protagonismo se lo lleva el fondo.</p>
+            <p>Almost typographic. The tile nearly disappears and the background takes the lead.</p>
           </figcaption>
         </figure>
         <figure class="block reveal">
-          <video src="assets/blk-rotaeno.webm" autoplay muted loop playsinline preload="metadata" aria-label="Gameplay de Rotaeno"></video>
+          <video src="assets/blk-rotaeno.webm" autoplay muted loop playsinline preload="metadata" aria-label="Rotaeno gameplay"></video>
           <figcaption>
-            <span class="k">Anillo rotativo</span>
+            <span class="k">Rotating ring</span>
             <h4>Rotaeno</h4>
-            <p>El bloque no se mueve: gira el aparato. La cámara es el input y el carril rodea al jugador.</p>
+            <p>The tile does not move: the device rotates. The camera is the input and the corridor surrounds the player.</p>
           </figcaption>
         </figure>
       </div>
 
       <div class="band__head reveal" style="margin-top:clamp(2.5rem,6vh,4rem);">
-        <p class="eyebrow">Referencia — feedback</p>
+        <p class="eyebrow">Reference — feedback</p>
         <h2 style="font-size:clamp(1.4rem,3vw,2.2rem);">Tap effect</h2>
-        <span class="caption">Cian para el impacto normal · dorado para el perfecto</span>
+        <span class="caption">Cyan for the normal hit · gold for the perfect one</span>
       </div>
       <div class="fxgrid">
         <figure class="fxclip reveal">
           <div class="fxclip__frame">
-            <video src="assets/tap-ref.webm" autoplay muted loop playsinline preload="metadata" aria-label="Gameplay de referencia"></video>
+            <video src="assets/tap-ref.webm" autoplay muted loop playsinline preload="metadata" aria-label="Reference gameplay"></video>
           </div>
-          <figcaption class="fxcap">Carril en movimiento · captura de referencia</figcaption>
+          <figcaption class="fxcap">Corridor in motion · reference capture</figcaption>
         </figure>
 
         <figure class="fxshot fxshot--cyan reveal">
-          <img src="assets/fx-normal.png" alt="Impacto normal en cian" />
-          <figcaption class="fxcap"><b>Impacto normal</b> · halo corto, sin texto</figcaption>
+          <img src="assets/fx-normal.png" alt="Normal hit in cyan" />
+          <figcaption class="fxcap"><b>Normal hit</b> · short halo, no text</figcaption>
         </figure>
 
         <figure class="fxshot fxshot--gold reveal">
-          <img src="assets/fx-perfect.png" alt="Perfect con estallido dorado" />
-          <figcaption class="fxcap"><b>Perfect</b> · estallido dorado a pantalla completa</figcaption>
+          <img src="assets/fx-perfect.png" alt="Perfect with a golden burst" />
+          <figcaption class="fxcap"><b>Perfect</b> · full screen golden burst</figcaption>
         </figure>
       </div>
     </div>
@@ -1396,48 +1393,48 @@ footer{padding:clamp(2.5rem,7vh,4rem) var(--gutter);border-top:1px solid var(--h
   <!-- PROPUESTAS DE BLOQUE -->
   <section class="band">
     <div class="band__head reveal">
-      <h2>Propuestas bloques</h2>
-      <span class="caption">Mismo plano y misma luz · cambia sólo el bloque · en las dos interfaces</span>
+      <h2>Tile proposals</h2>
+      <span class="caption">Same shot and same light · only the tile changes · in both interfaces</span>
     </div>
 
     <div class="band__inner">
       <div class="props">
         <article class="prop reveal">
           <div class="prop__label">
-            <h3>A · Vidrio</h3>
-            <span class="tag">Translúcido</span>
+            <h3>A · Glass</h3>
+            <span class="tag">Translucent</span>
           </div>
           <div class="prop__body">
           <div class="prop__pair">
             <figure class="prop__fig">
-              <img src="assets/prop-a-vidrio.jpg" alt="Bloque A · Vidrio en carriles horizontales" />
-              <figcaption>Carriles en piso · eje Z</figcaption>
+              <img src="assets/prop-a-vidrio.jpg" alt="Tile A · Glass in horizontal corridors" />
+              <figcaption>Floor corridors · Z axis</figcaption>
             </figure>
             <figure class="prop__fig">
-              <img src="assets/vert-a-vidrio.jpg" alt="Bloque A · Vidrio en casilleros verticales" />
-              <figcaption>Casilleros verticales · laterales</figcaption>
+              <img src="assets/vert-a-vidrio.jpg" alt="Tile A · Glass in vertical gates" />
+              <figcaption>Vertical gates · sides</figcaption>
             </figure>
           </div>
           </div>
         </article>
         <article class="prop reveal">
           <div class="prop__label">
-            <h3>B · Sólido</h3>
-            <span class="tag">Opaco con volumen</span>
+            <h3>B · Solid</h3>
+            <span class="tag">Opaque with volume</span>
           </div>
           <div class="prop__body">
           <div class="prop__pair prop__pair--tres">
             <figure class="prop__fig">
-              <img src="assets/ref-estela.jpg" alt="Estela Honmoon de la película" />
-              <figcaption>Referencia · estela Honmoon</figcaption>
+              <img src="assets/ref-estela.jpg" alt="Honmoon trail from the film" />
+              <figcaption>Reference · Honmoon trail</figcaption>
             </figure>
             <figure class="prop__fig">
-              <img src="assets/prop-b-solido.jpg" alt="Bloque B · Sólido en carriles horizontales" />
-              <figcaption>Carriles en piso · eje Z</figcaption>
+              <img src="assets/prop-b-solido.jpg" alt="Tile B · Solid in horizontal corridors" />
+              <figcaption>Floor corridors · Z axis</figcaption>
             </figure>
             <figure class="prop__fig">
-              <img src="assets/vert-b-solido.jpg" alt="Bloque B · Sólido en casilleros verticales" />
-              <figcaption>Casilleros verticales · laterales</figcaption>
+              <img src="assets/vert-b-solido.jpg" alt="Tile B · Solid in vertical gates" />
+              <figcaption>Vertical gates · sides</figcaption>
             </figure>
           </div>
           </div>
@@ -1445,9 +1442,9 @@ footer{padding:clamp(2.5rem,7vh,4rem) var(--gutter);border-top:1px solid var(--h
       </div>
 
       <div class="band__head reveal" style="margin-top:clamp(2.5rem,6vh,4rem);">
-        <p class="eyebrow">Lámina</p>
-        <h2 style="font-size:clamp(1.4rem,3vw,2.2rem);">Los dos materiales en los cuatro estados</h2>
-        <span class="caption">Mismo tamaño, mismo ángulo, misma luz</span>
+        <p class="eyebrow">Plate</p>
+        <h2 style="font-size:clamp(1.4rem,3vw,2.2rem);">Both materials across the four states</h2>
+        <span class="caption">Same size, same angle, same light</span>
       </div>
       <div class="matrix">
         <div class="matrix__corner"></div>
@@ -1455,18 +1452,18 @@ footer{padding:clamp(2.5rem,7vh,4rem) var(--gutter);border-top:1px solid var(--h
         <div class="matrix__col matrix__col--good">Good</div>
         <div class="matrix__col matrix__col--great">Great</div>
         <div class="matrix__col matrix__col--exc">Excellent</div>
-        <div class="matrix__mobrow">Vidrio</div>
-        <div class="matrix__row">Vidrio</div>
-        <figure class="matrix__cell"><img src="assets/blk-vidrio-miss.jpg" alt="Bloque Vidrio en estado Miss" /></figure>
-        <figure class="matrix__cell"><img src="assets/blk-vidrio-good.jpg" alt="Bloque Vidrio en estado Good" /></figure>
-        <figure class="matrix__cell"><img src="assets/blk-vidrio-great.jpg" alt="Bloque Vidrio en estado Great" /></figure>
-        <figure class="matrix__cell"><img src="assets/blk-vidrio-exc.jpg" alt="Bloque Vidrio en estado Excellent" /></figure>
-        <div class="matrix__mobrow">Sólido</div>
-        <div class="matrix__row">Sólido</div>
-        <figure class="matrix__cell"><img src="assets/blk-solido-miss.jpg" alt="Bloque Sólido en estado Miss" /></figure>
-        <figure class="matrix__cell"><img src="assets/blk-solido-good.jpg" alt="Bloque Sólido en estado Good" /></figure>
-        <figure class="matrix__cell"><img src="assets/blk-solido-great.jpg" alt="Bloque Sólido en estado Great" /></figure>
-        <figure class="matrix__cell"><img src="assets/blk-solido-exc.jpg" alt="Bloque Sólido en estado Excellent" /></figure>
+        <div class="matrix__mobrow">Glass</div>
+        <div class="matrix__row">Glass</div>
+        <figure class="matrix__cell"><img src="assets/blk-vidrio-miss.jpg" alt="Glass tile in Miss state" /></figure>
+        <figure class="matrix__cell"><img src="assets/blk-vidrio-good.jpg" alt="Glass tile in Good state" /></figure>
+        <figure class="matrix__cell"><img src="assets/blk-vidrio-great.jpg" alt="Glass tile in Great state" /></figure>
+        <figure class="matrix__cell"><img src="assets/blk-vidrio-exc.jpg" alt="Glass tile in Excellent state" /></figure>
+        <div class="matrix__mobrow">Solid</div>
+        <div class="matrix__row">Solid</div>
+        <figure class="matrix__cell"><img src="assets/blk-solido-miss.jpg" alt="Solid tile in Miss state" /></figure>
+        <figure class="matrix__cell"><img src="assets/blk-solido-good.jpg" alt="Solid tile in Good state" /></figure>
+        <figure class="matrix__cell"><img src="assets/blk-solido-great.jpg" alt="Solid tile in Great state" /></figure>
+        <figure class="matrix__cell"><img src="assets/blk-solido-exc.jpg" alt="Solid tile in Excellent state" /></figure>
       </div>
     </div>
   </section>
@@ -1474,9 +1471,9 @@ footer{padding:clamp(2.5rem,7vh,4rem) var(--gutter);border-top:1px solid var(--h
   <!-- FORMA Y COLOR -->
   <section class="band">
     <div class="band__head reveal">
-      <p class="eyebrow">Sistema</p>
-      <h2>Bloques con acción</h2>
-      <span class="caption">Dos canales que no se pisan</span>
+      <p class="eyebrow">System</p>
+      <h2>Tiles in action</h2>
+      <span class="caption">Two channels that never overlap</span>
     </div>
 
     <div class="band__inner">
@@ -1484,50 +1481,50 @@ footer{padding:clamp(2.5rem,7vh,4rem) var(--gutter);border-top:1px solid var(--h
 
         <article class="reveal" style="display:grid;gap:1rem;">
           <div class="rule2__head">
-            <h3>Mientras viaja · la forma</h3>
-            <span class="tag">Un solo color</span>
+            <h3>While it travels · the shape</h3>
+            <span class="tag">One single colour</span>
           </div>
           <div class="tipos">
             <figure class="tipo">
-              <img src="assets/tipo-tap.jpg" alt="Bloque de tap simple" />
-              <figcaption>Tap · pieza simple</figcaption>
+              <img src="assets/tipo-tap.jpg" alt="Simple tap tile" />
+              <figcaption>Tap · simple piece</figcaption>
             </figure>
             <figure class="tipo">
-              <img src="assets/tipo-hold.jpg" alt="Bloque de hold estirado" />
-              <figcaption>Hold · cinta larga</figcaption>
+              <img src="assets/tipo-hold.jpg" alt="Stretched hold tile" />
+              <figcaption>Hold · long ribbon</figcaption>
             </figure>
             <figure class="tipo">
-              <img src="assets/tipo-dir.jpg" alt="Bloque direccional con flecha" />
-              <figcaption>Direccional · flecha</figcaption>
+              <img src="assets/tipo-dir.jpg" alt="Directional tile with arrow" />
+              <figcaption>Directional · arrow</figcaption>
             </figure>
           </div>
-          <p>Las tres son sólido y el mismo cian. Lo único que cambia es la silueta. La pieza que se acerca no puede anticipar el resultado, porque el resultado todavía no existe.</p>
+          <p>All three are solid and the same cyan. The only thing that changes is the silhouette. An approaching piece cannot anticipate the outcome, because the outcome does not exist yet.</p>
         </article>
 
         <article class="reveal" style="display:grid;gap:1rem;">
           <div class="rule2__head">
-            <h3>Direccional en juego</h3>
+            <h3>Directional in play</h3>
             <span class="tag">Swipe</span>
           </div>
           <div class="prop__fig" style="border:1px solid var(--hairline);background:var(--stage-100);overflow:hidden;">
-            <img src="assets/st-h-direccional.jpg" alt="Notas direccionales con flecha en el carril" style="width:100%;display:block;" />
+            <img src="assets/st-h-direccional.jpg" alt="Directional arrow notes in the corridor" style="width:100%;display:block;" />
           </div>
-          <p>Carril izquierdo con flechas y estela de swipe, carril derecho con taps simples. La diferencia se lee sin mirar dos veces, y sin cambiar el color.</p>
+          <p>Left corridor with arrows and a swipe trail, right corridor with simple taps. The difference reads without a second look, and without changing colour.</p>
         </article>
 
         <article class="reveal" style="display:grid;gap:1rem;">
           <div class="rule2__head">
-            <h3>En el impacto · el color</h3>
-            <span class="tag">Cinco momentos</span>
+            <h3>On impact · the colour</h3>
+            <span class="tag">Five moments</span>
           </div>
           <div class="flow">
-            <div><span class="k">Se acerca</span><strong class="c-wait">Neutro</strong><small>#9FE8FF</small></div>
-            <div><span class="k">Good</span><strong class="c-good">Cian bajo</strong><small>#59A9C0 · con partículas</small></div>
-            <div><span class="k">Great</span><strong class="c-great">Dorado</strong><small>#FFC23C</small></div>
-            <div><span class="k">Excellent</span><strong class="c-exc">Espectro</strong><small>full range</small></div>
-            <div><span class="k">Miss</span><strong class="c-miss">Magenta</strong><small>#FF2E55 · carril apagado</small></div>
+            <div><span class="k">Incoming</span><strong class="c-wait">Neutral</strong><small>#9FE8FF</small></div>
+            <div><span class="k">Good</span><strong class="c-good">Low cyan</strong><small>#59A9C0 · with particles</small></div>
+            <div><span class="k">Great</span><strong class="c-great">Gold</strong><small>#FFC23C</small></div>
+            <div><span class="k">Excellent</span><strong class="c-exc">Spectrum</strong><small>full range</small></div>
+            <div><span class="k">Miss</span><strong class="c-miss">Magenta</strong><small>#FF2E55 · corridor goes dark</small></div>
           </div>
-          <p>El color sólo aparece cuando hay veredicto. Por eso la pieza viaja en un cian neutro y bajo: para que cualquiera de los cuatro resultados se lea como un cambio, incluso el Good.</p>
+          <p>Colour only appears when there is a verdict. That is why the piece travels in a neutral, low cyan: so that any of the four outcomes reads as a change, even the Good.</p>
         </article>
 
       </div>
@@ -1538,9 +1535,9 @@ footer{padding:clamp(2.5rem,7vh,4rem) var(--gutter);border-top:1px solid var(--h
   <!-- ESTADOS DEL BLOQUE DE ENERGIA -->
   <section class="band">
     <div class="band__head reveal">
-      <p class="eyebrow">Desarrollo — estados</p>
+      <p class="eyebrow">Development — states</p>
       <h2>Tap action</h2>
-      <span class="caption">Cada estado, en el carril</span>
+      <span class="caption">Every state, in the corridor</span>
     </div>
 
     <div class="band__inner">
@@ -1548,67 +1545,67 @@ footer{padding:clamp(2.5rem,7vh,4rem) var(--gutter);border-top:1px solid var(--h
         <article class="state state--good reveal">
           <div class="state__head">
             <h3>Good</h3>
-            <span class="tag">Cian bajo</span>
+            <span class="tag">Low cyan</span>
           </div>
           <div class="state__row">
             <figure class="state__fig">
-              <img src="assets/st-h-good.jpg" alt="Good en carriles horizontales" />
-              <figcaption>En juego · carriles en piso</figcaption>
+              <img src="assets/st-h-good.jpg" alt="Good in horizontal corridors" />
+              <figcaption>In play · floor corridors</figcaption>
             </figure>
           </div>
-          <p>El halo aparece pero se queda: llega a un tercio del carril, fino y en cian apagado. Confirma el acierto sin premiarlo.</p>
+          <p>The halo appears but stays put: it reaches a third of the corridor, thin and in muted cyan. It confirms the hit without rewarding it.</p>
         </article>
         <article class="state state--great reveal">
           <div class="state__head">
             <h3>Great</h3>
-            <span class="tag">Halo dorado</span>
+            <span class="tag">Golden halo</span>
           </div>
           <div class="state__row">
             <figure class="state__fig">
-              <img src="assets/st-h-great.jpg" alt="Great en carriles horizontales" />
-              <figcaption>En juego · carriles en piso</figcaption>
+              <img src="assets/st-h-great.jpg" alt="Great in horizontal corridors" />
+              <figcaption>In play · floor corridors</figcaption>
             </figure>
           </div>
-          <p>El halo nace en la línea de juicio e inunda el carril, tejido con los filamentos del Honmoon en vez de un resplandor plano.</p>
+          <p>The halo is born at the judgment line and floods the corridor, woven from Honmoon filaments instead of a flat glow.</p>
         </article>
         <article class="state state--exc reveal">
           <div class="state__head">
             <h3>Excellent</h3>
-            <span class="tag">Espectro completo</span>
+            <span class="tag">Full spectrum</span>
           </div>
           <div class="state__row">
             <figure class="state__fig">
-              <video src="assets/excellent-loop.webm" autoplay muted loop playsinline preload="metadata" aria-label="Excellent en movimiento"></video>
-              <figcaption>Horizontal · en movimiento</figcaption>
+              <video src="assets/excellent-loop.webm" autoplay muted loop playsinline preload="metadata" aria-label="Excellent in motion"></video>
+              <figcaption>Horizontal · in motion</figcaption>
             </figure>
           </div>
-          <p>El techo del sistema y el objetivo del juego: no tiene tope, se puede encadenar en todos los bloques. El espectro entero recorre el carril hasta el horizonte, con núcleo blanco y luz derramada sobre el escenario.</p>
+          <p>The ceiling of the system and the goal of the game: it has no cap, it can be chained across every tile. The whole spectrum runs down the corridor to the horizon, with a white core and light spilling over the world.</p>
         </article>
         <article class="state state--miss reveal">
           <div class="state__head">
             <h3>Miss</h3>
-            <span class="tag">Campo roto</span>
+            <span class="tag">Broken field</span>
           </div>
           <div class="state__row">
             <figure class="state__fig">
-              <img src="assets/st-h-miss.jpg" alt="Miss en carriles horizontales" />
-              <figcaption>En juego · carriles en piso</figcaption>
+              <img src="assets/st-h-miss.jpg" alt="Miss in horizontal corridors" />
+              <figcaption>In play · floor corridors</figcaption>
             </figure>
           </div>
-          <p>Las hebras se cortan y se abren en magenta. Lo que marca el error no es el color: es que el carril se apaga y el halo no aparece.</p>
+          <p>The strands snap and split open in magenta. What marks the error is not the colour: it is that the corridor goes dark and no halo appears.</p>
         </article>
         <article class="state state--hold reveal">
           <div class="state__head">
-            <h3>Hold largo</h3>
-            <span class="tag">Cinta sostenida</span>
+            <h3>Long hold</h3>
+            <span class="tag">Sustained ribbon</span>
           </div>
           <div class="state__row">
             <figure class="state__fig">
-              <img src="assets/st-h-hold.jpg" alt="Hold largo en carriles horizontales" />
-              <figcaption>En juego · carriles en piso</figcaption>
+              <img src="assets/st-h-hold.jpg" alt="Long hold in horizontal corridors" />
+              <figcaption>In play · floor corridors</figcaption>
             </figure>
           </div>
-          <p>El bloque se estira en una cinta trenzada que recorre el carril entero, con el halo sostenido y pulsando mientras dure la nota.</p>
+          <p>The tile stretches into a braided ribbon running the whole corridor, with the halo sustained and pulsing for as long as the note lasts.</p>
         </article>
       </div>
     </div>
@@ -1617,8 +1614,8 @@ footer{padding:clamp(2.5rem,7vh,4rem) var(--gutter);border-top:1px solid var(--h
   <!-- MECANICAS -->
   <section class="band">
     <div class="band__head reveal">
-      <h2>Referencia mecánicas</h2>
-      <span class="caption">Tres juegos que mueven la cámara sin perder el tablero</span>
+      <h2>Mechanics reference</h2>
+      <span class="caption">Three games that move the camera without losing the board</span>
     </div>
 
     <div class="band__inner">
@@ -1626,68 +1623,68 @@ footer{padding:clamp(2.5rem,7vh,4rem) var(--gutter);border-top:1px solid var(--h
         <figure class="reveal">
           <video src="assets/mec-sayonara.webm" autoplay muted loop playsinline preload="metadata" aria-label="Sayonara Wild Hearts"></video>
           <figcaption>
-            <span class="k">Cámara en vuelo</span>
+            <span class="k">Camera in flight</span>
             <h4>Sayonara Wild Hearts</h4>
-            <p>El personaje atraviesa escenarios que cambian y la cámara lo persigue. El tablero no existe: el mundo es el carril.</p>
+            <p>The character crosses shifting worlds and the camera chases. There is no board: the world is the corridor.</p>
           </figcaption>
         </figure>
         <figure class="reveal">
           <video src="assets/mec-hifirush.webm" autoplay muted loop playsinline preload="metadata" aria-label="Hi-Fi Rush"></video>
           <figcaption>
-            <span class="k">Combate al ritmo</span>
+            <span class="k">Combat on the beat</span>
             <h4>Hi-Fi Rush</h4>
-            <p>Cada golpe cae en el beat y el contador de combo es el marcador. Pelear y tapear son la misma acción.</p>
+            <p>Every hit lands on the beat and the combo counter is the score. Fighting and tapping are the same action.</p>
           </figcaption>
         </figure>
         <figure class="reveal">
           <video src="assets/mec-thumper.webm" autoplay muted loop playsinline preload="metadata" aria-label="Thumper"></video>
           <figcaption>
-            <span class="k">Riel en eje Z</span>
+            <span class="k">Rail on the Z axis</span>
             <h4>Thumper</h4>
-            <p>El escenario viene hacia vos sobre un riel. La profundidad es la mecánica, no la decoración.</p>
+            <p>The world comes at you along a rail. Depth is the mechanic, not the decoration.</p>
           </figcaption>
         </figure>
       </div>
 
       <div class="band__head reveal" style="margin-top:clamp(2.5rem,6vh,4rem);">
-        <h2 style="font-size:clamp(1.4rem,3vw,2.2rem);">Propuesta cámara dinámica</h2>
-        <span class="caption">Acciones con tap, direccional y holds</span>
+        <h2 style="font-size:clamp(1.4rem,3vw,2.2rem);">Dynamic camera proposal</h2>
+        <span class="caption">Actions with taps, directionals and holds</span>
       </div>
 
       <div class="mec mec--big">
         <figure class="reveal">
-          <img src="assets/mec-1-demonios.jpg" alt="Los demonios invaden el escenario" />
+          <img src="assets/mec-1-demonios.jpg" alt="The demons invade the stage" />
           <figcaption>
-            <span class="k">01 · Llegan</span>
-            <h4>Los demonios entran</h4>
-            <p>Terraza sobre Seúl a plena luz. La marea demoníaca entra en magenta y las dos desenvainan. Los carriles siguen en cian: cada bloque es un ataque que parar.</p>
+            <span class="k">01 · They arrive</span>
+            <h4>The demons enter</h4>
+            <p>A rooftop over Seoul in full daylight. The demon wave comes in magenta and the two of them draw. The corridors stay cyan: every tile is an attack to block.</p>
           </figcaption>
         </figure>
         <figure class="reveal">
-          <img src="assets/mec-2-golpe.jpg" alt="El tap se convierte en un golpe" />
+          <img src="assets/mec-2-golpe.jpg" alt="The tap becomes a strike" />
           <figcaption>
-            <span class="k">02 · El tap</span>
-            <h4>El tap es el golpe</h4>
-            <p>El arco dorado del acierto y el corte de la espada son el mismo evento. El feedback del tablero y la acción de combate ocurren juntos.</p>
+            <span class="k">02 · The tap</span>
+            <h4>The tap is the strike</h4>
+            <p>The golden arc of the hit and the sword cut are the same event. Board feedback and combat action happen together.</p>
           </figcaption>
         </figure>
         <figure class="reveal">
-          <img src="assets/mec-3-camara.jpg" alt="La cámara se mueve y el tablero queda anclado" />
+          <img src="assets/mec-3-camara.jpg" alt="The camera moves and the board stays anchored" />
           <figcaption>
-            <span class="k">03 · La cámara</span>
-            <h4>La cámara vuela, el tablero no</h4>
-            <p>Contrapicado en pleno combo de Excellent: el mundo entero vira a iridiscente. Los carriles y el HUD quedan clavados en el mismo lugar.</p>
+            <span class="k">03 · The camera</span>
+            <h4>The camera flies, the board does not</h4>
+            <p>A low angle mid Excellent combo: the whole world turns iridescent. The corridors and the HUD stay nailed in place.</p>
           </figcaption>
         </figure>
       </div>
 
-      <p class="eyebrow" style="margin:clamp(2rem,5vh,3rem) 0 .9rem;color:var(--blue);">Un mismo travelling &middot; el jugador nunca deja de tapear</p>
+      <p class="eyebrow" style="margin:clamp(2rem,5vh,3rem) 0 .9rem;color:var(--blue);">One single travelling &middot; the player never stops tapping</p>
       <div class="camvid">
         <video src="assets/camara-dinamica.webm" poster="assets/camara-dinamica-poster.jpg"
                autoplay muted loop playsinline preload="metadata"
-               aria-label="Movimiento de cámara dinámico con el tablero anclado"></video>
+               aria-label="Dynamic camera movement with the board anchored"></video>
       </div>
-      <p class="note" style="margin-top:1.6rem;max-width:78ch;">Un solo plano-secuencia. La cámara viaja, se inclina y cambia de eje, pero <b style="color:var(--ink-dim);font-weight:400;">los carriles, los bloques y el HUD no se mueven ni un píxel</b>. Por eso el jugador puede seguir tapeando mientras la narrativa avanza: el tablero es su punto fijo y todo lo demás es la película.</p>
+      <p class="note" style="margin-top:1.6rem;max-width:78ch;">One single long take. The camera travels, tilts and changes axis, but <b style="color:var(--ink-dim);font-weight:400;">the corridors, the tiles and the HUD do not move a single pixel</b>. That is why the player can keep tapping while the narrative advances: the board is their fixed point and everything else is the film.</p>
 
 
     </div>
@@ -1696,116 +1693,116 @@ footer{padding:clamp(2.5rem,7vh,4rem) var(--gutter);border-top:1px solid var(--h
   <!-- ESTELAS -->
   <section class="band">
     <div class="band__head reveal">
-      <p class="eyebrow">Personaje</p>
-      <h2>Estelas</h2>
-      <span class="caption">La coreografía dibujada en luz</span>
+      <p class="eyebrow">Character</p>
+      <h2>Trails</h2>
+      <span class="caption">Choreography drawn in light</span>
     </div>
 
     <div class="band__inner">
       <div class="trails">
         <figure class="reveal">
-          <img src="assets/est-1-reposo.jpg" alt="Personaje en reposo, sin estela" />
+          <img src="assets/est-1-reposo.jpg" alt="Character at rest, no trail" />
           <figcaption>
-            <span class="k">Reposo</span>
-            <h4>Sin estela</h4>
-            <p>Quieta no deja rastro. Apenas un aliento de Honmoon pegado a la silueta. La línea de base tiene que ser callada.</p>
+            <span class="k">At rest</span>
+            <h4>No trail</h4>
+            <p>Still, she leaves no trace. Barely a breath of Honmoon clinging to the silhouette. The baseline has to be quiet.</p>
           </figcaption>
         </figure>
         <figure class="reveal">
-          <img src="assets/est-2-lento.jpg" alt="Personaje en movimiento lento con estela corta" />
+          <img src="assets/est-2-lento.jpg" alt="Character in slow motion with a short trail" />
           <figcaption>
-            <span class="k">Movimiento lento</span>
-            <h4>Estela corta</h4>
-            <p>El brazo y la trenza dejan un arco breve de hebras peinadas que se apaga enseguida. Legible, pero modesto.</p>
+            <span class="k">Slow movement</span>
+            <h4>Short trail</h4>
+            <p>The arm and the braid leave a brief arc of combed strands that fades at once. Legible, but modest.</p>
           </figcaption>
         </figure>
         <figure class="reveal">
-          <img src="assets/est-3-coreo.jpg" alt="Personaje en coreografía con estelas completas" />
+          <img src="assets/est-3-coreo.jpg" alt="Character mid choreography with full trails" />
           <figcaption>
-            <span class="k">Coreografía</span>
-            <h4>Estela plena</h4>
-            <p>Manos, trenza y bota dejan arcos que se cruzan en el aire. El rastro traza el recorrido que acaban de hacer los miembros.</p>
+            <span class="k">Choreography</span>
+            <h4>Full trail</h4>
+            <p>Hands, braid and boot leave arcs that cross in the air. The trace draws the path the limbs have just travelled.</p>
           </figcaption>
         </figure>
         <figure class="reveal t4">
-          <img src="assets/est-4-excellent.jpg" alt="Estelas iridiscentes con Excellent encadenado" />
+          <img src="assets/est-4-excellent.jpg" alt="Iridescent trails on a chained Excellent" />
           <figcaption>
-            <span class="k">Excellent encadenado</span>
-            <h4>Estela iridiscente</h4>
-            <p>La cadena enciende el rastro: las hebras pasan de cian a iridiscente y se alargan. El personaje también acumula.</p>
+            <span class="k">Chained Excellent</span>
+            <h4>Iridescent trail</h4>
+            <p>The chain lights the trace: the strands go from cyan to iridescent and stretch out. The character accumulates too.</p>
           </figcaption>
         </figure>
       </div>
-      <p class="note" style="margin-top:1.6rem;max-width:74ch;">La estela usa el mismo material que los bloques — hebras paralelas peinadas — y se mantiene en cian mientras el tablero está en juego, para no competir con el dorado del acierto. Sólo cambia de color cuando cambia el estado del jugador, igual que todo lo demás en el sistema.</p>
+      <p class="note" style="margin-top:1.6rem;max-width:74ch;">The trail uses the same material as the tiles — parallel combed strands — and stays cyan while the board is in play, so it never competes with the gold of a hit. It only changes colour when the player state changes, like everything else in the system.</p>
     </div>
   </section>
 
   <!-- ACUMULACION -->
   <section class="band">
     <div class="band__head reveal">
-      <h2>Se acumula con cada Excellent</h2>
-      <span class="caption">Cuanto más encadenás, más pantalla se enciende</span>
+      <h2>It builds with every Excellent</h2>
+      <span class="caption">The longer the chain, the more of the screen lights up</span>
     </div>
 
     <div class="band__inner">
       <figure class="refpeli reveal">
-        <img src="assets/ref-arcoiris.jpg" alt="Referencia de la película: espectro iridiscente del Honmoon" />
-        <figcaption><span class="k">Referencia · la película</span>El espectro del Excellent no es un arcoíris saturado: son pasteles de alta luminancia y baja saturación, mezclados en franjas que se derraman sobre los personajes.</figcaption>
+        <img src="assets/ref-arcoiris.jpg" alt="Reference from the film: the iridescent Honmoon spectrum" />
+        <figcaption><span class="k">Reference · the film</span>The Excellent spectrum is not a saturated rainbow: it is high luminance, low saturation pastels, blended in bands that spill over the characters.</figcaption>
       </figure>
 
       <div class="combo reveal">
         <figure>
-          <img src="assets/combo-1-bajo.jpg" alt="Excellent con combo bajo" />
+          <img src="assets/combo-1-bajo.jpg" alt="Excellent on a low combo" />
           <figcaption>
-            <span class="k">Combo bajo</span>
-            <h4>Contenido</h4>
-            <p>Un Excellent suelto es chico. Se distingue del dorado por color, no por tamaño. La arena sigue oscura.</p>
+            <span class="k">Low combo</span>
+            <h4>Contained</h4>
+            <p>A single Excellent is small. It differs from the gold by colour, not by size. The arena stays dark.</p>
           </figcaption>
         </figure>
         <figure>
-          <img src="assets/combo-2-medio.jpg" alt="Excellent con combo medio" />
+          <img src="assets/combo-2-medio.jpg" alt="Excellent on a mid combo" />
           <figcaption>
-            <span class="k">Combo medio</span>
-            <h4>Se filtra</h4>
-            <p>La luz empieza a salirse del carril: toca los hombros del personaje, el piso y las primeras filas del público.</p>
+            <span class="k">Mid combo</span>
+            <h4>It spills</h4>
+            <p>The light starts escaping the corridor: it touches the character’s shoulders, the floor and the front rows of the crowd.</p>
           </figcaption>
         </figure>
         <figure class="c3">
-          <img src="assets/combo-3-alto.jpg" alt="Excellent con combo alto" />
+          <img src="assets/combo-3-alto.jpg" alt="Excellent on a high combo" />
           <figcaption>
-            <span class="k">Combo alto</span>
-            <h4>Honmoon encendido</h4>
-            <p>El estadio entero se vuelve iridiscente. Ya no es una arena oscura con un carril de color: es otro mundo.</p>
+            <span class="k">High combo</span>
+            <h4>Honmoon lit</h4>
+            <p>The whole stadium turns iridescent. It is no longer a dark arena with a coloured corridor: it is another world.</p>
           </figcaption>
         </figure>
       </div>
-      <p class="note" style="margin-top:1.6rem;max-width:74ch;">Excellent no tiene tope: se puede encadenar en todos los bloques, y ese es el objetivo. El efecto es acumulativo — cada golpe excelente suma luz al escenario, y la cadena sostenida es la que enciende el Honmoon completo.</p>
+      <p class="note" style="margin-top:1.6rem;max-width:74ch;">Excellent has no cap: it can be chained across every tile, and that is the goal. The effect is cumulative — every excellent hit adds light to the world, and it is the sustained chain that lights the full Honmoon.</p>
     </div>
   </section>
 
   <!-- LOOK APROXIMADO EN DEVICE -->
   <section class="band">
     <div class="band__head reveal">
-      <p class="eyebrow">Alcance</p>
-      <h2>Look aproximado en device</h2>
-      <span class="caption">Lo que se ve arriba es objetivo de arte, no captura de juego</span>
+      <p class="eyebrow">Scope</p>
+      <h2>Approximate look on device</h2>
+      <span class="caption">Everything above is an art target, not a game capture</span>
     </div>
 
     <div class="band__inner">
       <div class="device">
         <figure class="device__fig reveal">
-          <img src="assets/prop-b-solido.jpg" alt="Render cinematográfico usado como objetivo de arte" />
-          <figcaption><span class="k">Objetivo de arte</span>Render cinematográfico</figcaption>
+          <img src="assets/prop-b-solido.jpg" alt="Cinematic render used as an art target" />
+          <figcaption><span class="k">Art target</span>Cinematic render</figcaption>
         </figure>
         <figure class="device__fig reveal">
-          <img src="assets/mobile-aprox.jpg" alt="Aproximación de cómo se vería corriendo en un celular" />
-          <figcaption><span class="k">Aproximación en device</span>Real time en celular</figcaption>
+          <img src="assets/mobile-aprox.jpg" alt="Approximation of how it would look running on a phone" />
+          <figcaption><span class="k">On-device approximation</span>Real time on a phone</figcaption>
         </figure>
       </div>
 
-      <p class="note" style="margin-top:1.6rem;max-width:80ch;">Todas las imágenes de este deck son <b style="color:var(--ink-dim);font-weight:400;">objetivo de arte</b>: definen el código visual, no la fidelidad de render. Esta es la misma toma traducida a lo que sostiene un celular en tiempo real — iluminación horneada en vez de reflejos calculados, público simplificado, menos partículas y VFX de billboard en lugar de volumétricos.</p>
+      <p class="note" style="margin-top:1.6rem;max-width:80ch;">Every image in this deck is an <b style="color:var(--ink-dim);font-weight:400;">art target</b>: they define the visual code, not render fidelity. This is the same shot translated to what a phone can hold in real time — baked lighting instead of computed reflections, a simplified crowd, fewer particles and billboard VFX instead of volumetrics.</p>
 
-      <p class="note" style="margin-top:.9rem;max-width:80ch;">Lo importante es que <b style="color:var(--ink-dim);font-weight:400;">el sistema sobrevive la bajada</b>. La forma sigue diciendo qué es la nota, el color sigue diciendo cómo salió, y el tablero sigue siendo el plano fijo. Lo que se pierde es densidad de render, no legibilidad.</p>
+      <p class="note" style="margin-top:.9rem;max-width:80ch;">What matters is that <b style="color:var(--ink-dim);font-weight:400;">the system survives the downgrade</b>. Shape still says what the note is, colour still says how it went, and the board is still the fixed plane. What is lost is render density, not legibility.</p>
     </div>
   </section>
 
@@ -1817,40 +1814,40 @@ footer{padding:clamp(2.5rem,7vh,4rem) var(--gutter);border-top:1px solid var(--h
     <div class="band__inner reveal">
       <h2 class="cierre__t">Thanks</h2>
       <figure class="cierre__img">
-        <img src="assets/cierre-trio.jpg" alt="Huntrix sobre la ciudad" />
+        <img src="assets/cierre-trio.jpg" alt="Huntrix over the city" />
       </figure>
 
       <p class="eyebrow cierre__k">Next steps</p>
       <div class="agenda">
         <div>
-          <span class="k">Bloques</span>
-          <h4>Transparencia</h4>
-          <p>Forma de la nota sobre los tres escenarios.</p>
+          <span class="k">Tiles</span>
+          <h4>Transparency</h4>
+          <p>Note shape across the three worlds.</p>
         </div>
         <div>
-          <span class="k">Modo</span>
-          <h4>Cinemática vs. tap</h4>
-          <p>Qué manda: la coreografía o el tablero.</p>
+          <span class="k">Mode</span>
+          <h4>Cinematic vs. tap</h4>
+          <p>What leads: the choreography or the board.</p>
         </div>
         <div>
-          <span class="k">Ritmo</span>
-          <h4>Velocidad de tapeo</h4>
-          <p>Tempo contra avance del carril.</p>
+          <span class="k">Rhythm</span>
+          <h4>Tap speed</h4>
+          <p>Tempo against corridor travel.</p>
         </div>
         <div>
           <span class="k">VFX</span>
-          <h4>Partículas y halos</h4>
-          <p>Cuánta energía deja el personaje atrás.</p>
+          <h4>Particles and halos</h4>
+          <p>How much energy the character leaves behind.</p>
         </div>
         <div>
-          <span class="k">Fondo</span>
-          <h4>Fijo o animado</h4>
-          <p>Cuánto movimiento tolera sin tapar la nota.</p>
+          <span class="k">Background</span>
+          <h4>Static or animated</h4>
+          <p>How much motion it takes without hiding the note.</p>
         </div>
         <div>
-          <span class="k">Contraste</span>
-          <h4>Convivencia</h4>
-          <p>Mínimos entre carril, nota, personaje y fondo.</p>
+          <span class="k">Contrast</span>
+          <h4>Coexistence</h4>
+          <p>Minimums between corridor, note, character and background.</p>
         </div>
       </div>
     </div>
@@ -1862,9 +1859,9 @@ footer{padding:clamp(2.5rem,7vh,4rem) var(--gutter);border-top:1px solid var(--h
   <div class="footer__inner">
     <div>
       <div class="footer__mark">KPop Demon Hunters</div>
-      <p style="margin-top:.5rem;">Mobile rhythm game · Desarrollo visual v1</p>
+      <p style="margin-top:.5rem;">Mobile rhythm game · Visual development v1</p>
     </div>
-    <p>Desarrollo visual — material de referencia</p>
+    <p>Visual development — reference material</p>
   </div>
 </footer>
 
