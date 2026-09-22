@@ -767,6 +767,21 @@ footer{padding:clamp(2.5rem,7vh,4rem) var(--gutter);border-top:1px solid var(--h
   font-size:var(--s2);color:var(--ink-mute);}
 .fuga .k{font-family:var(--mono);font-size:.64rem;letter-spacing:.2em;text-transform:uppercase;color:var(--blue);}
 
+/* grilla de efectos por mundo */
+.fxgrid{display:grid;gap:clamp(.7rem,1.4vw,1.1rem);grid-template-columns:minmax(0,1fr);overflow:visible;}
+@media (min-width:900px){ .fxgrid{grid-template-columns:repeat(3,minmax(0,1fr));} }
+.fxcard{margin:0;border:1px solid var(--hairline);background:var(--stage-100);overflow:hidden;
+  transition:transform .3s cubic-bezier(.2,.7,.3,1), box-shadow .3s ease;will-change:transform;}
+.fxcard:hover,.fxcard:focus-visible{transform:scale(1.28);z-index:20;box-shadow:0 22px 60px rgba(0,0,0,.8);}
+.fxcard img{width:100%;display:block;}
+.fxcard figcaption{padding:.75rem 1rem 1rem;display:grid;gap:.25rem;border-top:1px solid var(--hairline-soft);
+  font-size:var(--s2);color:var(--ink-mute);}
+.fxcard .k{font-family:var(--mono);font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;}
+.k--great{color:var(--gold);}
+.k--miss{color:var(--demon);}
+.k--exc{background:var(--rainbow);-webkit-background-clip:text;background-clip:text;color:transparent;}
+@media (prefers-reduced-motion:reduce){ .fxcard{transition:none;} }
+
 /* propuestas de excellent */
 .excprop{display:grid;gap:clamp(.7rem,1.4vw,1.1rem);grid-template-columns:repeat(auto-fit,minmax(230px,1fr));overflow:visible;}
 .excprop__fig{margin:0;border:1px solid var(--hairline);background:var(--stage-100);overflow:hidden;
@@ -1081,6 +1096,41 @@ footer{padding:clamp(2.5rem,7vh,4rem) var(--gutter);border-top:1px solid var(--h
 
       <p class="note">Si cada acierto dispara halo, el halo no significa nada: cuando todo se celebra, nada se celebra.</p>
       <p class="note" style="margin-top:.9rem;">El VFX pasa a ser <b>econom&iacute;a, no decoraci&oacute;n</b>. Se reserva para el m&eacute;rito real &mdash; la cadena sostenida, el momento alto de la canci&oacute;n &mdash; y el acierto com&uacute;n se resuelve con una respuesta m&aacute;s seca.</p>
+
+      <p class="eyebrow" style="margin:clamp(2.6rem,6vh,4rem) 0 .9rem;color:var(--blue);">Los tres estados en dos mundos</p>
+
+      <div class="fxgrid">
+        <figure class="fxcard reveal">
+          <img src="assets/fx-bosque-great.jpg" alt="Efecto Great sobre bosque diurno" />
+          <figcaption><span class="k k--great">Great</span>Bosque diurno</figcaption>
+        </figure>
+        <figure class="fxcard reveal">
+          <img src="assets/fx-bosque-miss.jpg" alt="Efecto Miss sobre bosque diurno" />
+          <figcaption><span class="k k--miss">Miss</span>Bosque diurno</figcaption>
+        </figure>
+        <figure class="fxcard reveal">
+          <img src="assets/fx-bosque-exc.jpg" alt="Efecto Excellent sobre bosque diurno" />
+          <figcaption><span class="k k--exc">Excellent</span>Bosque diurno</figcaption>
+        </figure>
+        <figure class="fxcard reveal">
+          <img src="assets/fx-tren-great.jpg" alt="Efecto Great sobre el tren al amanecer" />
+          <figcaption><span class="k k--great">Great</span>El tren, amanecer</figcaption>
+        </figure>
+        <figure class="fxcard reveal">
+          <img src="assets/fx-tren-miss.jpg" alt="Efecto Miss sobre el tren al amanecer" />
+          <figcaption><span class="k k--miss">Miss</span>El tren, amanecer</figcaption>
+        </figure>
+        <figure class="fxcard reveal">
+          <img src="assets/fx-tren-exc.jpg" alt="Efecto Excellent sobre el tren al amanecer" />
+          <figcaption><span class="k k--exc">Excellent</span>El tren, amanecer</figcaption>
+        </figure>
+      </div>
+
+      <p class="note" style="margin-top:1.6rem;">Los tres estados no se distinguen solo por color sino por <b>mecanismo</b>: el Great es un halo dorado que inunda el casillero, el Miss es un <b>campo roto</b> de grietas magenta y fragmentos, el Excellent es un halo iridiscente con n&uacute;cleo blanco. Aunque el mundo cambie, cada uno se reconoce por c&oacute;mo se comporta.</p>
+
+      <p class="note" style="margin-top:.9rem;">La regla que los hace convivir con cualquier escenario: <b>el efecto vive sobre el casillero</b>, que est&aacute; en el borde. Puede ser grande y llamativo sin invadir el centro, donde ocurre la pel&iacute;cula.</p>
+
+      <p class="note" style="margin-top:.9rem;">El hallazgo de la prueba: sobre el tren &mdash; pastel y de bajo contraste &mdash; el estado fr&aacute;gil no es el Miss sino el <b>Excellent</b>. Sus pasteles compiten con el amanecer y lo que lo salva no es el color sino el valor. De ah&iacute; una restricci&oacute;n concreta: <b>el Excellent necesita n&uacute;cleo blanco en cualquier escenario claro</b>.</p>
     </div>
   </section>
 
