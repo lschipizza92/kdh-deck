@@ -99,15 +99,26 @@ p{margin:0;}
   opacity:.67;
   transform:scale(.94);
   transform-origin:center 40%;
-  -webkit-mask-image:radial-gradient(64% 58% at 50% 40%, #000 52%, rgba(0,0,0,.55) 78%, transparent 100%);
-  mask-image:radial-gradient(64% 58% at 50% 40%, #000 52%, rgba(0,0,0,.55) 78%, transparent 100%);
+  /* radial para los costados + vertical para que el cuadro se disuelva arriba y abajo */
+  -webkit-mask-image:
+    radial-gradient(64% 58% at 50% 40%, #000 52%, rgba(0,0,0,.55) 78%, transparent 100%),
+    linear-gradient(180deg, transparent 2%, #000 15%, #000 46%, rgba(0,0,0,.5) 62%, transparent 76%);
+  mask-image:
+    radial-gradient(64% 58% at 50% 40%, #000 52%, rgba(0,0,0,.55) 78%, transparent 100%),
+    linear-gradient(180deg, transparent 2%, #000 15%, #000 46%, rgba(0,0,0,.5) 62%, transparent 76%);
+  -webkit-mask-composite:source-in;
+  mask-composite:intersect;
 }
 /* en pantallas angostas el cuadro completo queda una franja fina: volvemos a llenar */
 @media (max-width:820px){
   .hero__video{
     object-fit:cover;transform:scale(1);
-    -webkit-mask-image:radial-gradient(92% 60% at 50% 42%, #000 58%, rgba(0,0,0,.45) 84%, transparent 100%);
-    mask-image:radial-gradient(92% 60% at 50% 42%, #000 58%, rgba(0,0,0,.45) 84%, transparent 100%);
+    -webkit-mask-image:
+      radial-gradient(92% 60% at 50% 42%, #000 58%, rgba(0,0,0,.45) 84%, transparent 100%),
+      linear-gradient(180deg, transparent 0%, #000 10%, #000 52%, rgba(0,0,0,.5) 70%, transparent 86%);
+    mask-image:
+      radial-gradient(92% 60% at 50% 42%, #000 58%, rgba(0,0,0,.45) 84%, transparent 100%),
+      linear-gradient(180deg, transparent 0%, #000 10%, #000 52%, rgba(0,0,0,.5) 70%, transparent 86%);
   }
 }
 .hero__scrim{
