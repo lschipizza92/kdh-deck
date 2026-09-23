@@ -783,6 +783,15 @@ footer{padding:clamp(2.5rem,7vh,4rem) var(--gutter);border-top:1px solid var(--h
 @media (prefers-reduced-motion:reduce){ .fxcard{transition:none;} }
 
 /* propuestas de excellent */
+/* referencias de la pelicula bajo las propuestas de excellent */
+.pelirefs{display:grid;gap:clamp(.7rem,1.4vw,1.1rem);grid-template-columns:minmax(0,1fr);}
+@media (min-width:760px){ .pelirefs{grid-template-columns:repeat(2,minmax(0,1fr));} }
+.peliref{margin:0;border:1px solid var(--hairline);background:var(--stage-100);overflow:hidden;}
+.peliref img{width:100%;display:block;}
+.peliref figcaption{padding:.8rem 1rem 1.1rem;display:grid;gap:.3rem;border-top:1px solid var(--hairline-soft);
+  font-size:var(--s2);color:var(--ink-mute);}
+.peliref .k{font-family:var(--mono);font-size:.64rem;letter-spacing:.2em;text-transform:uppercase;color:var(--blue);}
+
 .hex{font-family:var(--mono);font-size:.86em;color:var(--ink-dim);letter-spacing:.02em;}
 .excprop{display:grid;gap:clamp(.7rem,1.4vw,1.1rem);grid-template-columns:repeat(auto-fit,minmax(230px,1fr));overflow:visible;}
 .excprop__fig{margin:0;border:1px solid var(--hairline);background:var(--stage-100);overflow:hidden;
@@ -1050,11 +1059,42 @@ footer{padding:clamp(2.5rem,7vh,4rem) var(--gutter);border-top:1px solid var(--h
             <p>One continuous sweep from turquoise through magenta into lilac, electric rather than pastel, with the strands going white where the three meet. It keeps the film&rsquo;s three strongest hues and drops everything else, so it reads as spectrum at a glance but resolves into a single gesture.</p>
           </figcaption>
         </figure>
+        <figure class="excprop__fig reveal">
+          <img src="assets/exc-t-prisma.jpg" alt="Excellent proposal D, full spectrum with white lines" />
+          <figcaption>
+            <span class="k">Option D</span>
+            <h4>Full spectrum</h4>
+            <p>The widest of the four: magenta and violet through gold into green and blue, with the strand pattern drawn <b>on top</b> in white instead of being tinted by it. The white lines and the short vertical filaments are what stop it reading as a flat rainbow &mdash; the colour is the ground, the weave is the object.</p>
+          </figcaption>
+        </figure>
       </div>
 
       <p class="note" style="margin-top:1.6rem;">All three are multicoloured, which is what separates them from Good, Great and Miss &mdash; those are one hue each, this one is the only state that holds more than one. That is the argument for the spectrum staying: it is not decoration, it is the thing that marks the top of the ladder.</p>
 
       <p class="note" style="margin-top:.9rem;">The risk to watch is the <b>magenta</b>, which the Miss already owns. In A it is the ground and the turquoise is the light on top, so the reading inverts; in C it is one third of a sweep. Worth checking both against a Miss side by side before committing.</p>
+
+      <p class="eyebrow" style="margin:clamp(2.6rem,6vh,4rem) 0 .9rem;color:var(--blue);">Where the colour comes from</p>
+
+      <div class="pelirefs">
+        <figure class="peliref reveal">
+          <img src="assets/ref-arcoiris.jpg" alt="Film reference, the climax spectrum" />
+          <figcaption><span class="k">The climax</span>Wide soft bands of pastel, high luminance and low saturation. The spectrum is never saturated: it is light, not paint.</figcaption>
+        </figure>
+        <figure class="peliref reveal">
+          <img src="assets/ref-peli-hebras.jpg" alt="Film reference, Honmoon strands over the city" />
+          <figcaption><span class="k">The strands</span>The Honmoon travels as long parallel filaments that keep their spacing and shift hue along their length. This is the pattern the tiles are built from.</figcaption>
+        </figure>
+        <figure class="peliref reveal">
+          <img src="assets/ref-peli-honmoon.jpg" alt="Film reference, iridescent light on a character" />
+          <figcaption><span class="k">On the character</span>The same light spilling over skin and costume &mdash; turquoise and rose together, with the white core where the energy is strongest.</figcaption>
+        </figure>
+        <figure class="peliref reveal">
+          <img src="assets/ref-estela.jpg" alt="Film reference, the Honmoon barrier" />
+          <figcaption><span class="k">The barrier</span>Turquoise strands over a deep rose ground. Cool light on a warm body &mdash; the pairing option A takes directly.</figcaption>
+        </figure>
+      </div>
+
+      <p class="note" style="margin-top:1.6rem;">Every proposal above is built from one of these four: the band structure of the climax, the parallel filaments of the Honmoon, the turquoise-over-rose of the barrier. Nothing in the colour is invented &mdash; what changes between options is <b>how much of the spectrum is kept</b>, and whether the pattern is tinted by the colour or drawn over it.</p>
 
       <p class="eyebrow" style="margin:clamp(2.6rem,6vh,4rem) 0 .9rem;color:var(--blue);">While it travels &middot; the shape</p>
       <div class="tipos">
