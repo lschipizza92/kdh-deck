@@ -784,13 +784,17 @@ footer{padding:clamp(2.5rem,7vh,4rem) var(--gutter);border-top:1px solid var(--h
 
 /* propuestas de excellent */
 /* referencias de la pelicula bajo las propuestas de excellent */
-.pelirefs{display:grid;gap:clamp(.7rem,1.4vw,1.1rem);grid-template-columns:minmax(0,1fr);}
-@media (min-width:760px){ .pelirefs{grid-template-columns:repeat(2,minmax(0,1fr));} }
-.peliref{margin:0;border:1px solid var(--hairline);background:var(--stage-100);overflow:hidden;}
-.peliref img{width:100%;display:block;}
-.peliref figcaption{padding:.8rem 1rem 1.1rem;display:grid;gap:.3rem;border-top:1px solid var(--hairline-soft);
-  font-size:var(--s2);color:var(--ink-mute);}
-.peliref .k{font-family:var(--mono);font-size:.64rem;letter-spacing:.2em;text-transform:uppercase;color:var(--blue);}
+.pelirefs{display:grid;gap:clamp(.55rem,1vw,.8rem);grid-template-columns:minmax(0,1fr);overflow:visible;}
+@media (min-width:620px){ .pelirefs{grid-template-columns:repeat(2,minmax(0,1fr));} }
+@media (min-width:900px){ .pelirefs{grid-template-columns:repeat(4,minmax(0,1fr));} }
+.peliref{margin:0;border:1px solid var(--hairline);background:var(--stage-100);overflow:hidden;
+  transition:transform .3s cubic-bezier(.2,.7,.3,1), box-shadow .3s ease;will-change:transform;}
+.peliref:hover,.peliref:focus-visible{transform:scale(1.35);z-index:20;box-shadow:0 22px 60px rgba(0,0,0,.8);}
+.peliref img{width:100%;display:block;aspect-ratio:16/9;object-fit:cover;}
+.peliref figcaption{padding:.55rem .7rem .75rem;display:grid;gap:.2rem;border-top:1px solid var(--hairline-soft);
+  font-size:.74rem;line-height:1.4;color:var(--ink-mute);}
+.peliref .k{font-family:var(--mono);font-size:.55rem;letter-spacing:.18em;text-transform:uppercase;color:var(--blue);}
+@media (prefers-reduced-motion:reduce){ .peliref{transition:none;} }
 
 .hex{font-family:var(--mono);font-size:.86em;color:var(--ink-dim);letter-spacing:.02em;}
 .excprop{display:grid;gap:clamp(.7rem,1.4vw,1.1rem);grid-template-columns:repeat(auto-fit,minmax(230px,1fr));overflow:visible;}
