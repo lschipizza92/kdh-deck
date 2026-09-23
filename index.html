@@ -133,8 +133,8 @@ p{margin:0;}
   background-image:repeating-linear-gradient(180deg,rgba(150,215,255,.13) 0 1px,transparent 1px 3px);
   mix-blend-mode:screen;pointer-events:none;
   /* si las lineas llegan al borde de la seccion se ve un escalon de tono contra el negro */
-  -webkit-mask-image:linear-gradient(180deg,#000 0%,#000 58%,rgba(0,0,0,.5) 82%,transparent 97%);
-  mask-image:linear-gradient(180deg,#000 0%,#000 58%,rgba(0,0,0,.5) 82%,transparent 97%);
+  -webkit-mask-image:linear-gradient(180deg,#000 0%,#000 46%,rgba(0,0,0,.45) 72%,transparent 88%);
+  mask-image:linear-gradient(180deg,#000 0%,#000 46%,rgba(0,0,0,.45) 72%,transparent 88%);
 }
 .hud{
   position:absolute;top:var(--gutter);left:var(--gutter);right:var(--gutter);
@@ -267,6 +267,8 @@ main{position:relative;z-index:1;background:var(--stage-000);}
   padding:clamp(3.5rem,10vh,7rem) var(--gutter);
   border-top:1px solid var(--hairline-soft);
 }
+/* la primera seccion no lleva filete: se veria como un corte al terminar el hero */
+main > .band:first-of-type{border-top:none;}
 .band--flush{padding-left:0;padding-right:0;padding-bottom:0;}
 .band--flush > .band__head{padding-inline:var(--gutter);}
 
